@@ -30,3 +30,8 @@ Create the `datasources.local.json` with the content:
 }
 ```
 Adapt it to your local DB configurations.
+
+## Generate tables
+```
+node server/scripts/create-tables.js
+```
