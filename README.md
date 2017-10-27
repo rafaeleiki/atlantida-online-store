@@ -12,8 +12,10 @@ npm install -g @angular/cli
 npm install
 ```
 
+Maybe use --unsafe-perm when needed
+
 ## Local config
-Create the `datasources.local.json` with the content:
+Create the `datasources.local.json` at `server/` with the content:
 ```
 {
   "db": {
@@ -22,10 +24,10 @@ Create the `datasources.local.json` with the content:
 
     "host": "localhost",
     "port": 5432,
-    "url": "postgres://admin:admin@myhost/db",
-    "database": "db1",
-    "password": "admin",
-    "user": "admin"
+    "url": "postgres://<YOURUSER>:<YOURPASS>@localhost/db",
+    "database": "<YOURDB>",
+    "password": "<YOURPASS>",
+    "user": "<YOURUSER>"
   }
 }
 ```
