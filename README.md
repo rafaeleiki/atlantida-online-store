@@ -24,7 +24,7 @@ Create the `datasources.local.json` at `server/` with the content:
 
     "host": "localhost",
     "port": 5432,
-    "url": "postgres://<YOURUSER>:<YOURPASS>@localhost/db",
+    "url": "postgres://<YOURUSER>:<YOURPASS>@localhost/<YOURDB>",
     "database": "<YOURDB>",
     "password": "<YOURPASS>",
     "user": "<YOURUSER>"
