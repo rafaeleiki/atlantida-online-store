@@ -8,8 +8,8 @@ In the root dir of the project:
 
 ```
 npm install
-npm install -g loopback-cli
-npm install -g @angular/cli
+sudo npm install -g loopback-cli
+sudo npm install -g @angular/cli
 ```
 
 Maybe use --unsafe-perm when needed
