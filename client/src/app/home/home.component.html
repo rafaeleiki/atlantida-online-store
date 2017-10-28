@@ -23,102 +23,13 @@
 </ngb-carousel>
 
 <div class="card-group mt-4">
-  <div class="card text-center m-2">
+  <div *ngFor="let product of products"
+       class="card text-center m-2">
     <img class="card-img-top">
     <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
+      <h4 class="card-title">{{ product.name }}</h4>
       <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
+        Ano: {{ product.year || 'Desconhecido' }}
       </p>
     </div>
   </div>

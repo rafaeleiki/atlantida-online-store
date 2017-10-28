@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HelpComponent } from './help.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('HelpComponent', () => {
   let component: HelpComponent;
@@ -8,7 +9,8 @@ describe('HelpComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HelpComponent ]
+      declarations: [ HelpComponent ],
+      imports: [NgbModule.forRoot()]
     })
     .compileComponents();
   }));
