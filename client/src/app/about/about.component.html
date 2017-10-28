@@ -1,0 +1,24 @@
+<div class="p-5">
+  <h1>Atlantida</h1>
+  <h4>Os tesouros perdidos pelo preço de água salgada</h4>
+  <p class="mt-5">
+    Atlantida é uma loja online que foi criada em 2017. Vendendo de
+    eletrodomésticos a variedades de itens para a sua vida, o objetivo
+    da Atlantida foi sempre o mesmo: oferecer o melhor serviço com
+    um preço justo.Começamos nossas atividades em 2017, quando os fundadores,
+    cientistas da computação interessados pelo mercado de varejo,
+    viu uma oportunidade de melhorar a venda de produtos de consumo duráveis.
+    Desde então, Atlantida foi criada para atender a população brasileira
+    através de um serviço escalável, de alta qualidade e preço acessível.
+  </p>
+  <h3 class="mt-5">Fundadores</h3>
+  <div class="p-4 card-deck">
+    <div *ngFor="let founder of founders" class="card text-center m-2">
+      <img class="card-img-top" src="{{ founder.picture }}">
+      <div class="card-body">
+        <h4 class="card-title">{{ founder.name }}</h4>
+        <p class="card-text">RA {{ founder.ra }}</p>
+      </div>
+    </div>
+  </div>
+</div>
