@@ -17,3 +17,8 @@
 .material-icons {
   vertical-align: middle;
 }
+
+.dropdown-link {
+  background-color: transparent;
+  border: none;
+}

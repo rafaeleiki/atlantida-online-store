@@ -10,9 +10,13 @@
         <a class="nav-link" href="/home">Home <span class="sr-only">(atual)</span></a>
       </li>
       <li class="nav-item" ngbDropdown>
-        <a class="nav-link" href="#" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link dropdown-link"
+                ngbDropdownToggle
+                aria-haspopup="true"
+                aria-expanded="false"
+                type="button">
           Produtos
-        </a>
+        </button>
         <div ngbDropdownMenu>
           <label class="dropdown-header" href="#">Eletrônicos</label>
           <a class="dropdown-item" href="#">Celulares</a>
