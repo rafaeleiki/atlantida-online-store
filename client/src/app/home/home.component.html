@@ -22,15 +22,19 @@
   </ng-template>
 </ngb-carousel>
 
-<div class="card-group mt-4">
+<app-loading-icon *ngIf="!products"></app-loading-icon>
+
+<div class="card-group mt-4" *ngIf="products">
   <div *ngFor="let product of products"
        class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">{{ product.name }}</h4>
-      <p class="card-text">
-        Ano: {{ product.year || 'Desconhecido' }}
-      </p>
-    </div>
+    <a routerLink="/products/{{product._id}}">
+      <img class="card-img-top">
+      <div class="card-body">
+        <h4 class="card-title">{{ product.name }}</h4>
+        <p class="card-text">
+          Ano: {{ product.year || 'Desconhecido' }}
+        </p>
+      </div>
+    </a>
   </div>
 </div>

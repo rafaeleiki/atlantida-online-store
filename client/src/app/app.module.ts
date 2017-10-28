@@ -10,11 +10,14 @@ import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
 import {ProductsService} from './integrations/products/products.service';
 import {HttpModule} from '@angular/http';
+import { ProductComponent } from './product/product.component';
+import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
+  { path: 'products/:id', component: ProductComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -29,6 +32,8 @@ const appRoutes: Routes = [
     HomeComponent,
     AboutComponent,
     HelpComponent,
+    ProductComponent,
+    LoadingIconComponent,
   ],
   imports: [
     BrowserModule,

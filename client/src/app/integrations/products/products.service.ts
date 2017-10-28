@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 
 export interface Product {
+  _id: string;
   name: string;
   category: string;
   color: string;
@@ -28,7 +29,23 @@ export class ProductsService {
       .catch((error) => {
         console.error('Error on get products', error);
         return Promise.reject(error.message || error);
-      })
+      });
+  }
+
+  getProduct(id: string): Promise<Product> {
+    return this.http.get(this.url + `/PRODUCTID`)
+      .toPromise()
+      .then(response => response.json() as Product)
+      .catch((error) => {
+        console.error(`Error on get product with ID ${id}`, error);
+        let promise;
+        if (error.status) {
+          promise = Promise.resolve(null);
+        } else {
+          promise = Promise.reject(error.message || error);
+        }
+        return promise;
+      });
   }
 
 }

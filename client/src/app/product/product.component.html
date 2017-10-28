@@ -1,0 +1,24 @@
+<app-loading-icon *ngIf="product === undefined"></app-loading-icon>
+
+<div *ngIf="product" class="p-5">
+  <h2>{{ product.name }}</h2>
+  <ul>
+    <li>Categoria: {{ product.category }}</li>
+    <li>Marca: {{ product.brand }}</li>
+    <li>Modelo: {{ product.model }}</li>
+    <li>Cor: {{ product.color }}</li>
+    <li>Ano: {{ product.year }}</li>
+    <li>Peso: {{ product.weight }} Kg</li>
+    <li>Altura: {{ product.dimensions[2] }}m</li>
+    <li>Largura: {{ product.dimensions[1] }}m</li>
+    <li>Comprimento: {{ product.dimensions[0] }}m</li>
+  </ul>
+</div>
+
+<div *ngIf="product === null" class="p-5">
+  <h2>Produto não encontrado</h2>
+  <p>
+    Parece que a página que você está tentando acessar
+    não existe ou não está mais disponível.
+  </p>
+</div>
