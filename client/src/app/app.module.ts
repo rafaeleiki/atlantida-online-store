@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import {NavBarComponent} from './layout/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -21,6 +23,7 @@ const appRoutes: Routes = [
     AppComponent,
     NavBarComponent,
     HomeComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
