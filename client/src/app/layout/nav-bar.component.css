@@ -1,0 +1,19 @@
+.navbar {
+  background-color: #17adff;
+}
+
+.links {
+  flex: 1;
+}
+
+.search-container {
+  flex: 2;
+}
+
+.search {
+  flex: 1;
+}
+
+.material-icons {
+  vertical-align: middle;
+}

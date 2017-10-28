@@ -1,0 +1,34 @@
+.highlight-products {
+  height: 200px;
+}
+
+.highlight-products img {
+  display: block;
+  max-height: 200px;
+  width: 100%;
+}
+
+.card-img-top {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  margin: auto;
+}
+
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  min-width: 300px;
+  flex: 1;
+  border: none;
+}
+
+.footer {
+  background-color: #17adff;
+  padding: 2em;
+  text-align: center;
+  color: #fff;
+}

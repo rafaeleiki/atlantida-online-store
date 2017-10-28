@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#">Atlantida</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-5 links">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(atual)</span></a>
+      </li>
+      <li class="nav-item" ngbDropdown>
+        <a class="nav-link" href="#" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+          Produtos
+        </a>
+        <div ngbDropdownMenu>
+          <label class="dropdown-header" href="#">Eletrônicos</label>
+          <a class="dropdown-item" href="#">Celulares</a>
+          <a class="dropdown-item" href="#">Computadores</a>
+          <div class="dropdown-divider"></div>
+
+          <label class="dropdown-header" href="#">Eletrodomésticos</label>
+          <a class="dropdown-item" href="#">Geladeiras</a>
+          <a class="dropdown-item" href="#">Fogões</a>
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="#">Ver todas as categorias</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Quem somos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Ajuda</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 search-container">
+      <input class="form-control mr-sm-2 search" type="search" placeholder="Buscar" aria-label="Buscar">
+      <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="material-icons">search</i></button>
+    </form>
+  </div>
+</nav>
+
