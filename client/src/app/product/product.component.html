@@ -1,7 +1,12 @@
 <app-loading-icon *ngIf="product === undefined"></app-loading-icon>
 
 <div *ngIf="product" class="p-5">
-  <h2>{{ product.name }}</h2>
+ <div class = "image-box"> oi </div>
+ <div class = "product-box">
+    <h2>{{ product.name }}</h2>
+    <p>compre!!!</p>
+  </div>
+  <div class="clearfix"></div>
   <ul>
     <li>Categoria: {{ product.category }}</li>
     <li>Marca: {{ product.brand }}</li>

@@ -1,0 +1,17 @@
+.image-box{
+  width:45%;
+  margin-right:2%;
+  float: left;
+}
+
+.product-box{
+  padding: 20px;
+  background-color: #cccccc;
+  width:50%;
+  float: left;
+}
+
+
+.clearfix{
+    clear:both
+}
