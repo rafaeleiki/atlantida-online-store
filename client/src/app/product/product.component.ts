@@ -13,6 +13,10 @@ export class ProductComponent implements OnInit {
 private product: Product;
 private nums = [];
 private currentRate = 3;
+private reviews = [
+  {user: "leila", title: "achei um lixo", body: "muito bom amei"},
+  {user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10"}
+]
 
 constructor(
 private route: ActivatedRoute,

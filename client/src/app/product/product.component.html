@@ -33,8 +33,15 @@
 </ng-template>
 </ngb-rating>
 </h3>
+
+<div class="review-box" *ngFor="let review of reviews">
+  <div class="review-box-header">{{review.title}} <ng-template let-fill="fill"> <span class="star" [class.filled]="fill === 100">&#9733;</span>
+</ng-template>
+<div class="review-user"> {{review.user}}</div></div>
+  <div class="review-box-body">{{review.body}}</div>
 </div>
 
+</div>
 <div *ngIf="product === null" class="p-5">
   <h2>Produto não encontrado</h2>
   <p>
