@@ -1,10 +1,13 @@
 <app-loading-icon *ngIf="product === undefined"></app-loading-icon>
 
 <div *ngIf="product" class="p-5">
- <div class = "image-box"> oi </div>
+ <div class = "image-box"> poe ibagens </div>
  <div class = "product-box">
-    <h2>{{ product.name }}</h2>
-
+    <h2>{{ product.name }} <ngb-rating [(rate)]="currentRate"> <ng-template let-fill="fill"> <span class="star" [class.filled]="fill === 100">&#9733;</span>
+  </ng-template>
+  </ngb-rating></h2>
+    <br>
+    <div class="price">Por R$10,00</div>
     <div *ngIf="product.stock > 0" class="p-5">
 <p>Selecione a quantidade: <select><option *ngFor="let num of nums" value="{{num}}">{{num}}</option></select> </p>
 <button type="button" class="btn btn-default btn-addto"> Colocar no Carrinho</button>
@@ -26,7 +29,10 @@
     <li>Largura: {{ product.dimensions[1] }}m</li>
     <li>Comprimento: {{ product.dimensions[0] }}m</li>
   </ul>
-  <h3>Avaliações</h3>
+  <h3>Avaliações <ngb-rating [(rate)]="currentRate"> <ng-template let-fill="fill"> <span class="star" [class.filled]="fill === 100">&#9733;</span>
+</ng-template>
+</ngb-rating>
+</h3>
 </div>
 
 <div *ngIf="product === null" class="p-5">

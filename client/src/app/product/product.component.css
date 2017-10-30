@@ -26,3 +26,18 @@
 .clearfix{
     clear:both
 }
+
+.price{
+  margin-left: 50px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.star{
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+
+.filled{
+  color: #0066cc;
+}

@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
 
 private product: Product;
 private nums = [];
+private currentRate = 3;
 
 constructor(
 private route: ActivatedRoute,
