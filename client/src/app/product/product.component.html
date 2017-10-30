@@ -5,12 +5,18 @@
  <div class = "product-box">
     <h2>{{ product.name }}</h2>
 
-    <button type="button" class="btn btn-default btn-addto"> Colocar no Carrinho</button>
+    <div *ngIf="product.stock > 0" class="p-5">
+<p>Selecione a quantidade: <select><option *ngFor="let num of nums" value="{{num}}">{{num}}</option></select> </p>
+<button type="button" class="btn btn-default btn-addto"> Colocar no Carrinho</button>
+    </div>
 
+    <div *ngIf="product.stock === 0" class="p-5">
+      Produto Indisponível
+    </div>
   </div>
   <div class="clearfix"></div>
+  <h3>Informações</h3>
   <ul>
-    <li>Categoria: {{ product.category }}</li>
     <li>Marca: {{ product.brand }}</li>
     <li>Modelo: {{ product.model }}</li>
     <li>Cor: {{ product.color }}</li>
@@ -20,6 +26,7 @@
     <li>Largura: {{ product.dimensions[1] }}m</li>
     <li>Comprimento: {{ product.dimensions[0] }}m</li>
   </ul>
+  <h3>Avaliações</h3>
 </div>
 
 <div *ngIf="product === null" class="p-5">
