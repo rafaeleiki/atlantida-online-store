@@ -8,9 +8,8 @@
      </ng-template>
    </ngb-carousel>
  <div class = "product-box">
-    <h2>{{ product.name }} <ngb-rating [(rate)]="currentRate"> <ng-template let-fill="fill"> <span class="star" [class.filled]="fill === 100">&#9733;</span>
-  </ng-template>
-  </ngb-rating></h2>
+    <h2>{{ product.name }}  <div *ngFor="let star of finalreview" class="stars" ><div *ngIf="star === 1" class="star-filled">&#9733;</div><div *ngIf="star === 0" class="star-empty">&#9733;</div></div>
+    </h2>
     <br>
     <div class="price">Por R$10,00</div>
     <div *ngIf="product.stock > 0" class="p-5">
@@ -35,19 +34,15 @@
     <li>Largura: {{ product.dimensions[1] }}m</li>
     <li>Comprimento: {{ product.dimensions[0] }}m</li>
   </ul>
-  <h3>Avaliações <ngb-rating [(rate)]="currentRate"> <ng-template let-fill="fill"> <span class="star" [class.filled]="fill === 100">&#9733;</span>
-</ng-template>
-</ngb-rating>
-</h3>
+  <h3>Avaliações <div *ngFor="let star of finalreview" class="stars" ><div *ngIf="star === 1" class="star-filled">&#9733;</div><div *ngIf="star === 0" class="star-empty">&#9733;</div></div>
+  </h3>
 
 <div class="review-box" *ngFor="let review of reviews">
-  <div class="review-box-header">{{review.title}} <ng-template let-fill="fill"> <span class="star" [class.filled]="fill === 100">&#9733;</span>
-</ng-template>
+  <div class="review-box-header"><b>{{review.title}}      </b><div *ngFor="let star of review.array" class="stars" ><div *ngIf="star === 1" class="star-filled">&#9733;</div><div *ngIf="star === 0" class="star-empty">&#9733;</div></div>
 <div class="review-user"> {{review.user}}</div></div>
   <div class="review-box-body">{{review.body}}</div>
 </div>
 
-</div>
 <div *ngIf="product === null" class="p-5">
   <h2>Produto não encontrado</h2>
   <p>
