@@ -2,6 +2,12 @@
   width:45%;
   margin-right:2%;
   float: left;
+  height: 500px;
+}
+
+.row{
+  display: flex;
+  margin-bottom: 20px;
 }
 
 .product-box{

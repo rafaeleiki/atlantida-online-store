@@ -17,6 +17,8 @@ private reviews = [
   {user: "leila", title: "achei um lixo", body: "muito bom amei"},
   {user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10"}
 ]
+private pictures = ['assets/img/guilherme.jpeg','assets/img/leila.jpeg','assets/img/eiki.jpeg',
+'assets/img/lamas.jpeg','assets/img/tales.jpeg'];
 
 constructor(
 private route: ActivatedRoute,
