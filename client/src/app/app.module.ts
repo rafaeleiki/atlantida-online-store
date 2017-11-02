@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
+import {HttpModule} from '@angular/http';
+import {ClientService} from './integrations/clients/client.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,10 +32,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
