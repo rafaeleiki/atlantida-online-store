@@ -17,6 +17,10 @@
   float: left;
 }
 
+.product-title {
+  margin-bottom: 1em;
+}
+
 .btn-add-to {
   background-color: #0066cc;
   color: white;
@@ -69,6 +73,10 @@
   padding: 8px;
   background-color: #e6e6e6;
   border-bottom: solid 1px grey;
+}
+
+.review-title {
+  font-weight: bold;
 }
 
 .review-box-body {
