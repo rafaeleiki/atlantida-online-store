@@ -7,10 +7,11 @@ export interface User {
 }
 
 export interface Buy {
+  id: number;
   product: {
-    id: string;
     name: string;
     price: number;
+    picture: string;
   };
   date: Date;
   amount: number;

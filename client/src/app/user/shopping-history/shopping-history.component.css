@@ -25,7 +25,16 @@
   float: right;
 }
 
+.product-pic {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+}
+
 .info {
   list-style: none;
   padding: 0;
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: middle;
 }

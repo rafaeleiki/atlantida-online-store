@@ -10,10 +10,11 @@ export const CURRENT_USER: User = {
 
 export const SHOPPING_HISTORY: Buy[] = [
   {
+    id: 1,
     product: {
-      id: '123456',
       name: 'Caneca do Neymar',
       price: 29.90,
+      picture: null,
     },
     date: new Date('8/13/2017'),
     amount: 1,
@@ -22,10 +23,11 @@ export const SHOPPING_HISTORY: Buy[] = [
     paymentMethod: 'Cartão de crédito',
   },
   {
+    id: 2,
     product: {
-      id: '987654',
       name: 'Celular Asus',
       price: 699.90,
+      picture: null,
     },
     date: new Date('10/26/2017'),
     amount: 1,
