@@ -1,0 +1,31 @@
+:host {
+  flex: 1;
+}
+
+.history {
+  list-style: none;
+}
+
+.history-item {
+  border-bottom: solid 1px #333;
+  padding: 1em;
+}
+
+.history-item:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.product-name {
+  font-weight: bold;
+}
+
+.datails {
+  font-size: 0.8em;
+  color: #444;
+  float: right;
+}
+
+.info {
+  list-style: none;
+  padding: 0;
+}

@@ -26,12 +26,17 @@
   min-width: 150px;
 }
 
-.menu li {
+.menu li a {
   border-bottom: #000 1px solid;
   padding: 0.2em;
+  display: block;
 }
 
 .menu a {
   color: #fff;
   text-decoration: none;
+}
+
+.menu li .active {
+  background-color: rgba(0, 0, 0, 0.3);
 }

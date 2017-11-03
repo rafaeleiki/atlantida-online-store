@@ -1,0 +1,18 @@
+<ul class="history">
+  <li *ngFor="let item of history" class="history-item">
+    <div class="header">
+      <label class="product-name">
+        <a routerLink="/product/{{ item.product.id }}">{{ item.product.name }}</a>
+      </label>
+      <label class="datails">
+        {{ item.product.price | currency:'BRL':'symbol' }} -
+        Comprado em {{ item.date | date:'shortDate' }}
+      </label>
+    </div>
+    <ul class="info">
+      <li>Quantidade: {{ item.amount }}</li>
+      <li>Local de entrega: {{ item.deliveryPlace }}</li>
+      <li>Forma de pagamento: {{ item.paymentMethod }}</li>
+    </ul>
+  </li>
+</ul>

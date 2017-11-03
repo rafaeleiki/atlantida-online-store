@@ -1,4 +1,4 @@
-<div class="p-5">
+<div *ngIf="user; else loadingUser" class="p-5">
   <img src="{{ user.picture }}" class="profile-pic" />
   <ul class="info">
     <li>{{ user.name }} (@{{ user.username }})</li>
@@ -8,7 +8,8 @@
   <div class="user-container">
     <nav class="menu">
       <ul>
-        <li><a routerLink="profile">Editar perfil</a></li>
+        <li><a routerLink="profile" routerLinkActive="active">Editar perfil</a></li>
+        <li><a routerLink="history" routerLinkActive="active">Minhas compras</a></li>
       </ul>
     </nav>
 
@@ -16,3 +17,6 @@
   </div>
 
 </div>
+<ng-template #loadingUser>
+  Carregando...
+</ng-template>
