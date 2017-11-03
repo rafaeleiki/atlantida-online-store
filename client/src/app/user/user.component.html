@@ -1,0 +1,18 @@
+<div class="p-5">
+  <img src="{{ user.picture }}" class="profile-pic" />
+  <ul class="info">
+    <li>{{ user.name }} (@{{ user.username }})</li>
+    <li>Email: {{user.email}}</li>
+  </ul>
+
+  <div class="user-container">
+    <nav class="menu">
+      <ul>
+        <li><a routerLink="profile">Editar perfil</a></li>
+      </ul>
+    </nav>
+
+    <router-outlet class="content"></router-outlet>
+  </div>
+
+</div>

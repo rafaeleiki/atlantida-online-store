@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
 import {HttpModule} from '@angular/http';
 import {ClientService} from './integrations/clients/client.service';
+import {UserModule} from './user/user.module';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     NgbModule.forRoot(),
+    UserModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [ClientService],
