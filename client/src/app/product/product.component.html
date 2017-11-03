@@ -24,12 +24,13 @@
 
         <label class="price">Por R$10,00</label>
         <div *ngIf="product.stock > 0" class="p-5">
-          <p>Selecione a quantidade:
-            <select>
+          <div class="row">
+            <label class="col-5 mt-1">Selecione a quantidade:</label>
+            <select class="form-control col-2">
               <option *ngFor="let num of nums" value="{{num}}">{{num}}</option>
             </select>
-          </p>
-          <button type="button" class="btn btn-default btn-add-to"> Colocar no Carrinho</button>
+          </div>
+          <button type="button" class="btn btn-default btn-add-to mt-4"> Colocar no Carrinho</button>
         </div>
 
         <div *ngIf="product.stock === 0" class="p-5">
