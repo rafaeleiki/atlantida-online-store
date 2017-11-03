@@ -1,77 +1,76 @@
-.image-box{
+.image-box {
   width:45%;
   margin-right:2%;
   float: left;
   height: 500px;
 }
 
-.row{
+.row {
   display: flex;
   margin-bottom: 20px;
 }
 
-.product-box{
+.product-box {
   padding: 20px;
   background-color: #e6e6e6;
   width:50%;
   float: left;
 }
 
-.btn-addto{
+.btn-add-to {
   background-color: #0066cc;
   color: white;
   font-size: 20px;
   font-weight: bold;
 }
 
-.btn-addto:hover{
+.btn-add-to:hover {
   background-color: white;
   color: #737373;
 }
 
-.clearfix{
+.clearfix {
     clear:both
 }
 
-.price{
+.price {
   margin-left: 50px;
   font-size: 30px;
   font-weight: bold;
 }
 
-.stars{
+.stars {
   display: inline-block;
 }
 
-.star-filled{
+.star-filled {
   font-size: 1.5rem;
   color: #0066cc;
 }
 
-.star-empty{
+.star-empty {
   font-size: 1.5rem;
   color: #b0c4de;
 }
 
-.review-user{
+.review-user {
   opacity: 0.5;
   float: right;
   padding-right: 20px;
 }
 
-.review-box{
+.review-box {
   margin: 5px;
-  border: solid grey;
-  border-width: 1px;
+  border: 1px solid grey;
   border-radius: 5px;
 }
 
-.review-box-header{
+.review-box-header {
   padding: 8px;
   background-color: #e6e6e6;
   border-bottom: solid 1px grey;
 }
 
-.review-box-body{
+.review-box-body {
   padding: 8px;
 }
