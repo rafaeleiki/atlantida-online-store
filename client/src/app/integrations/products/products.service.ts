@@ -36,9 +36,10 @@ export class ProductsService {
       });
   }
 
-  searchProducts(query: string): Promise<Product[]>{
+  searchProducts(query: string): Promise<Product[]> {
+    query = query.toLowerCase();
     const products = PRODUCTS.filter(product => {
-      return product.name.indexOf(query) >= 0;
+      return product.name.toLowerCase().indexOf(query) >= 0;
     });
     return Promise.resolve(products);
   }
