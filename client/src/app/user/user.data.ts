@@ -1,4 +1,4 @@
-import {Buy, User} from './user';
+import {Buy, SoldProduct, User} from './user';
 
 export const CURRENT_USER: User = {
   name: 'Teste',
@@ -8,31 +8,66 @@ export const CURRENT_USER: User = {
   picture: 'assets/img/leila.jpeg',
 };
 
-export const SHOPPING_HISTORY: Buy[] = [
+const P1: SoldProduct = {
+  name: "Caneca grande",
+  amount: 2,
+  price: 20.00,
+  picture: null
+};
+
+const P2: SoldProduct = {
+  name: "Caneca",
+  amount: 1,
+  price: 10.00,
+  picture: null
+};
+
+const P3: SoldProduct = {
+  name: "Caneca pequena",
+  amount: 2,
+  price: 7.00,
+  picture: null
+};
+
+const P4: SoldProduct = {
+  name: "Canecão da porra",
+  amount: 1,
+  price: 50.00,
+  picture: null
+};
+
+export const  SHOPPING_HISTORY: Buy[] = [
   {
     id: 1,
-    product: {
-      name: 'Caneca do Neymar',
-      price: 29.90,
-      picture: null,
-    },
-    date: new Date('8/13/2017'),
-    amount: 1,
-    state: 'Entregue',
-    deliveryPlace: 'Rua dos Guatás, 420 - Campinas/SP',
-    paymentMethod: 'Cartão de crédito',
+    statusLabel: "Entregue",
+    statusPercentage: 100,
+    date: new Date("01/11/2011"),
+    expectedDelivery: new Date("11/11/2011"),
+    deliveryPlace: "Lá em casa",
+    totalCost: 50.00,
+    paymentMethod: "Cartão de crédito",
+    products: [P4]
   },
   {
     id: 2,
-    product: {
-      name: 'Celular Asus',
-      price: 699.90,
-      picture: null,
-    },
-    date: new Date('10/26/2017'),
-    amount: 1,
-    state: 'A caminho',
-    deliveryPlace: 'Rua dos Camões, 666 - Campinas/SP',
-    paymentMethod: 'Boleto bancário',
+    statusLabel: "Enviado",
+    statusPercentage: 75,
+    date: new Date("01/11/2017"),
+    expectedDelivery: new Date("02/11/2017"),
+    deliveryPlace: "Lá na casa do zé",
+    totalCost: 64.00,
+    paymentMethod: "Cartão de crédito",
+    products: [P4, P3]
   },
+  {
+    id: 3,
+    statusLabel: "Pago",
+    statusPercentage: 50,
+    date: new Date("03/11/2011"),
+    expectedDelivery: new Date("03/11/2017"),
+    deliveryPlace: "Lá na outra casa",
+    totalCost: 30.00,
+    paymentMethod: "Boleto",
+    products: [P1, P2]
+  }
 ];
