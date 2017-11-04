@@ -27,14 +27,14 @@
 <div class="card-group mt-4" *ngIf="products">
   <div *ngFor="let product of products"
        class="card text-center m-2">
-    <a routerLink="/products/{{product._id}}">
-      <img class="card-img-top">
-      <div class="card-body">
+    <img class="card-img-top">
+    <div class="card-body">
+      <a routerLink="/products/{{product._id}}">
         <h4 class="card-title">{{ product.name }}</h4>
         <p class="card-text">
           Ano: {{ product.year || 'Desconhecido' }}
         </p>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 </div>
