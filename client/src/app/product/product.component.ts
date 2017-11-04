@@ -31,8 +31,8 @@ export class ProductComponent implements OnInit {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.productsService.getProduct(params.get('id')))
       .subscribe((product: Product) => {
-      this.product = product;
-      this.setReviews();
+        this.product = product;
+        this.setReviews();
     });
   }
 
