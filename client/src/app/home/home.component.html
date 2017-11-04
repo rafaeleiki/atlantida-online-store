@@ -27,7 +27,9 @@
 <div class="card-group mt-4" *ngIf="products">
   <div *ngFor="let product of products"
        class="card text-center m-2">
-    <img class="card-img-top">
+    <a routerLink="/products/{{product._id}}">
+      <img class="card-img-top">
+    </a>
     <div class="card-body">
       <a routerLink="/products/{{product._id}}">
         <h4 class="card-title">{{ product.name }}</h4>
