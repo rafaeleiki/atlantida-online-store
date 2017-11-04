@@ -12,6 +12,7 @@ import {ProductsService} from './integrations/products/products.service';
 import {HttpModule} from '@angular/http';
 import { ProductComponent } from './product/product.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
+import { StarsComponent } from './product/stars/stars.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     HelpComponent,
     ProductComponent,
     LoadingIconComponent,
+    StarsComponent,
   ],
   imports: [
     BrowserModule,
