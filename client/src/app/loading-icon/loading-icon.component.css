@@ -1,0 +1,13 @@
+.loading-icon {
+  font-size: 3em;
+  text-align: center;
+  padding: 3em;
+  animation: rotate 2s infinite;
+  display: block;
+}
+
+@keyframes rotate {
+  0%   { transform: rotate(0);      }
+  50%  { transform: rotate(180deg); }
+  100% { transform: rotate(0);      }
+}

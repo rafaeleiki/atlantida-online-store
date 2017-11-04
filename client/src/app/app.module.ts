@@ -8,11 +8,17 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
+import {ProductsService} from './integrations/products/products.service';
+import {HttpModule} from '@angular/http';
+import { ProductComponent } from './product/product.component';
+import { LoadingIconComponent } from './loading-icon/loading-icon.component';
+import { StarsComponent } from './product/stars/stars.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
+  { path: 'products/:id', component: ProductComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -27,13 +33,17 @@ const appRoutes: Routes = [
     HomeComponent,
     AboutComponent,
     HelpComponent,
+    ProductComponent,
+    LoadingIconComponent,
+    StarsComponent,
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

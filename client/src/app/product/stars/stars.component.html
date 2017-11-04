@@ -1,0 +1,4 @@
+<div *ngFor="let star of stars" class="stars">
+  <div *ngIf="star; else noStar" class="star-filled">&#9733;</div>
+  <ng-template #noStar><div class="star-empty">&#9733;</div></ng-template>
+</div>
