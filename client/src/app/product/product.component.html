@@ -52,7 +52,7 @@
     <li>Largura: {{ product.dimensions[1] }}m</li>
     <li>Comprimento: {{ product.dimensions[0] }}m</li>
   </ul>
-  <h3>Avaliações
+  <h3>Avaliações ({{ reviews.length }})
     <app-stars [amount]="averageReview" [max]="10"></app-stars>
   </h3>
 
