@@ -1,19 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
-
-export interface Product {
-  _id: string;
-  name: string;
-  category: string;
-  color: string;
-  year: number;
-  weight: number;
-  enabled: boolean;
-  stock: number;
-  dimensions: number[];
-  brand: string;
-  model: string;
-}
+import {Product} from "./products";
+import {PRODUCTS} from "./products.data";
 
 @Injectable()
 export class ProductsService {
@@ -46,6 +34,13 @@ export class ProductsService {
         }
         return promise;
       });
+  }
+
+  searchProducts(query: string): Promise<Product[]>{
+    const products = PRODUCTS.filter(product => {
+      return product.name.indexOf(query) >= 0;
+    });
+    return Promise.resolve(products);
   }
 
 }
