@@ -13,8 +13,8 @@ export class ProductComponent implements OnInit {
   private product: Product;
   private amountPossibilities = [];
   private reviews = [
-    { user: "leila", title: "achei um lixo", body: "muito bom amei", review: 10 },
-    { user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10", review: 8 },
+    { user: "leila", title: "achei um lixo", body: "muito bom amei", review: 5 },
+    { user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10", review: 4 },
   ];
   private averageReview: number;
   private pictures = [

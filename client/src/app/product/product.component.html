@@ -17,7 +17,7 @@
     </ngb-carousel>
     <div class = "product-box">
       <h2 class="product-title">{{ product.name }}
-        <app-stars [amount]="averageReview" [max]="10"></app-stars>
+        <app-stars [amount]="averageReview" [max]="5"></app-stars>
       </h2>
 
       <label class="price">Por R$10,00</label>
@@ -53,13 +53,13 @@
     <li>Comprimento: {{ product.dimensions[0] }}m</li>
   </ul>
   <h3>Avaliações ({{ reviews.length }})
-    <app-stars [amount]="averageReview" [max]="10"></app-stars>
+    <app-stars [amount]="averageReview" [max]="5"></app-stars>
   </h3>
 
   <div class="review-box" *ngFor="let review of reviews">
     <div class="review-box-header">
       <label class="review-title">{{review.title}}</label>
-      <app-stars [amount]="review.review" [max]="10"></app-stars>
+      <app-stars [amount]="review.review" [max]="5"></app-stars>
       <div class="review-user"> {{review.user}}</div></div>
     <div class="review-box-body">{{review.body}}</div>
   </div>
