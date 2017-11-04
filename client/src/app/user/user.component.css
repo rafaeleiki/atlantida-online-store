@@ -1,42 +1,29 @@
-.profile-pic {
-  width: 80px;
-  height: 80px;
-  display: inline-block;
-  margin: 0 0 1em;
-}
-
-.info {
-  display: inline-block;
-  list-style: none;
-  padding: 0.5em;
-}
-
-.user-container {
-  display: flex;
-}
-
-.menu {
-  background-color: #81b6ff;
-  display: inline-block;
-}
-
-.menu ul {
-  list-style: none;
-  padding: 0;
-  min-width: 150px;
-}
-
-.menu li a {
-  border-bottom: #000 1px solid;
-  padding: 0.2em;
+.user-icon {
   display: block;
 }
 
-.menu a {
-  color: #fff;
-  text-decoration: none;
+.user-nick {
+  display: block;
+  text-align: center;
 }
 
-.menu li .active {
-  background-color: rgba(0, 0, 0, 0.3);
+.user-icon-pic {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.panel-container {
+  display: flex;
+}
+
+.panel-menu {
+  flex: 1;
+  border-right: #e8ebef solid thin;
+}
+
+.panel-item {
+  flex: 4;
 }

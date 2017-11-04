@@ -13,8 +13,9 @@ const routes: Routes = [
     component: UserComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'profile', component: ProfileComponent },
       { path: 'history', component: ShoppingHistoryComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: '', redirectTo: 'history', pathMatch: 'full' }
     ]
   },
 ];

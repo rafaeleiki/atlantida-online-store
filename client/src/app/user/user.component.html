@@ -1,22 +1,26 @@
-<div *ngIf="user; else loadingUser" class="p-5">
-  <img src="{{ user.picture }}" class="profile-pic" />
-  <ul class="info">
-    <li>{{ user.name }} (@{{ user.username }})</li>
-    <li>Email: {{user.email}}</li>
-  </ul>
+<div *ngIf="user; else loadingUser" class="p-4">
 
-  <div class="user-container">
-    <nav class="menu">
-      <ul>
-        <li><a routerLink="profile" routerLinkActive="active">Editar perfil</a></li>
-        <li><a routerLink="history" routerLinkActive="active">Minhas compras</a></li>
-      </ul>
-    </nav>
 
-    <router-outlet class="content"></router-outlet>
+  <div class="panel-container">
+    <div class="panel-menu">
+      <div ngbDropdownMenu>
+        <div class="user-icon">
+          <img src="{{ user.picture }}" class="user-icon-pic" />
+          <label class="user-nick">{{user.username}}</label>
+        </div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink="history" routerLinkActive="active">Minhas compras</a>
+        <a class="dropdown-item" routerLink="profile" routerLinkActive="active">Editar perfil</a>
+      </div>
+    </div>
+
+    <div class="panel-item">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
 </div>
+
 <ng-template #loadingUser>
   Carregando...
 </ng-template>
