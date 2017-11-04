@@ -43,20 +43,6 @@
   font-weight: bold;
 }
 
-.stars {
-  display: inline-block;
-}
-
-.star-filled {
-  font-size: 1.5rem;
-  color: #0066cc;
-}
-
-.star-empty {
-  font-size: 1.5rem;
-  color: #b0c4de;
-}
-
 .review-user {
   opacity: 0.5;
   float: right;

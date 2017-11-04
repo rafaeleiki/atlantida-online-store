@@ -1,78 +1,66 @@
-<div [ngSwitch]="product">
-  <app-loading-icon *ngSwitchCase="undefined"></app-loading-icon>
-  <div *ngSwitchCase="null" class="p-5">
-    <h2>Produto não encontrado</h2>
-    <p>
-      Parece que a página que você está tentando acessar
-      não existe ou não está mais disponível.
-    </p>
-  </div>
-  <div *ngSwitchDefault class="p-5">
-    <div class="row">
-      <ngb-carousel class="image-box">
-        <ng-template ngbSlide  *ngFor="let picture of pictures">
-          <img src="{{picture}}" height = 500px width="100%">
-        </ng-template>
-      </ngb-carousel>
-      <div class = "product-box">
-        <h2 class="product-title">{{ product.name }}
-          <div *ngFor="let star of finalreview" class="stars" >
-            <div *ngIf="star === 1" class="star-filled">&#9733;</div>
-            <div *ngIf="star === 0" class="star-empty">&#9733;</div>
-          </div>
-        </h2>
+<app-loading-icon *ngIf="product === undefined"></app-loading-icon>
 
-        <label class="price">Por R$10,00</label>
-        <div *ngIf="product.stock > 0" class="p-5">
-          <div class="row">
-            <label class="col-5 mt-1">Selecione a quantidade:</label>
-            <select class="form-control col-2">
-              <option *ngFor="let num of nums" value="{{num}}">{{num}}</option>
-            </select>
-          </div>
-          <button type="button" class="btn btn-default btn-add-to mt-4"> Colocar no Carrinho</button>
-        </div>
-
-        <div *ngIf="product.stock === 0" class="p-5">
-          Produto Indisponível
-        </div>
-      </div>
-    </div>
-
-    <div class="clearfix"></div>
-
-    <h3>Informações</h3>
-    <ul>
-      <li>Marca: {{ product.brand }}</li>
-      <li>Modelo: {{ product.model }}</li>
-      <li>Cor: {{ product.color }}</li>
-      <li>Ano: {{ product.year }}</li>
-      <li>Peso: {{ product.weight }} Kg</li>
-      <li>Altura: {{ product.dimensions[2] }}m</li>
-      <li>Largura: {{ product.dimensions[1] }}m</li>
-      <li>Comprimento: {{ product.dimensions[0] }}m</li>
-    </ul>
-    <h3>Avaliações
-      <div *ngFor="let star of finalreview" class="stars" >
-        <div *ngIf="star === 1" class="star-filled">&#9733;</div>
-        <div *ngIf="star === 0" class="star-empty">&#9733;</div>
-      </div>
-    </h3>
-
-    <div class="review-box" *ngFor="let review of reviews">
-      <div class="review-box-header">
-        <label class="review-title">{{review.title}}</label>
-        <div *ngFor="let star of review.array" class="stars">
-          <div *ngIf="star === 1" class="star-filled">&#9733;</div>
-          <div *ngIf="star === 0" class="star-empty">&#9733;</div>
-        </div>
-        <div class="review-user"> {{review.user}}</div></div>
-      <div class="review-box-body">{{review.body}}</div>
-    </div>
-  </div>
+<div *ngIf="product === null" class="p-5">
+  <h2>Produto não encontrado</h2>
+  <p>
+    Parece que a página que você está tentando acessar
+    não existe ou não está mais disponível.
+  </p>
 </div>
 
+<div *ngIf="product" class="p-5">
+  <div class="row">
+    <ngb-carousel class="image-box">
+      <ng-template ngbSlide  *ngFor="let picture of pictures">
+        <img src="{{picture}}" height = 500px width="100%">
+      </ng-template>
+    </ngb-carousel>
+    <div class = "product-box">
+      <h2 class="product-title">{{ product.name }}
+        <app-stars [amount]="averageReview" [max]="10"></app-stars>
+      </h2>
 
+      <label class="price">Por R$10,00</label>
+      <div *ngIf="product.stock > 0" class="p-5">
+        <div class="row">
+          <label class="col-5 mt-1">Selecione a quantidade:</label>
+          <select class="form-control col-2">
+            <option *ngFor="let amount of amountPossibilities" value="{{amount}}">
+              {{amount}}
+            </option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-default btn-add-to mt-4"> Colocar no Carrinho</button>
+      </div>
 
+      <div *ngIf="product.stock === 0" class="p-5">
+        Produto Indisponível
+      </div>
+    </div>
+  </div>
 
+  <div class="clearfix"></div>
 
+  <h3>Informações</h3>
+  <ul>
+    <li>Marca: {{ product.brand }}</li>
+    <li>Modelo: {{ product.model }}</li>
+    <li>Cor: {{ product.color }}</li>
+    <li>Ano: {{ product.year }}</li>
+    <li>Peso: {{ product.weight }} Kg</li>
+    <li>Altura: {{ product.dimensions[2] }}m</li>
+    <li>Largura: {{ product.dimensions[1] }}m</li>
+    <li>Comprimento: {{ product.dimensions[0] }}m</li>
+  </ul>
+  <h3>Avaliações
+    <app-stars [amount]="averageReview" [max]="10"></app-stars>
+  </h3>
+
+  <div class="review-box" *ngFor="let review of reviews">
+    <div class="review-box-header">
+      <label class="review-title">{{review.title}}</label>
+      <app-stars [amount]="review.review" [max]="10"></app-stars>
+      <div class="review-user"> {{review.user}}</div></div>
+    <div class="review-box-body">{{review.body}}</div>
+  </div>
+</div>
