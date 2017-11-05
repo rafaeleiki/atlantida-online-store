@@ -22,104 +22,21 @@
   </ng-template>
 </ngb-carousel>
 
-<div class="card-group mt-4">
-  <div class="card text-center m-2">
-    <img class="card-img-top">
+<app-loading-icon *ngIf="!products"></app-loading-icon>
+
+<div class="card-group mt-4" *ngIf="products">
+  <div *ngFor="let product of products"
+       class="card text-center m-2">
+    <a routerLink="/products/{{product._id}}">
+      <img class="card-img-top">
+    </a>
     <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
-    </div>
-  </div>
-  <div class="card text-center m-2">
-    <img class="card-img-top">
-    <div class="card-body">
-      <h4 class="card-title">Nome do produto</h4>
-      <p class="card-text">
-        R$19,90
-      </p>
+      <a routerLink="/products/{{product._id}}">
+        <h4 class="card-title">{{ product.name }}</h4>
+        <p class="card-text">
+          Ano: {{ product.year || 'Desconhecido' }}
+        </p>
+      </a>
     </div>
   </div>
 </div>
