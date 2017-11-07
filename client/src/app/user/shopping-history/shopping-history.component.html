@@ -1,24 +1,34 @@
 <ul class="history">
-  <li *ngFor="let item of history" class="history-item">
-    <div class="header">
-      <label class="product-name">{{ item.product.name }}</label>
-      <label class="datails">
-        {{ item.product.price | currency:'BRL':'symbol' }} -
-        Comprado em {{ item.date | date:'dd/MM/yyyy' }}
-      </label>
+  <li *ngFor="let sale of history" class="sale">
+
+    <div class="sale-header">
+      <label class="sale-title">Compra #{{sale.id}}</label>
+      <label class="sale-date">Comprado em {{sale.date | date:'dd/MM/yyyy'}}</label>
     </div>
 
-    <img *ngIf="item.product.picture; else noPic"
-         src="{{ item.product.picture }}"
-         class="product-pic" />
-    <ng-template #noPic>
-      <img src="/assets/img/guilherme.jpeg" class="product-pic" />
-    </ng-template>
+    <div class="sale-info">
+      <div class="sale-items-pics">
+        <div class="row">
+          <div *ngFor="let item of sale.products; let i=index" class="col-sm-0">
+            <div *ngIf="i < 3; else tooMuchItems">
+              <img *ngIf="item.picture; else noSmallPic" src="{{item.picture}}" class="small-pic" />
 
-    <ul class="info">
-      <li>Quantidade: {{ item.amount }}</li>
-      <li>Local de entrega: {{ item.deliveryPlace }}</li>
-      <li>Forma de pagamento: {{ item.paymentMethod }}</li>
-    </ul>
+              <ng-template #noSmallPic>
+                <img src="/assets/img/no-picture.png" class="small-pic" />
+              </ng-template>
+            </div>
+
+            <ng-template #tooMuchItems>
+              <div *ngIf="i == 3">
+                <img src="/assets/img/more-pictures.png" class="small-pic" />
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="sale-cost">{{sale.totalCost | currency:'BRL':'symbol'}}</div>
+    </div>
+
   </li>
 </ul>
