@@ -9,6 +9,7 @@ export interface User {
 export interface SoldProduct {
   name: string;
   price: number;
+  totalCost: number;
   picture: string;
   amount: number;
 }
@@ -20,6 +21,8 @@ export interface Buy {
   date: Date;
   expectedDelivery: Date;
   deliveryPlace: string;
+  deliveryCost: number;
+  productsCost: number;
   totalCost: number;
   paymentMethod: string;
   products: SoldProduct[];
