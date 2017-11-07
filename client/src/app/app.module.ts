@@ -14,6 +14,7 @@ import { ProductComponent } from './product/product.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { StarsComponent } from './product/stars/stars.component';
 import { SearchComponent } from './search/search.component';
+import {FormsModule} from "@angular/forms";
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    FormsModule,
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
