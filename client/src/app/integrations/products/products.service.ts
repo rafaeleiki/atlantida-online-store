@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {Product} from "./products";
-import {PRODUCTS} from "./products.data";
+
+const GROUP_ID: string = '3';
 
 @Injectable()
 export class ProductsService {
@@ -14,6 +15,7 @@ export class ProductsService {
     return this.http.get(this.url)
       .toPromise()
       .then(response => response.json() as Product[])
+      .then(products => products.filter(product => product.group === GROUP_ID))
       .catch((error) => {
         console.error('Error on get products', error);
         return Promise.reject(error.message || error);
