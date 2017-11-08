@@ -1,0 +1,11 @@
+.card-img-top {
+  height: 240px;
+  width: 240px;
+  background-color: #1b1e21;
+  display: block;
+  margin: auto;
+}
+
+.card {
+  min-width: 250px;
+}
