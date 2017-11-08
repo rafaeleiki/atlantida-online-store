@@ -18,10 +18,6 @@ export class ProductComponent implements OnInit {
     { user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10", review: 4 },
   ];
   private averageReview: number;
-  private pictures = [
-    'assets/img/guilherme.jpeg','assets/img/leila.jpeg','assets/img/eiki.jpeg',
-    'assets/img/lamas.jpeg','assets/img/tales.jpeg'
-  ];
 
   constructor(
     private route: ActivatedRoute,

@@ -6,7 +6,7 @@ import {PRODUCTS} from "./products.data";
 @Injectable()
 export class ProductsService {
 
-  private url = 'http://private-anon-708cfd65fd-mc437product.apiary-mock.com/products';
+  private url = 'http://ec2-54-207-63-160.sa-east-1.compute.amazonaws.com:3000/products';
 
   constructor(private http: Http) { }
 
@@ -21,7 +21,7 @@ export class ProductsService {
   }
 
   getProduct(id: string): Promise<Product> {
-    return this.http.get(this.url + `/PRODUCTID`)
+    return this.http.get(this.url + `/${id}`)
       .toPromise()
       .then(response => response.json() as Product)
       .catch((error) => {
