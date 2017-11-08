@@ -1,0 +1,27 @@
+<app-loading-icon *ngIf="searchResults === undefined"></app-loading-icon>
+
+<div *ngIf="searchResults.length === 0" class="p-5">
+  <h2>Sua busca não retornou resultados</h2>
+  <p>
+    Verifique se o nome digitado está correto.
+  </p>
+</div>
+
+<div *ngIf="searchResults.length > 0" class="p-5">
+  <ul class="card-group mt-4">
+    <li *ngFor="let item of searchResults"
+        class="card text-center m-2">
+      <a routerLink="/products/{{item._id}}">
+        <img class="card-img-top">
+      </a>
+      <div class="card-body">
+        <a routerLink="/products/{{item._id}}">
+          <h4 class="card-title">{{ item.name }}</h4>
+          <p class="card-text">
+            Ano: {{ item.year || 'Desconhecido' }}
+          </p>
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>

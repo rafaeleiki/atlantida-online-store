@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {Product, ProductsService} from '../integrations/products/products.service';
+import {ProductsService} from '../integrations/products/products.service';
+import {Product} from "../integrations/products/products";
 
 @Component({
   selector: 'app-product',
@@ -43,4 +44,4 @@ export class ProductComponent implements OnInit {
     let sum = this.reviews.reduce((sum, review) => sum + review.review, 0);
     this.averageReview = sum / this.reviews.length;
   }
-};
+}
