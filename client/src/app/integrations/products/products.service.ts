@@ -45,4 +45,8 @@ export class ProductsService {
       .then((products) => products.filter(product => queryMatches(product)));
   }
 
+  getHighlightedProducts(): Promise<Product[]> {
+    return this.getProducts()
+      .then(products => products.filter(product => product.highlighted));
+  }
 }
