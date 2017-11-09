@@ -1,3 +1,23 @@
+:host {
+  display: flex;
+}
+
+.filters {
+  min-width: 200px;
+  background-color: #ddd;
+  padding: 1em;
+  list-style: none;
+}
+
+.division {
+  margin: 1em 0;
+  border-bottom: #aaa 1px solid;
+}
+
+.result {
+  flex: 1;
+}
+
 .card-img-top {
   height: 240px;
   width: 240px;

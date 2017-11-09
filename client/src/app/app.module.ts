@@ -15,6 +15,7 @@ import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { StarsComponent } from './product/stars/stars.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule} from "@angular/forms";
+import { ProductPicsComponent } from './product-pics/product-pics.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
     LoadingIconComponent,
     StarsComponent,
     SearchComponent,
+    ProductPicsComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,12 +11,7 @@
 <div *ngIf="product" class="p-5">
   <div class="row">
     <div class="image-box">
-      <ngb-carousel *ngIf="product.img.length > 0; else noPic">
-        <ng-template ngbSlide  *ngFor="let picture of product.img">
-          <img src="{{picture}}" class="product-pic">
-        </ng-template>
-      </ngb-carousel>
-      <ng-template #noPic><img class="product-pic product-pic-empty"></ng-template>
+      <app-product-pics [product]="product"></app-product-pics>
     </div>
     <div class = "product-box">
       <h2 class="product-title">{{ product.name }}
