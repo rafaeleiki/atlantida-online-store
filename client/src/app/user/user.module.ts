@@ -6,6 +6,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './user.service';
 import { UserComponent } from './user.component';
 import { ShoppingHistoryComponent } from './shopping-history/shopping-history.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 const routes: Routes = [
   {
@@ -21,14 +22,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-  ],
   declarations: [
     ProfileComponent,
     UserComponent,
     ShoppingHistoryComponent
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    NgbModule.forRoot(),
   ],
   providers: [AuthGuard, UserService],
 })
