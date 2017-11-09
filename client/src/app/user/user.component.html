@@ -1,16 +1,15 @@
 <div *ngIf="user; else loadingUser" class="p-4">
 
-
   <div class="panel-container">
     <div class="panel-menu">
-      <div ngbDropdownMenu>
-        <div class="user-icon">
-          <img src="{{ user.picture }}" class="user-icon-pic" />
-          <label class="user-nick">{{user.username}}</label>
-        </div>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" routerLink="history" routerLinkActive="active">Minhas compras</a>
-        <a class="dropdown-item" routerLink="profile" routerLinkActive="active">Editar perfil</a>
+      <div class="user-icon">
+        <img src="{{ user.picture }}" class="user-icon-pic" />
+        <label class="user-nick">{{user.username}}</label>
+      </div>
+
+      <div class="nav flex-column nav-pills user-options">
+        <a class="nav-link" routerLink="history" routerLinkActive="active">Minhas compras</a>
+        <a class="nav-link" routerLink="profile" routerLinkActive="active">Editar perfil</a>
       </div>
     </div>
 

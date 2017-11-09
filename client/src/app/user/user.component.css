@@ -24,6 +24,10 @@
   border-right: #e8ebef solid thin;
 }
 
+.user-options{
+  border-top: #e8ebef solid thin;
+}
+
 .panel-item {
   flex: 4;
 }
