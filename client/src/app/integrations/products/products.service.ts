@@ -4,6 +4,16 @@ import {Product} from "./products";
 
 const GROUP_ID: string = '3';
 
+export interface Filter {
+  attribute: string;
+  values: FilterValue[];
+}
+
+export interface FilterValue {
+  name: string;
+  include: boolean;
+}
+
 @Injectable()
 export class ProductsService {
 
@@ -40,18 +50,52 @@ export class ProductsService {
 
   searchProducts(query: string): Promise<Product[]> {
     query = query.toLowerCase();
-    const queryMatches = (product) => product.name.toLowerCase().indexOf(query) >= 0;
     return this.getProducts()
-      .then((products) => {
-        if (query !== '*') {
-          products = products.filter(product => queryMatches(product))
+      .then((products) => this.searchByQuery(query, products));
+  }
+
+  getFilteredProducts(filter: Filter[], query: string) {
+    query = query.toLowerCase();
+    const queryParams = filter.map(f => {
+      const values = [];
+      f.values.forEach(value => {
+        if (value.include) {
+          values.push(`${f.attribute}=${value.name}`);
         }
-        return products;
+      });
+      return values.join('&');
+    });
+
+    return this.http.get(this.url + '?' + queryParams.join('&'))
+      .toPromise()
+      .then(response => response.json() as Product[])
+      .then(products => this.searchByQuery(query, products))
+      .catch((error) => {
+        console.error(`Error on get filtered products`, error);
+        let promise;
+        if (error.status) {
+          promise = Promise.resolve(null);
+        } else {
+          promise = Promise.reject(error.message || error);
+        }
+        return promise;
       });
   }
 
   getHighlightedProducts(): Promise<Product[]> {
     return this.getProducts()
       .then(products => products.filter(product => product.highlighted));
+  }
+
+  private queryMatches(query: string, product: Product): boolean {
+    return product.group === GROUP_ID &&
+           product.name.toLowerCase().indexOf(query) >= 0;
+  }
+
+  private searchByQuery(query: string, products: Product[]): Product[] {
+    if (query !== '*') {
+      products = products.filter(product => this.queryMatches(query, product));
+    }
+    return products;
   }
 }

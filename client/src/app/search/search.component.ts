@@ -20,6 +20,7 @@ interface AttributeValue {
 })
 export class SearchComponent implements OnInit {
 
+  query: string;
   ordering: string;
   searchResults: Product[];
   products: Product[];
@@ -33,8 +34,8 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap((params: ParamMap) => {
-        const query = params.get('searchQuery');
-        return this.productService.searchProducts(query);
+        this.query = params.get('searchQuery');
+        return this.productService.searchProducts(this.query);
       })
       .subscribe((products: Product[]) => {
         this.searchResults = products;
@@ -58,12 +59,8 @@ export class SearchComponent implements OnInit {
   }
 
   filter() {
-    this.products = this.searchResults;
-    this.attributes.forEach(attribute => attribute.values.forEach(value => {
-      if (!value.include) {
-        this.products = this.products.filter(product => product[attribute.attribute] !== value.name);
-      }
-    }));
+    this.productService.getFilteredProducts(this.attributes, this.query)
+      .then(products => this.products = products);
   }
 
   translate(value: string) {
