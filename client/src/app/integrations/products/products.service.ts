@@ -42,7 +42,12 @@ export class ProductsService {
     query = query.toLowerCase();
     const queryMatches = (product) => product.name.toLowerCase().indexOf(query) >= 0;
     return this.getProducts()
-      .then((products) => products.filter(product => queryMatches(product)));
+      .then((products) => {
+        if (query !== '*') {
+          products = products.filter(product => queryMatches(product))
+        }
+        return products;
+      });
   }
 
   getHighlightedProducts(): Promise<Product[]> {
