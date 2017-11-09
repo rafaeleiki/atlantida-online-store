@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.productsService.getProducts()
+    this.productsService.getHighlightedProducts()
       .then(products => {
         this.products = products;
       });

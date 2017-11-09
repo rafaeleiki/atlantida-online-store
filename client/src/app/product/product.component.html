@@ -10,17 +10,20 @@
 
 <div *ngIf="product" class="p-5">
   <div class="row">
-    <ngb-carousel class="image-box">
-      <ng-template ngbSlide  *ngFor="let picture of pictures">
-        <img src="{{picture}}" height = 500px width="100%">
-      </ng-template>
-    </ngb-carousel>
+    <div class="image-box">
+      <ngb-carousel *ngIf="product.img.length > 0; else noPic">
+        <ng-template ngbSlide  *ngFor="let picture of product.img">
+          <img src="{{picture}}" class="product-pic">
+        </ng-template>
+      </ngb-carousel>
+      <ng-template #noPic><img class="product-pic product-pic-empty"></ng-template>
+    </div>
     <div class = "product-box">
       <h2 class="product-title">{{ product.name }}
         <app-stars [amount]="averageReview" [max]="5"></app-stars>
       </h2>
 
-      <label class="price">Por R$10,00</label>
+      <label class="price">Por {{ product.price | currency:'BRL':'R$' }}</label>
       <div *ngIf="product.stock > 0" class="p-5">
         <div class="row">
           <label class="col-5 mt-1">Selecione a quantidade:</label>
