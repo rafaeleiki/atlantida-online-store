@@ -1,5 +1,5 @@
 <ul class="filters">
-  <li>
+  <li class="division">
     <label>Ordenar por:</label>
     <select [(ngModel)]="ordering" (change)="orderBy()">
       <option value="sortAsc">A-Z</option>
@@ -8,12 +8,11 @@
       <option value="sortDscVal">Maior preço</option>
     </select>
   </li>
-  <li class="division"></li>
-  <li>
-    <label>Marca</label>
-    <div *ngFor="let brand of brands">
-      <input type="checkbox" [(ngModel)]="brand.include" (change)="filter()" />
-      <label>{{ brand.name }}</label>
+  <li *ngFor="let attribute of attributes" class="division">
+    <label>{{ translate(attribute.attribute) }}</label>
+    <div *ngFor="let value of attribute.values">
+      <input type="checkbox" [(ngModel)]="value.include" (change)="filter()" />
+      <label>{{ value.name }}</label>
     </div>
   </li>
 </ul>

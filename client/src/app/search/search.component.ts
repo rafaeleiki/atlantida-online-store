@@ -3,7 +3,12 @@ import {ProductsService} from "../integrations/products/products.service";
 import {Product} from "../integrations/products/products";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 
-interface Brand {
+interface Attribute {
+  attribute: string;
+  values: AttributeValue[];
+}
+
+interface AttributeValue {
   name: string;
   include: boolean;
 }
@@ -18,7 +23,9 @@ export class SearchComponent implements OnInit {
   ordering: string;
   searchResults: Product[];
   products: Product[];
-  brands: Brand[];
+  attributes: Attribute[];
+  productAttributes: string[] = ['brand', 'year'];
+  attributesTranslation: string[] = ['Marca', 'Ano'];
 
   constructor(private productService: ProductsService,
               private route: ActivatedRoute) { }
@@ -33,8 +40,14 @@ export class SearchComponent implements OnInit {
         this.searchResults = products;
         this.products = products;
 
-        const brandNames = Array.from(new Set(products.map(p => p.brand)));
-        this.brands = brandNames.map(name => ({ name, include: true }));
+        this.attributes = this.productAttributes.map((attribute) => {
+          let values = Array.from(new Set(products.map(p => p[attribute])));
+          values = values.map(value => ({ name: value, include: true }));
+          return {
+            attribute,
+            values,
+          };
+        });
       });
   }
 
@@ -46,11 +59,15 @@ export class SearchComponent implements OnInit {
 
   filter() {
     this.products = this.searchResults;
-    this.brands.forEach(brand => {
-      if (!brand.include) {
-        this.products = this.products.filter(product => product.brand !== brand.name);
+    this.attributes.forEach(attribute => attribute.values.forEach(value => {
+      if (!value.include) {
+        this.products = this.products.filter(product => product[attribute.attribute] !== value.name);
       }
-    });
+    }));
+  }
+
+  translate(value: string) {
+    return this.attributesTranslation[this.productAttributes.indexOf(value)];
   }
 
   sortAsc() {
