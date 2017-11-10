@@ -5,9 +5,14 @@ export interface Product {
   color: string;
   year: number;
   weight: number;
+  price: number;
+  group: string;
+  highlighted: boolean;
   enabled: boolean;
   stock: number;
   dimensions: number[];
   brand: string;
   model: string;
+  img: string[];
+  reviews: any[];
 }
