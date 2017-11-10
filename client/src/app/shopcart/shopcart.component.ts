@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductsService} from '../integrations/products/products.service';
 import {Product} from '../integrations/products/products';
-import {ShopcartService} from '../shopcart/shopcart.service';
+import {ShopCart, ShopCartItem, ShopcartService} from '../shopcart/shopcart.service';
 
 @Component({
   selector: 'app-shopcart',
   templateUrl: './shopcart.component.html',
   styleUrls: ['./shopcart.component.css']
 })
+
 export class ShopCartComponent implements OnInit {
-  private cookies;
+  private storage = '';
+  private shopCart: ShopCartItem[];
 
   constructor(private scs: ShopcartService) {
   }
 
   ngOnInit() {
-    this.cookies = this.readCookies();
+    this.shopCart = this.scs.getShopcartList();
   }
 
-  readCookies(){
-    return this.scs.listCookies();
-  }
 }
