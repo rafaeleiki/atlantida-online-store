@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {ProductsService} from '../integrations/products/products.service';
-import {Product} from "../integrations/products/products";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import {Product, ProductsService} from '../integrations/products/products.service';
+import {ShopcartService} from '../shopcart/shopcart.service';
 
 @Component({
   selector: 'app-product',
@@ -22,10 +25,12 @@ export class ProductComponent implements OnInit {
     'assets/img/guilherme.jpeg','assets/img/leila.jpeg','assets/img/eiki.jpeg',
     'assets/img/lamas.jpeg','assets/img/tales.jpeg'
   ];
+  private selectedAmount = 1;
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService) {
+    private productsService: ProductsService,
+    private scs: ShopcartService) {
   }
 
   ngOnInit() {
@@ -44,4 +49,12 @@ export class ProductComponent implements OnInit {
     let sum = this.reviews.reduce((sum, review) => sum + review.review, 0);
     this.averageReview = sum / this.reviews.length;
   }
-}
+
+  add(value){
+    this.scs.addToCart(this.product, this.selectedAmount);
+  }
+
+  onChange(amount) {
+  }
+
+};

@@ -21,7 +21,7 @@ export class ProductsService {
   }
 
   getProduct(id: string): Promise<Product> {
-    return this.http.get(this.url + `/PRODUCTID`)
+    return this.http.get(this.url + id )
       .toPromise()
       .then(response => response.json() as Product)
       .catch((error) => {
