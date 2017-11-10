@@ -4,7 +4,8 @@ import 'rxjs/add/operator/switchMap';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import {Product, ProductsService} from '../integrations/products/products.service';
+import {ProductsService} from '../integrations/products/products.service';
+import {Product} from '../integrations/products/products';
 import {ShopcartService} from '../shopcart/shopcart.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class ProductComponent implements OnInit {
     { user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10", review: 4 },
   ];
   private averageReview: number;
+  private selectedAmount =1;
 
   constructor(
     private route: ActivatedRoute,

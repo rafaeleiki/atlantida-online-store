@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Product, ProductsService} from '../integrations/products/products.service';
+import {ProductsService} from '../integrations/products/products.service';
+import {Product} from '../integrations/products/products';
 
 @Injectable()
 export class ShopcartService {
+
 
   constructor() { }
 
@@ -10,10 +12,12 @@ export class ShopcartService {
     var date = new Date();
     date.setDate(date.getDate() + 1);
     var expires = "; expires="+ date.toUTCString();
-    document.cookie = "qnt=" + qnt + expires;
-    document.cookie = "name=" + product.name + expires;
-    document.cookie = "price=" + product.price + expires;
-    document.cookie = "productId=" + product._id + expires;
+    var data = JSON.stringify({
+      'name':product.name,
+      'id':product._id,
+      'price':product.price,
+      'qnt': qnt });
+    document.cookie = "ShopCartProduct=" + data + expires;
   }
 
   listCookies() {

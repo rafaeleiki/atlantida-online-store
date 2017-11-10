@@ -1,14 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import {NavBarComponent} from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
-import { ShopCartComponent } from './shopcart/shopcart.component';
+import {Product} from './integrations/products/products';
 import {ProductsService} from './integrations/products/products.service';
 import {HttpModule} from '@angular/http';
 import { ProductComponent } from './product/product.component';
@@ -27,7 +26,6 @@ const appRoutes: Routes = [
   { path: 'shopcart', component: ShopCartComponent },
   { path: 'products/:id', component: ProductComponent },
   { path: 'search/:searchQuery', component: SearchComponent },
-  { path: '',
   { path: 'shopcart', component: ShopCartComponent },
   { path:                                                                                                        '',
     redirectTo: '/home',
