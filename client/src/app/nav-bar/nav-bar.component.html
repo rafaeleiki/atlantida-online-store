@@ -39,17 +39,25 @@
       </li>
     </ul>
 
-    <form class="input-group form-inline my-2 my-lg-0 search-container">
-      <input type="text" class="form-control" placeholder="Search for...">
+    <div class="input-group form-inline my-2 my-lg-0 search-container">
+      <input [(ngModel)]="query"
+             class="form-control"
+             placeholder="Nome do produto"
+             (keyup.enter)="searchProducts()">
       <span class="input-group-btn">
-        <button class="btn btn-light my-2 my-sm-0" type="submit">
+        <button (click)="searchProducts()"  class="btn btn-light my-2 my-sm-0">
           <i class="material-icons">search</i>
         </button>
       </span>
-    </form>
+    </div>
 
+<<<<<<< HEAD
     <a class="btn btn-light my-2 my-sm-0" role="button"  href="/shopcart"><i class="material-icons" style="width: 2em;">shopping_cart</i>
         <span>Meu Carrinho</span>
+=======
+    <a class="btn btn-light my-2 my-sm-0 ml-2" role="button"  href="/shopcart"><i class="material-icons" style="width: 2em;">shopping_cart</i>
+      <span>Meu Carrinho</span>
+>>>>>>> shopcart
     </a>
   </div>
 </nav>

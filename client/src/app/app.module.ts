@@ -8,19 +8,22 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
+import { ShopCartComponent } from './shopcart/shopcart.component';
 import {ProductsService} from './integrations/products/products.service';
 import {HttpModule} from '@angular/http';
 import { ProductComponent } from './product/product.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { StarsComponent } from './product/stars/stars.component';
-import { ShopCartComponent } from './shopcart/shopcart.component';
+import { SearchComponent } from './search/search.component';
+import {FormsModule} from "@angular/forms";
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
-  { path: 'products/:id', component: ProductComponent },
   { path: 'shopcart', component: ShopCartComponent },
+  { path: 'products/:id', component: ProductComponent },
+  { path: 'search/:searchQuery', component: SearchComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -35,16 +38,18 @@ const appRoutes: Routes = [
     HomeComponent,
     AboutComponent,
     HelpComponent,
+    ShopCartComponent,
     ProductComponent,
     LoadingIconComponent,
     StarsComponent,
-    ShopCartComponent
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    FormsModule,
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
