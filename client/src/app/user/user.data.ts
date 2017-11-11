@@ -4,6 +4,7 @@ export const CURRENT_USER: User = {
   name: 'Teste',
   username: 'teste',
   email: 'teste@teste.com',
+  phone: '(19)946521576',
   cpf: '12345678910',
   picture: 'assets/img/leila.jpeg',
 };
