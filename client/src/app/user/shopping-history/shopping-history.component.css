@@ -1,19 +1,9 @@
-/*After change*/
 :host {
   flex: 1;
 }
 
-.history {
-list-style: none;
-}
-
 .sale {
-border-bottom: solid 1px #333;
-padding: 1em;
-}
-
-.sale:nth-child(odd) {
-  background-color: rgba(0, 0, 0, 0.1);
+  margin: 1em;
 }
 
 .sale-header {
@@ -39,7 +29,7 @@ padding: 1em;
   flex: 1;
 }
 
-.small-pic {
+.item-picture {
   width: 40px;
   height: 40px;
   margin: 1px;
@@ -49,4 +39,55 @@ padding: 1em;
 .sale-cost {
   flex: 1;
   text-align: right;
+}
+
+.status {
+  margin: 1em 1em 2em 1em;
+}
+
+.status-header {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+.status-bar {
+  display: block;
+  margin: 1em;
+  text-align: center;
+}
+
+.status-circle {
+  display: inline-block;
+  border-radius: 25px;
+  width: 40px;
+  height: 40px;
+}
+
+.status-icon {
+  padding: 7px;
+  display: block;
+}
+
+.connection-bar {
+  display: inline-block;
+  height: 5px;
+  width: 75px;
+  vertical-align: text-top;
+}
+
+.not-done{
+  background-color: #b9b8b5;
+}
+
+.done{
+  background-color: #28a745;
+}
+
+.items-table {
+  margin: 1em;
+}
+
+.sale-info {
+  margin: 0 1em 0 1em;
 }
