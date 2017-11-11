@@ -1,10 +1,14 @@
-.user-icon {
-  display: block;
+.panel-container {
+  display: flex;
 }
 
-.user-nick {
-  display: block;
-  text-align: center;
+.panel-menu {
+  flex: 1;
+  border-right: #e8ebef solid thin;
+}
+
+.user-icon {
+display: block;
 }
 
 .user-icon-pic {
@@ -15,19 +19,17 @@
   border-radius: 50%;
 }
 
-.panel-container {
-  display: flex;
-}
-
-.panel-menu {
-  flex: 1;
-  border-right: #e8ebef solid thin;
+.user-nick {
+display: block;
+text-align: center;
 }
 
 .user-options{
+  padding: 0.5em;
   border-top: #e8ebef solid thin;
 }
 
 .panel-item {
   flex: 4;
+  padding-left: 1em;
 }
