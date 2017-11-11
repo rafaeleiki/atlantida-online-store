@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Product, ProductsService} from '../integrations/products/products.service';
+import {ProductsService} from '../integrations/products/products.service';
+import {ActivatedRoute, ParamMap} from "@angular/router";
+import {Product} from "../integrations/products/products";
 
 @Component({
   selector: 'app-home',
@@ -10,10 +12,12 @@ export class HomeComponent implements OnInit {
 
   private products: Product[];
 
-  constructor(private productsService: ProductsService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.productsService.getProducts()
+    this.productsService.getHighlightedProducts()
       .then(products => {
         this.products = products;
       });

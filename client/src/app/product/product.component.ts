@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {Product, ProductsService} from '../integrations/products/products.service';
+import {ProductsService} from '../integrations/products/products.service';
+import {Product} from "../integrations/products/products";
 
 @Component({
   selector: 'app-product',
@@ -13,14 +14,10 @@ export class ProductComponent implements OnInit {
   private product: Product;
   private amountPossibilities = [];
   private reviews = [
-    { user: "leila", title: "achei um lixo", body: "muito bom amei", review: 10 },
-    { user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10", review: 8 },
+    { user: "leila", title: "achei um lixo", body: "muito bom amei", review: 5 },
+    { user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10", review: 4 },
   ];
   private averageReview: number;
-  private pictures = [
-    'assets/img/guilherme.jpeg','assets/img/leila.jpeg','assets/img/eiki.jpeg',
-    'assets/img/lamas.jpeg','assets/img/tales.jpeg'
-  ];
 
   constructor(
     private route: ActivatedRoute,
@@ -43,4 +40,4 @@ export class ProductComponent implements OnInit {
     let sum = this.reviews.reduce((sum, review) => sum + review.review, 0);
     this.averageReview = sum / this.reviews.length;
   }
-};
+}

@@ -1,24 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
+import {Product} from "./products";
 
-export interface Product {
-  _id: string;
-  name: string;
-  category: string;
-  color: string;
-  year: number;
-  weight: number;
-  enabled: boolean;
-  stock: number;
-  dimensions: number[];
-  brand: string;
-  model: string;
-}
+const GROUP_ID: string = '3';
 
 @Injectable()
 export class ProductsService {
 
-  private url = 'http://private-anon-708cfd65fd-mc437product.apiary-mock.com/products';
+  private url = 'http://ec2-54-207-63-160.sa-east-1.compute.amazonaws.com:3000/products';
 
   constructor(private http: Http) { }
 
@@ -26,6 +15,7 @@ export class ProductsService {
     return this.http.get(this.url)
       .toPromise()
       .then(response => response.json() as Product[])
+      .then(products => products.filter(product => product.group === GROUP_ID))
       .catch((error) => {
         console.error('Error on get products', error);
         return Promise.reject(error.message || error);
@@ -33,7 +23,7 @@ export class ProductsService {
   }
 
   getProduct(id: string): Promise<Product> {
-    return this.http.get(this.url + `/PRODUCTID`)
+    return this.http.get(this.url + `/${id}`)
       .toPromise()
       .then(response => response.json() as Product)
       .catch((error) => {
@@ -48,4 +38,15 @@ export class ProductsService {
       });
   }
 
+  searchProducts(query: string): Promise<Product[]> {
+    query = query.toLowerCase();
+    const queryMatches = (product) => product.name.toLowerCase().indexOf(query) >= 0;
+    return this.getProducts()
+      .then((products) => products.filter(product => queryMatches(product)));
+  }
+
+  getHighlightedProducts(): Promise<Product[]> {
+    return this.getProducts()
+      .then(products => products.filter(product => product.highlighted));
+  }
 }
