@@ -1,64 +1,60 @@
 import { Injectable } from '@angular/core';
 import {ProductsService} from '../integrations/products/products.service';
 import {Product} from '../integrations/products/products';
+import { ShopCartItem, ShopCart } from './shopcart';
 
-const SHOPCART_ID = "ShopCartProduct2";
-
-export interface ShopCartItem {
-    qnt: number;
-    name: string;
-    price: number;
-    expires: Date;
-    productId: string;
-}
-
-export interface ShopCart {
-  [id: string]: ShopCartItem;
-}
+const SHOPCART_ID = "ShopCartItems";
 
 @Injectable()
-export class ShopcartService {
-
+export class ShopCartService {
 
   constructor() { }
 
-  addToCart(product, qnt) {
-    const shopcart = this.getShopcart();
-    if (shopcart[product._id]) {
-      shopcart[product._id].qnt = qnt;
-    }
-    else {
-      let date = new Date();
-      date.setDate(date.getDate() + 1);
-      const data = {
+  public static addToCart(product, qnt) {
+    // Tries to load shopCart items from localStorage
+    const shopCart = ShopCartService.getShopCart();
+
+    // If the product exists, updates its qnt
+    if (shopCart[product._id]) {
+      shopCart[product._id].qnt = qnt;
+    } else {
+      // Sets expire date to tomorrow
+      let expiryDate = new Date();
+      expiryDate.setDate(expiryDate.getDate() + 1);
+
+      // Adds it to the storage
+      shopCart[product._id] = {
+        productId: product._id,
         name: product.name,
-        id: product._id,
-        price: product.price,
         qnt: qnt,
-        expires: date,
+        price: product.price,
+        expires: expiryDate,
       };
-      shopcart[product._id] = data;
     }
-    getWindow().localStorage.setItem(SHOPCART_ID, JSON.stringify(shopcart));
+
+    ShopCartService.saveShopCart(shopCart);
   }
 
-  getShopcartList(){
-      let cart = this.getShopcart();
-      let cartlist = [];
-      for(let id in cart){
-        cartlist.push(cart[id]);
+  public static saveShopCart(shopCart : ShopCart) {
+    getWindow().localStorage.setItem(SHOPCART_ID, JSON.stringify(shopCart));
+  }
+
+  public static getShopCartList() : ShopCartItem[] {
+      const shopCart = ShopCartService.getShopCart();
+      let shopCartList = [];
+      for (let pId in shopCart) {
+        shopCartList.push(shopCart[pId]);
       }
-      return cartlist;
+      return shopCartList;
   }
 
-
-  getShopcart() {
+  public static getShopCart() : ShopCart {
     const json = getWindow().localStorage.getItem(SHOPCART_ID);
     return json ? JSON.parse(json) : {};
   }
 
 }
 
-function getWindow(){
+function getWindow() {
   return window;
 }

@@ -1,27 +1,31 @@
 <!-- Lista de produtos -->
-<div class="">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Qnt</th>
-                <th scope="col">Produto</th>
-                <th scope="col">Preço</th>
-                <th scope="col"></th><!-- Remover -->
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of shopCart">
-                <td>
-                    <button type="button" class="btn btn-default btn-circle"><i class="material-icons">remove_circle_outline</i></button>
-                    <span>{{item.qnt}}</span>
-                    <button type="button" class="btn btn-default btn-circle"><i class="material-icons">add_circle_outline</i></button>
-                </td>
-                <td>{{item.name}}</td>
-                <td>{{item.price}}</td>
-                <td><button class="btn "><i class="material-icons">remove_shopping_cart</i></button></td>
-            </tr>
-        </tbody>
-    </table>
+<div class="p-5">
+    <div *ngIf="shopCartList.length > 0" >
+      <h2>Meu Carrinho</h2>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">Qnt</th>
+                  <th scope="col">Produto</th>
+                  <th scope="col">Preço</th>
+                  <th scope="col"></th><!-- Remover -->
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of shopCartList; let i = index">
+                  <td>
+                      <button type="button" (click)="decrease(item)" class="btn btn-default btn-circle"><i class="material-icons">remove_circle_outline</i></button>
+                      <span>{{item.qnt | number }}</span>
+                      <button type="button" (click)="increase(item)" class="btn btn-default btn-circle"><i class="material-icons">add_circle_outline</i></button>
+                  </td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.price | currency:'BRL':'R$'}}</td>
+                  <td><button class="btn " (click)="remove(item, i)"><i class="material-icons">remove_shopping_cart</i></button></td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+    <h2 *ngIf="shopCartList.length == 0">Carrinho vazio :(</h2>
 </div>
 <!-- Frete -->
 <div class="">

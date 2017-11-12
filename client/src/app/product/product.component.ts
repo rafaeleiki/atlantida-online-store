@@ -26,9 +26,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService,
-    private scs: ShopcartService) {
-  }
+    private productsService: ProductsService,) {}
 
   ngOnInit() {
     this.route.paramMap
@@ -48,7 +46,7 @@ export class ProductComponent implements OnInit {
   }
 
   add(value){
-    this.scs.addToCart(this.product, this.selectedAmount);
+    ShopCartService.addToCart(this.product, this.selectedAmount);
   }
 
   onChange(amount) {

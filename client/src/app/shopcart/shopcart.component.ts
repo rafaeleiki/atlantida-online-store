@@ -12,13 +12,40 @@ import { ShopCartItem, ShopCart } from './shopcart';
 
 export class ShopCartComponent implements OnInit {
   private storage = '';
-  private shopCart: ShopCartItem[];
+  private shopCartList: ShopCartItem[];
 
-  constructor(private scs: ShopcartService) {
+  constructor() {}
+
+  getShopCartList() {
+    return ShopCartService.getShopCartList();
+  }
+
+  changeQnt(item : ShopCartItem, amount : number) {
+    const shopCart = ShopCartService.getShopCart();
+    if (shopCart[item.productId]) {
+      item.qnt += amount;
+      shopCart[item.productId].qnt += amount;
+      ShopCartService.saveShopCart(shopCart);
+    }
+  }
+
+  increase(item : ShopCartItem) {
+    this.changeQnt(item, +1);
+  }
+
+  decrease(item : ShopCartItem) {
+    this.changeQnt(item, -1);
+  }
+
+  remove(item : ShopCartItem, i:number) {
+    const shopCart = ShopCartService.getShopCart();
+    delete shopCart[item.productId];
+    ShopCartService.saveShopCart(shopCart);
+    this.shopCartList.splice(i, 1);
   }
 
   ngOnInit() {
-    this.shopCart = this.scs.getShopcartList();
+    this.shopCartList = ShopCartService.getShopCartList();
   }
 
 }
