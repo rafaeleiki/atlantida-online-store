@@ -10,9 +10,9 @@ export class ShopCartService {
 
   constructor() { }
 
-  public static addToCart(product, qnt) {
+  addToCart(product, qnt) {
     // Tries to load shopCart items from localStorage
-    const shopCart = ShopCartService.getShopCart();
+    const shopCart = this.getShopCart();
 
     // If the product exists, updates its qnt
     if (shopCart[product._id]) {
@@ -32,15 +32,15 @@ export class ShopCartService {
       };
     }
 
-    ShopCartService.saveShopCart(shopCart);
+    this.saveShopCart(shopCart);
   }
 
-  public static saveShopCart(shopCart : ShopCart) {
+  saveShopCart(shopCart : ShopCart) {
     getWindow().localStorage.setItem(SHOPCART_ID, JSON.stringify(shopCart));
   }
 
-  public static getShopCartList() : ShopCartItem[] {
-      const shopCart = ShopCartService.getShopCart();
+  getShopCartList() : ShopCartItem[] {
+      const shopCart = this.getShopCart();
       let shopCartList = [];
       for (let pId in shopCart) {
         shopCartList.push(shopCart[pId]);
@@ -48,7 +48,7 @@ export class ShopCartService {
       return shopCartList;
   }
 
-  public static getShopCart() : ShopCart {
+  getShopCart() : ShopCart {
     const json = getWindow().localStorage.getItem(SHOPCART_ID);
     return json ? JSON.parse(json) : {};
   }
