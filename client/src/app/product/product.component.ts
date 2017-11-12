@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {ProductsService} from '../integrations/products/products.service';
 import {Product} from '../integrations/products/products';
-import {ShopcartService} from '../shopcart/shopcart.service';
+import {ShopCartService} from '../shopcart/shopcart.service';
 
 @Component({
   selector: 'app-product',

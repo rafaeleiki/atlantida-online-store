@@ -16,7 +16,7 @@ import { StarsComponent } from './product/stars/stars.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule} from "@angular/forms";
 import { ShopCartComponent } from './shopcart/shopcart.component';
-import { ShopcartService } from './shopcart/shopcart.service';
+import { ShopCartService } from './shopcart/shopcart.service';
 
 
 const appRoutes: Routes = [
@@ -55,7 +55,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
   ],
-  providers: [ProductsService, ShopcartService],
+  providers: [ProductsService, ShopCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

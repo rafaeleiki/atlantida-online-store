@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductsService} from '../integrations/products/products.service';
 import {Product} from '../integrations/products/products';
-import {ShopCart, ShopCartItem, ShopcartService} from '../shopcart/shopcart.service';
+import { ShopCartService } from '../shopcart/shopcart.service';
+import { ShopCartItem, ShopCart } from './shopcart';
 
 @Component({
   selector: 'app-shopcart',
