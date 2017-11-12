@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
-import 'rxjs/add/operator/switchMap';
-import { NgModule } from '@angular/core';
+import { NgModule, Component, OnInit } from '@angular/core';
+import { NgSwitch, NgSwitchCase } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Subject} from 'rxjs/Subject';
+import {debounceTime} from 'rxjs/operator/debounceTime';
+import 'rxjs/add/operator/switchMap';
 import {ProductsService} from '../integrations/products/products.service';
 import {Product} from '../integrations/products/products';
 import {ShopCartService} from '../shopcart/shopcart.service';
@@ -28,6 +30,8 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute,
     private productsService: ProductsService,
     private scs : ShopCartService) {}
+    private _success = new Subject<string>();
+    successMessage: string;
 
   ngOnInit() {
     this.route.paramMap
@@ -36,6 +40,9 @@ export class ProductComponent implements OnInit {
         this.product = product;
         this.setReviews();
     });
+
+    this._success.subscribe((message) => this.successMessage = message);
+    debounceTime.call(this._success, 5000).subscribe(() => this.successMessage = null);
   }
 
   setReviews() {
@@ -46,8 +53,15 @@ export class ProductComponent implements OnInit {
     this.averageReview = sum / this.reviews.length;
   }
 
-  add(value){
+  add() : void {
     this.scs.addToCart(this.product, this.selectedAmount);
+    this._success.next("Carrinho atualizado");
+  }
+
+  shopCartContains() : number {
+    const shopCart = this.scs.getShopCart();
+
+    return shopCart[this.product._id] ? shopCart[this.product._id].qnt : 0;
   }
 
   onChange(amount) {

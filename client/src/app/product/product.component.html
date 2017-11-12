@@ -33,7 +33,14 @@
             </option>
           </select>
         </div>
-        <button type="button" class="btn btn-default btn-add-to mt-4" (click)=add(value)> Colocar no Carrinho</button>
+        <div [ngSwitch]="shopCartContains() > 0">
+          <div *ngSwitchCase="true">
+            <button type="button" class="btn btn-default btn-add-to mt-4 mb-4" (click)=add() ngbTooltip="{{shopCartContains()}} no carrinho">Atualizar o Carrinho</button>
+          </div>
+          <button *ngSwitchDefault type="button" class="btn btn-default btn-add-to mt-4 mb-4" (click)=add()>Colocar no Carrinho</button>
+        </div>
+
+        <ngb-alert  *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
       </div>
 
       <div *ngIf="product.stock === 0" class="p-5">
