@@ -16,31 +16,8 @@ export class ShopCartComponent implements OnInit {
 
   constructor(private scs : ShopCartService) {}
 
-  getShopCartList() {
-    return this.scs.getShopCartList();
-  }
-
-  changeQnt(item : ShopCartItem, amount : number) {
-    const shopCart = this.scs.getShopCart();
-    if (shopCart[item.productId]) {
-      item.qnt += amount;
-      shopCart[item.productId].qnt += amount;
-      this.scs.saveShopCart(shopCart);
-    }
-  }
-
-  increase(item : ShopCartItem) {
-    this.changeQnt(item, +1);
-  }
-
-  decrease(item : ShopCartItem) {
-    this.changeQnt(item, -1);
-  }
-
-  remove(item : ShopCartItem, i:number) {
-    const shopCart = this.scs.getShopCart();
-    delete shopCart[item.productId];
-    this.scs.saveShopCart(shopCart);
+  remove(item : ShopCartItem, i : number) : void {
+    this.scs.remove(item);
     this.shopCartList.splice(i, 1);
   }
 

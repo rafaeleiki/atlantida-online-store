@@ -2,15 +2,22 @@ import { Injectable } from '@angular/core';
 import {ProductsService} from '../integrations/products/products.service';
 import {Product} from '../integrations/products/products';
 import { ShopCartItem, ShopCart } from './shopcart';
+import { Observable }   from 'rxjs/Observable';
+import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
+
 
 const SHOPCART_ID = "ShopCartItems";
 
 @Injectable()
 export class ShopCartService {
+  shopCartQnt : BehaviorSubject<number>;
 
-  constructor() { }
+  constructor() {
+    const shopCart = this.getShopCart();
+    this.shopCartQnt = new BehaviorSubject<number>(Object.keys(shopCart).length);
+  }
 
-  addToCart(product, qnt) {
+  addToCart(product, qnt) : void {
     // Tries to load shopCart items from localStorage
     const shopCart = this.getShopCart();
 
@@ -30,12 +37,38 @@ export class ShopCartService {
         price: product.price,
         expires: expiryDate,
       };
+
+      this.shopCartQnt.next(Object.keys(shopCart).length);
     }
 
     this.saveShopCart(shopCart);
   }
 
-  saveShopCart(shopCart : ShopCart) {
+  changeQnt(item : ShopCartItem, amount : number) : void {
+    const shopCart = this.getShopCart();
+    if (shopCart[item.productId]) {
+      item.qnt += amount;
+      shopCart[item.productId].qnt += amount;
+      this.saveShopCart(shopCart);
+    }
+  }
+
+  increase(item : ShopCartItem) : void {
+    this.changeQnt(item, +1);
+  }
+
+  decrease(item : ShopCartItem) : void {
+    this.changeQnt(item, -1);
+  }
+
+  remove(item : ShopCartItem) :void  {
+    const shopCart = this.getShopCart();
+    delete shopCart[item.productId];
+    this.saveShopCart(shopCart);
+    this.shopCartQnt.next(Object.keys(shopCart).length);
+  }
+
+  saveShopCart(shopCart : ShopCart) : void {
     getWindow().localStorage.setItem(SHOPCART_ID, JSON.stringify(shopCart));
   }
 

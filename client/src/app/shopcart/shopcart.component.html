@@ -14,9 +14,9 @@
           <tbody>
               <tr *ngFor="let item of shopCartList; let i = index">
                   <td>
-                      <button type="button" (click)="decrease(item)" class="btn btn-default btn-circle"><i class="material-icons">remove_circle_outline</i></button>
+                      <button type="button" (click)="scs.decrease(item)" class="btn btn-default btn-circle"><i class="material-icons">remove_circle_outline</i></button>
                       <span>{{item.qnt | number }}</span>
-                      <button type="button" (click)="increase(item)" class="btn btn-default btn-circle"><i class="material-icons">add_circle_outline</i></button>
+                      <button type="button" (click)="scs.increase(item)" class="btn btn-default btn-circle"><i class="material-icons">add_circle_outline</i></button>
                   </td>
                   <td>{{item.name}}</td>
                   <td>{{item.price | currency:'BRL':'R$'}}</td>
