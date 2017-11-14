@@ -40,13 +40,15 @@
       <div class="status">
         <div class="status-header">Status da compra</div>
         <div class="status-bar">
-          <div class="status-circle done">
+          <div class="status-circle done" title="Compra efetuada">
             <i class="material-icons status-icon">local_mall</i>
           </div>
 
           <ng-container *ngFor="let status of salesStatusBar">
             <div class="connection-bar" [ngClass]="saleStatus(sale, status.percentage)"></div>
-            <div class="status-circle"  [ngClass]="saleStatus(sale, status.percentage)">
+            <div class="status-circle"
+                 [ngClass]="saleStatus(sale, status.percentage)"
+                 title="{{ status.status }}">
               <i class="material-icons status-icon">{{ status.icon }}</i>
             </div>
           </ng-container>

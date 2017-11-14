@@ -11,10 +11,10 @@ export class ShoppingHistoryComponent implements OnInit {
 
   private history: Buy[];
   private salesStatusBar = [
-    { percentage: 25, icon: 'local_atm' },
-    { percentage: 50, icon: 'store_mall_directory' },
-    { percentage: 75, icon: 'local_shipping' },
-    { percentage: 100, icon: 'done_all' },
+    { percentage: 25, icon: 'local_atm', status: 'Pagamento recebido' },
+    { percentage: 50, icon: 'store_mall_directory', status: 'Empacotado' },
+    { percentage: 75, icon: 'local_shipping', status: 'Pacote enviado' },
+    { percentage: 100, icon: 'done_all', status: 'Entregue' },
   ];
 
   constructor(private userService: UserService) { }
