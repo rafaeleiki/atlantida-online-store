@@ -15,8 +15,8 @@
     "generate": "npm run remove-sdk;./node_modules/.bin/lb-sdk server/server client/src/app/sdk -i disabled",
     "_server:run": "nodemon --delay 5 .",
     "build": "mkdir dist/client -p && cd client && ng build -prod -sm -ec --aot=false",
-    "run_production": "NODE_ENV=production node .",
-    "production": "npm run build && npm run run_production"
+    "production": "NODE_ENV=production node .",
+    "build_run_prod": "npm run build && npm run run_production"
   },
   "dependencies": {
     "compression": "^1.0.3",
