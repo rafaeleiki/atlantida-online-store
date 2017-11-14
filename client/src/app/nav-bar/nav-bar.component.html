@@ -37,9 +37,6 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/help" routerLinkActive="active">Ajuda</a>
       </li>
-      <li class="nav-item special-link">
-        <a class="nav-link" routerLink="/user" routerLinkActive="active">Meu perfil</a>
-      </li>
     </ul>
 
     <div class="input-group form-inline my-2 my-lg-0 search-container">
@@ -53,11 +50,17 @@
         </button>
       </span>
     </div>
-
-    <a class="btn btn-light my-2 my-sm-0 ml-2" role="button"  routerLink="/shopcart" href="#" ngbTooltip="Meu carrinho"  placement="bottom">
-      <span class="badge badge-primary">{{shopCartQnt}}</span>
-      <i class="material-icons ">shopping_cart</i>
-
-    </a>
+    
+    <ul class="navbar-nav mr-3 links">
+      <li class="nav-item special-link">
+        <a class="nav-link" routerLink="/user" routerLinkActive="active">Meu perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " role="button"  routerLink="/shopcart" href="#" ngbTooltip="Meu carrinho"  placement="bottom">
+          <span class="badge badge-primary">{{shopCartQnt}}</span>
+          <i class="material-icons ">shopping_cart</i>
+        </a>
+      </li>
+  </ul>
   </div>
 </nav>
