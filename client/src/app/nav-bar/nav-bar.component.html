@@ -6,8 +6,8 @@
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-5 links">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home <span class="sr-only">(atual)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home <span class="sr-only">(atual)</span></a>
       </li>
       <li class="nav-item" ngbDropdown>
         <button class="nav-link dropdown-link"
@@ -18,24 +18,27 @@
           Produtos
         </button>
         <div ngbDropdownMenu>
-          <label class="dropdown-header" href="#">Eletrônicos</label>
-          <a class="dropdown-item" href="#">Celulares</a>
-          <a class="dropdown-item" href="#">Computadores</a>
+          <label class="dropdown-header" routerLink="#">Eletrônicos</label>
+          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Celulares</a>
+          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Computadores</a>
           <div class="dropdown-divider"></div>
 
-          <label class="dropdown-header" href="#">Eletrodomésticos</label>
-          <a class="dropdown-item" href="#">Geladeiras</a>
-          <a class="dropdown-item" href="#">Fogões</a>
+          <label class="dropdown-header" routerLink="#">Eletrodomésticos</label>
+          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Geladeiras</a>
+          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Fogões</a>
           <div class="dropdown-divider"></div>
 
-          <a class="dropdown-item" href="#">Ver todas as categorias</a>
+          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Ver todas as categorias</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">Quem somos</a>
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">Quem somos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/help">Ajuda</a>
+        <a class="nav-link" routerLink="/help" routerLinkActive="active">Ajuda</a>
+      </li>
+      <li class="nav-item special-link">
+        <a class="nav-link" routerLink="/user" routerLinkActive="active">Meu perfil</a>
       </li>
     </ul>
 

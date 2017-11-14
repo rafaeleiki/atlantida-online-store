@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import {NavBarComponent} from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
-import {ProductsService} from './integrations/products/products.service';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { ClientService } from './integrations/clients/client.service';
+import { UserModule } from './user/user.module';
+import { ProductsService } from './integrations/products/products.service';
 import { ProductComponent } from './product/product.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { StarsComponent } from './product/stars/stars.component';
@@ -45,10 +47,11 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     NgbModule.forRoot(),
+    UserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
   ],
-  providers: [ProductsService],
+  providers: [ClientService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

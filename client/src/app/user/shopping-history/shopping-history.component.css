@@ -1,0 +1,98 @@
+:host {
+  flex: 1;
+}
+
+.sale {
+  margin: 1em;
+}
+
+.sale-header {
+  display: block;
+}
+
+.sale-title {
+  font-weight: bold;
+}
+
+.sale-date {
+  font-size: 0.8em;
+  color: #444;
+  float: right;
+}
+
+.sale-info {
+  display: flex;
+  margin-left: 1em;
+}
+
+.sale-items-pics {
+  flex: 1;
+}
+
+.item-picture {
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  border: 1px rgba(0,0,0,0.18) solid;
+}
+
+.sale-cost {
+  flex: 1;
+  text-align: right;
+}
+
+.status {
+  margin: 1em 1em 2em 1em;
+}
+
+.status-header {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+.status-bar {
+  display: block;
+  margin: 1em;
+  text-align: center;
+}
+
+.status-circle {
+  display: inline-block;
+  border-radius: 25px;
+  width: 40px;
+  height: 40px;
+}
+
+.status-icon {
+  padding: 7px;
+  display: block;
+}
+
+.connection-bar {
+  display: inline-block;
+  height: 5px;
+  width: 75px;
+  vertical-align: text-top;
+}
+
+.not-done{
+  background-color: #b9b8b5;
+}
+
+.done{
+  background-color: #28a745;
+}
+
+.items-table {
+  margin: 1em;
+}
+
+.sale-info {
+  margin: 0 1em 0 1em;
+}
+
+.info {
+  margin-left: 0.6em;
+  font-weight: bold;
+}
