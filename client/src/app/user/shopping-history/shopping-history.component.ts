@@ -10,12 +10,26 @@ import {Buy} from '../user';
 export class ShoppingHistoryComponent implements OnInit {
 
   private history: Buy[];
+  private salesStatusBar = [
+    { percentage: 25, icon: 'local_atm' },
+    { percentage: 50, icon: 'store_mall_directory' },
+    { percentage: 75, icon: 'local_shipping' },
+    { percentage: 100, icon: 'done_all' },
+  ];
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userService.getShoppingHistory()
       .then(history => this.history = history);
+  }
+
+  saleStatus(sale, percentage) {
+    const done = sale.statusPercentage >= percentage;
+    return {
+      'done': done,
+      'not-done': !done
+    };
   }
 
 }

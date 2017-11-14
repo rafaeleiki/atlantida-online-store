@@ -3,16 +3,18 @@
 
     <ng-template ngbPanelTitle>
       <div class="sale-header">
-        <label class="sale-title">Compra #{{sale.id}}</label>
-        <label class="sale-date">Comprado em {{sale.date | date:'dd/MM/yyyy'}}</label>
+        <label class="sale-title">Compra #{{ sale.id }}</label>
+        <label class="sale-date">Comprado em {{ sale.date | date:'dd/MM/yyyy' }}</label>
       </div>
 
       <div class="sale-info">
         <div class="sale-items-pics">
           <div class="row">
-            <div *ngFor="let item of sale.products; let i=index" class="col-sm-0">
+            <div *ngFor="let item of sale.products; let i = index" class="col-sm-0">
               <div *ngIf="i < 3; else tooMuchItems">
-                <img *ngIf="item.picture; else noPicture" src="{{item.picture}}" class="item-picture" />
+                <img *ngIf="item.picture; else noPicture"
+                     src="{{ item.picture }}"
+                     class="item-picture" />
 
                 <ng-template #noPicture>
                   <img src="/assets/img/no-picture.png" class="item-picture" />
@@ -20,7 +22,7 @@
               </div>
 
               <ng-template #tooMuchItems>
-                <div *ngIf="i == 3">
+                <div *ngIf="i === 3">
                   <img src="/assets/img/more-pictures.png" class="item-picture" />
                 </div>
               </ng-template>
@@ -28,7 +30,7 @@
           </div>
         </div>
 
-        <div class="sale-cost">{{sale.totalCost | currency:'BRL':'symbol'}}</div>
+        <div class="sale-cost">{{ sale.totalCost | currency:'BRL':'symbol' }}</div>
       </div>
     </ng-template>
 
@@ -42,25 +44,12 @@
             <i class="material-icons status-icon">local_mall</i>
           </div>
 
-          <div class="connection-bar" [ngClass]="{'done': sale.statusPercentage >= 25, 'not-done': sale.statusPercentage < 25}"></div>
-          <div class="status-circle"  [ngClass]="{'done': sale.statusPercentage >= 25, 'not-done': sale.statusPercentage < 25}">
-            <i class="material-icons status-icon">local_atm</i>
-          </div>
-
-          <div class="connection-bar" [ngClass]="{'done': sale.statusPercentage >= 50, 'not-done': sale.statusPercentage < 50}"></div>
-          <div class="status-circle"  [ngClass]="{'done': sale.statusPercentage >= 50, 'not-done': sale.statusPercentage < 50}">
-            <i class="material-icons status-icon">store_mall_directory</i>
-          </div>
-
-          <div class="connection-bar" [ngClass]="{'done': sale.statusPercentage >= 75, 'not-done': sale.statusPercentage < 75}"></div>
-          <div class="status-circle"  [ngClass]="{'done': sale.statusPercentage >= 75, 'not-done': sale.statusPercentage < 75}">
-            <i class="material-icons status-icon">local_shipping</i>
-          </div>
-
-          <div class="connection-bar" [ngClass]="{'done': sale.statusPercentage >= 100, 'not-done': sale.statusPercentage < 100}"></div>
-          <div class="status-circle"  [ngClass]="{'done': sale.statusPercentage >= 100, 'not-done': sale.statusPercentage < 100}">
-            <i class="material-icons status-icon">done_all</i>
-          </div>
+          <ng-container *ngFor="let status of salesStatusBar">
+            <div class="connection-bar" [ngClass]="saleStatus(sale, status.percentage)"></div>
+            <div class="status-circle"  [ngClass]="saleStatus(sale, status.percentage)">
+              <i class="material-icons status-icon">{{ status.icon }}</i>
+            </div>
+          </ng-container>
         </div>
       </div>
 
@@ -78,31 +67,39 @@
         <tbody>
         <tr *ngFor="let product of sale.products">
           <td class="align-middle">
-            <img *ngIf="product.picture; else noPicture" src="{{product.picture}}" class="item-picture">
+            <img *ngIf="product.picture; else noPicture"
+                 src="{{ product.picture }}"
+                 class="item-picture" />
             <ng-template #noPicture>
               <img src="/assets/img/no-picture.png" class="item-picture"/>
             </ng-template>
           </td>
-          <td class="align-middle">{{product.name}}</td>
-          <td class="align-middle">{{product.amount}}</td>
-          <td class="align-middle">{{product.price | currency:'BRL':'symbol'}}</td>
-          <td class="align-middle">{{product.totalCost | currency:'BRL':'symbol'}}</td>
+          <td class="align-middle">{{ product.name }}</td>
+          <td class="align-middle">{{ product.amount }}</td>
+          <td class="align-middle">{{ product.price | currency:'BRL':'symbol' }}</td>
+          <td class="align-middle">{{ product.totalCost | currency:'BRL':'symbol' }}</td>
         </tr>
         <tr>
           <td colspan="4" class="align-middle text-center"><b>Preço frete</b></td>
-          <td class="align-middle">{{sale.deliveryCost | currency:'BRL':'symbol'}}</td>
+          <td class="align-middle">{{ sale.deliveryCost | currency:'BRL':'symbol' }}</td>
         </tr>
         <tr>
           <td colspan="4" class="align-middle text-center"><b>Preço total</b></td>
-          <td class="align-middle">{{sale.totalCost | currency:'BRL':'symbol'}}</td>
+          <td class="align-middle">{{ sale.totalCost | currency:'BRL':'symbol' }}</td>
         </tr>
         </tbody>
       </table>
 
       <!--Sale info-->
-      <p class="sale-info">Método de pagamento: &nbsp; <b>{{sale.paymentMethod}}</b></p>
-      <p class="sale-info">Data de estimada de entrega: &nbsp; <b>{{sale.expectedDelivery | date:'dd/MM/yyyy'}}</b></p>
-      <p class="sale-info">Local de entrega: &nbsp; <b>{{sale.deliveryPlace}}</b></p>
+      <p class="sale-info">Método de pagamento:
+        <span class="info">{{ sale.paymentMethod }}</span>
+      </p>
+      <p class="sale-info">Data de estimada de entrega:
+        <span class="info">{{ sale.expectedDelivery | date:'dd/MM/yyyy' }}</span>
+      </p>
+      <p class="sale-info">Local de entrega:
+        <span class="info">{{ sale.deliveryPlace }}</span>
+      </p>
     </ng-template>
 
   </ngb-panel>

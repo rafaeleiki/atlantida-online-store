@@ -91,3 +91,8 @@
 .sale-info {
   margin: 0 1em 0 1em;
 }
+
+.info {
+  margin-left: 0.6em;
+  font-weight: bold;
+}
