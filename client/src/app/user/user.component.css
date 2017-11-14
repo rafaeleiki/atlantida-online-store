@@ -1,0 +1,35 @@
+.panel-container {
+  display: flex;
+}
+
+.panel-menu {
+  flex: 1;
+  border-right: #e8ebef solid thin;
+}
+
+.user-icon {
+display: block;
+}
+
+.user-icon-pic {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.user-nick {
+display: block;
+text-align: center;
+}
+
+.user-options{
+  padding: 0.5em;
+  border-top: #e8ebef solid thin;
+}
+
+.panel-item {
+  flex: 4;
+  padding-left: 1em;
+}

@@ -1,0 +1,108 @@
+<ngb-accordion [closeOthers]="true" #acc="ngbAccordion" class="pre-scrollable">
+  <ngb-panel *ngFor="let sale of history" class="sale">
+
+    <ng-template ngbPanelTitle>
+      <div class="sale-header">
+        <label class="sale-title">Compra #{{ sale.id }}</label>
+        <label class="sale-date">Comprado em {{ sale.date | date:'dd/MM/yyyy' }}</label>
+      </div>
+
+      <div class="sale-info">
+        <div class="sale-items-pics">
+          <div class="row">
+            <div *ngFor="let item of sale.products; let i = index" class="col-sm-0">
+              <div *ngIf="i < 3; else tooMuchItems">
+                <img *ngIf="item.picture; else noPicture"
+                     src="{{ item.picture }}"
+                     class="item-picture" />
+
+                <ng-template #noPicture>
+                  <img src="/assets/img/no-picture.png" class="item-picture" />
+                </ng-template>
+              </div>
+
+              <ng-template #tooMuchItems>
+                <div *ngIf="i === 3">
+                  <img src="/assets/img/more-pictures.png" class="item-picture" />
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+        <div class="sale-cost">{{ sale.totalCost | currency:'BRL':'symbol' }}</div>
+      </div>
+    </ng-template>
+
+    <ng-template ngbPanelContent>
+
+      <!--Sale status-->
+      <div class="status">
+        <div class="status-header">Status da compra</div>
+        <div class="status-bar">
+          <div class="status-circle done" title="Compra efetuada">
+            <i class="material-icons status-icon">local_mall</i>
+          </div>
+
+          <ng-container *ngFor="let status of salesStatusBar">
+            <div class="connection-bar" [ngClass]="saleStatus(sale, status.percentage)"></div>
+            <div class="status-circle"
+                 [ngClass]="saleStatus(sale, status.percentage)"
+                 title="{{ status.status }}">
+              <i class="material-icons status-icon">{{ status.icon }}</i>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!--Sale items-->
+      <table class="table table-hover table-responsive-sm items-table">
+        <thead>
+        <tr>
+          <th scope="col">Itens</th>
+          <th scope="col">Nome</th>
+          <th scope="col" class="text-right">Quant.</th>
+          <th scope="col" class="text-right">Preço un.</th>
+          <th scope="col" class="text-right">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of sale.products">
+          <td class="align-middle">
+            <img *ngIf="product.picture; else noPicture"
+                 src="{{ product.picture }}"
+                 class="item-picture" />
+            <ng-template #noPicture>
+              <img src="/assets/img/no-picture.png" class="item-picture"/>
+            </ng-template>
+          </td>
+          <td class="align-middle">{{ product.name }}</td>
+          <td class="align-middle text-right">{{ product.amount }}</td>
+          <td class="align-middle text-right">{{ product.price | currency:'BRL':'symbol' }}</td>
+          <td class="align-middle text-right">{{ product.totalCost | currency:'BRL':'symbol' }}</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="align-middle text-right"><b>Preço frete</b></td>
+          <td class="align-middle text-right">{{ sale.deliveryCost | currency:'BRL':'symbol' }}</td>
+        </tr>
+        <tr>
+          <td colspan="4" class="align-middle text-right"><b>Preço total</b></td>
+          <td class="align-middle text-right">{{ sale.totalCost | currency:'BRL':'symbol' }}</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <!--Sale info-->
+      <p class="sale-info">Método de pagamento:
+        <span class="info">{{ sale.paymentMethod }}</span>
+      </p>
+      <p class="sale-info">Data de estimada de entrega:
+        <span class="info">{{ sale.expectedDelivery | date:'dd/MM/yyyy' }}</span>
+      </p>
+      <p class="sale-info">Local de entrega:
+        <span class="info">{{ sale.deliveryPlace }}</span>
+      </p>
+    </ng-template>
+
+  </ngb-panel>
+</ngb-accordion>
