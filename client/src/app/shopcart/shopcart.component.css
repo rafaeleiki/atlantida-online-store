@@ -1,29 +1,5 @@
-.highlight-products {
-  height: 200px;
-}
-
-.highlight-products img {
-  display: block;
-  max-height: 200px;
-  width: 100%;
-}
-
-.card-img-top {
-  width: 200px;
-  height: 200px;
-  background-color: red;
-  margin: auto;
-}
-
-.card-group {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.card {
-  min-width: 300px;
-  flex: 1;
-  border: none;
+.shopcart-table {
+  width: 60%;
 }
 
 .btn-circle {
