@@ -5,7 +5,6 @@ import { ShopCartItem, ShopCart } from './shopcart';
 import { Observable }   from 'rxjs/Observable';
 import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 
-
 const SHOPCART_ID = "ShopCartItems";
 
 @Injectable()
@@ -74,11 +73,7 @@ export class ShopCartService {
 
   getShopCartList() : ShopCartItem[] {
       const shopCart = this.getShopCart();
-      let shopCartList = [];
-      for (let pId in shopCart) {
-        shopCartList.push(shopCart[pId]);
-      }
-      return shopCartList; // Object.values(shopCart) does not work
+      return Object.keys(shopCart).map(key => shopCart[key]);
   }
 
   getShopCart() : ShopCart {
