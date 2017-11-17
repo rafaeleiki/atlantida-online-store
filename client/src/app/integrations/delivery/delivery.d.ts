@@ -52,3 +52,14 @@ export interface Delivery {
     id: Store;
   }
 }
+
+export interface PackageStatus {
+  id: number;
+  status: number;
+  status_atual: {
+    id: number;
+    id_pacote: number;
+    descricao: string;
+    created: string;
+  }
+}
