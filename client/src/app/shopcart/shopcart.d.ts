@@ -1,7 +1,7 @@
 export interface ShopCartItem {
     productId: string;
     name: string;
-    qnt: number;
+    amount: number;
     price: number;
     expires: Date;
 }

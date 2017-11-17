@@ -25,7 +25,7 @@ export class ShopCartComponent implements OnInit {
   }
 
   decrease(item : ShopCartItem) {
-    if (item.qnt == 1) {
+    if (item.amount == 1) {
       this.decreaseTooltip.open();
       setTimeout(() => this.decreaseTooltip.close(), 3000);
     } else {

@@ -10,12 +10,12 @@ import { Subscription }   from 'rxjs/Subscription';
 })
 export class NavBarComponent {
   private query: string;
-  private shopCartQnt : number;
+  private shopCartAmount : number;
   subscription: Subscription;
 
   constructor(private router: Router, private scs : ShopCartService) {
-    this.subscription = this.scs.shopCartQnt.subscribe((shopCartQnt : number) => {
-      this.shopCartQnt = shopCartQnt;
+    this.subscription = this.scs.shopCartAmount.subscribe((shopCartAmount : number) => {
+      this.shopCartAmount = shopCartAmount;
     });
   }
 

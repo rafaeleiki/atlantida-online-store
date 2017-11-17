@@ -7,7 +7,7 @@
         <table class="table shopcart-table">
             <thead>
                 <tr>
-                    <th scope="col">Qnt</th>
+                    <th scope="col">Quantidade</th>
                     <th scope="col">Produto</th>
                     <th scope="col">Preço</th>
                     <th scope="col"></th><!-- Remover -->
@@ -18,7 +18,7 @@
                     <td>
                         <button type="button" (click)="decrease(item)" class="btn btn-danger btn-circle"
                                   ngbTooltip="Limite atingido" triggers="manual" #decreaseTooltip="ngbTooltip"><i class="material-icons">remove_circle_outline</i></button>
-                        <span>{{item.qnt | number }}</span>
+                        <span>{{item.amount | number }}</span>
                         <button type="button" (click)="increase(item)" class="btn btn-primary btn-circle"><i class="material-icons">add_circle_outline</i></button>
                     </td>
                     <td>{{item.name}}</td>

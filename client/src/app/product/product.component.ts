@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
     { user: "eiki", title: "gostei", body: "que tiroooo pisa menos 10/10", review: 4 },
   ];
   private averageReview: number;
-  private selectedAmount =1;
+  private selectedAmount = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,10 +61,7 @@ export class ProductComponent implements OnInit {
   shopCartContains() : number {
     const shopCart = this.scs.getShopCart();
 
-    return shopCart[this.product._id] ? shopCart[this.product._id].qnt : 0;
-  }
-
-  onChange(amount) {
+    return shopCart[this.product._id] ? shopCart[this.product._id].amount : 0;
   }
 
 };

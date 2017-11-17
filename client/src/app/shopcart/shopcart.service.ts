@@ -10,20 +10,20 @@ const SHOPCART_ID = "ShopCartItems";
 
 @Injectable()
 export class ShopCartService {
-  shopCartQnt : BehaviorSubject<number>;
+  shopCartAmount : BehaviorSubject<number>;
 
   constructor() {
     const shopCart = this.getShopCart();
-    this.shopCartQnt = new BehaviorSubject<number>(Object.keys(shopCart).length);
+    this.shopCartAmount = new BehaviorSubject<number>(Object.keys(shopCart).length);
   }
 
-  addToCart(product, qnt) : void {
+  addToCart(product, amount) : void {
     // Tries to load shopCart items from localStorage
     const shopCart = this.getShopCart();
 
-    // If the product exists, updates its qnt
+    // If the product exists, updates its amount
     if (shopCart[product._id]) {
-      shopCart[product._id].qnt = qnt;
+      shopCart[product._id].amount = amount;
     } else {
       // Sets expire date to tomorrow
       let expiryDate = new Date();
@@ -33,39 +33,39 @@ export class ShopCartService {
       shopCart[product._id] = {
         productId: product._id,
         name: product.name,
-        qnt: qnt,
+        amount: amount,
         price: product.price,
         expires: expiryDate,
       };
 
-      this.shopCartQnt.next(Object.keys(shopCart).length);
+      this.shopCartAmount.next(Object.keys(shopCart).length);
     }
 
     this.saveShopCart(shopCart);
   }
 
-  changeQnt(item : ShopCartItem, amount : number) : void {
+  changeAmount(item : ShopCartItem, amount : number) : void {
     const shopCart = this.getShopCart();
     if (shopCart[item.productId]) {
-      item.qnt += amount;
-      shopCart[item.productId].qnt += amount;
+      item.amount += amount;
+      shopCart[item.productId].amount += amount;
       this.saveShopCart(shopCart);
     }
   }
 
   increase(item : ShopCartItem) : void {
-    this.changeQnt(item, +1);
+    this.changeAmount(item, +1);
   }
 
   decrease(item : ShopCartItem) : void {
-    this.changeQnt(item, -1);
+    this.changeAmount(item, -1);
   }
 
   remove(item : ShopCartItem) :void  {
     const shopCart = this.getShopCart();
     delete shopCart[item.productId];
     this.saveShopCart(shopCart);
-    this.shopCartQnt.next(Object.keys(shopCart).length);
+    this.shopCartAmount.next(Object.keys(shopCart).length);
   }
 
   saveShopCart(shopCart : ShopCart) : void {
@@ -78,7 +78,7 @@ export class ShopCartService {
       for (let pId in shopCart) {
         shopCartList.push(shopCart[pId]);
       }
-      return shopCartList;
+      return shopCartList; // Object.values(shopCart) does not work
   }
 
   getShopCart() : ShopCart {
