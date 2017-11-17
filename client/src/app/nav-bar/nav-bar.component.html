@@ -6,8 +6,8 @@
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-5 links">
-      <li class="nav-item active">
-        <a class="nav-link" href="/home">Home <span class="sr-only">(atual)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home <span class="sr-only">(atual)</span></a>
       </li>
       <li class="nav-item" ngbDropdown>
         <button class="nav-link dropdown-link"
@@ -30,10 +30,10 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">Quem somos</a>
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">Quem somos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/help">Ajuda</a>
+        <a class="nav-link" routerLink="/help" routerLinkActive="active">Ajuda</a>
       </li>
     </ul>
 
@@ -49,6 +49,16 @@
       </span>
     </div>
 
+    <ul class="navbar-nav mr-3 links">
+      <li class="nav-item special-link">
+        <a class="nav-link" routerLink="/user" routerLinkActive="active">Meu perfil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " role="button"  routerLink="/shopcart" href="#" ngbTooltip="Meu carrinho"  placement="bottom">
+          <span class="badge badge-primary">{{shopCartAmount}}</span>
+          <i class="material-icons ">shopping_cart</i>
+        </a>
+      </li>
+  </ul>
   </div>
 </nav>
-

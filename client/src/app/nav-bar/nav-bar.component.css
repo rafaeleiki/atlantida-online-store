@@ -1,17 +1,38 @@
 .navbar {
   background-color: #17adff;
+  padding: 0;
+}
+
+.navbar-brand {
+  padding: 0.5em;
 }
 
 .links {
-  flex: 1;
+  padding: 0;
+}
+
+.links li {
+  padding: 0.5em;
 }
 
 .search-container {
-  flex: 2;
+  flex: 1;
+  padding: 0 1em;
 }
 
 .search {
   flex: 1;
+}
+
+.search-container input {
+  border-right: none;
+}
+
+.search-container button {
+  height: 38px;
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-left: none;
 }
 
 .material-icons {
@@ -21,4 +42,8 @@
 .dropdown-link {
   background-color: transparent;
   border: none;
+}
+
+.special-link {
+  background-color: rgba(0, 0, 0, 0.2);
 }

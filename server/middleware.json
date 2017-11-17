@@ -45,6 +45,11 @@
       "params": "$!../client/dist"
     }
   },
+  "files:after": {
+    "./middleware/serveindex":{
+      "enabled": true
+    }
+  },
   "final": {
     "loopback#urlNotFound": {}
   },
