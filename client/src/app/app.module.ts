@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import { ClientService } from './integrations/clients/client.service';
 import { UserModule } from './user/user.module';
 import { ProductsService } from './integrations/products/products.service';
+import { CepService } from './integrations/cep/cep.service';
 import { ProductComponent } from './product/product.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { StarsComponent } from './product/stars/stars.component';
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'products/:id', component: ProductComponent },
   { path: 'search/:searchQuery', component: SearchComponent },
   { path: 'shopcart', component: ShopCartComponent },
-  { path:                                                                                                        '',
+  { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
@@ -57,7 +58,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
   ],
-  providers: [ClientService, ProductsService, ShopCartService],
+  providers: [ClientService, ProductsService, CepService, ShopCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
