@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
 import { HttpModule } from '@angular/http';
+import { MewketingService } from './integrations/mewketing/mewketing.service';
 import { ClientService } from './integrations/clients/client.service';
 import { UserModule } from './user/user.module';
 import { ProductsService } from './integrations/products/products.service';

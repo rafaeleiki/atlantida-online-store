@@ -10,7 +10,7 @@ export class MewketingService {
 
   constructor(private http: Http) { }
 
-  sendEmail(date: Date, title: string, template_name: string, groups: [string], vars: object ){
+  sendEmail(date: Date, title: string, template_name: string, groups: string[], vars: Object ): Promise <MewketingResponse>{
     return this.http.post(this.url + `/email/schedule_template`,{
       sender_email: this.sender_email,
       sender_password: this.sender_password,
@@ -19,40 +19,40 @@ export class MewketingService {
       template : template_name,
       vars : vars,
       groups : groups
-    } );
-    .toPromise();
-    .then(response => response.json() as MewketingResponse);
+    } )
+    .toPromise()
+    .then(response => response.json() as MewketingResponse)
     .catch((error) => {
-      console.error(`Error on sending ${title} from template ${template_name} to groups ${groups.join(' ')}`, error);
+      console.error(`Error on sending ${title} from template ${template_name} to groups ${groups.join(' ')}`,
+       error);
       return Promise.reject(error.message || error);
     });
   }
 
-  exitGroup(group_name: string, receiver: string) Promise MewketingResponse{
-
+  exitGroup(group_name: string, receiver: string): Promise<MewketingResponse> {
     return this.http.post(this.url + `/group/remove_receiver`,{
       sender_email: this.sender_email,
       sender_password: this.sender_password,
       group_name: group_name,
       receiver: receiver
-    } );
-    .toPromise();
-    .then(response => response.json() as MewketingResponse);
+    } )
+    .toPromise()
+    .then(response => response.json() as MewketingResponse)
     .catch((error) => {
       console.error(`Error on removing ${receiver} from group ${group_name}`, error);
       return Promise.reject(error.message || error);
     });
   }
 
-  joinGroup(group_name: string, receiver: string): Promise MewketingResponse{
+  joinGroup(group_name: string, receiver: string): Promise <MewketingResponse>{
     return this.http.post(this.url + `/group/add_receiver`,{
       sender_email: this.sender_email,
       sender_password: this.sender_password,
       group_name: group_name,
       receiver: receiver
-    } );
-    .toPromise();
-    .then(response => response.json() as MewketingResponse);
+    } )
+    .toPromise()
+    .then(response => response.json() as MewketingResponse)
     .catch((error) => {
       console.error(`Error on adding ${receiver} from group ${group_name}`, error);
       return Promise.reject(error.message || error);
@@ -60,36 +60,36 @@ export class MewketingService {
 
   }
 
-  createReceiver(receiver_name: string, receiver_email:string): Promise MewketingResponse{
+  createReceiver(receiver_name: string, receiver_email:string): Promise <MewketingResponse>{
     return this.http.post(this.url + `/receiver/add`,{
       sender_email: this.sender_email,
       sender_password: this.sender_password,
       name: receiver_name,
       email: receiver_email
-    } );
-    .toPromise();
-    .then(response => response.json() as MewketingResponse);
+    } )
+    .toPromise()
+    .then(response => response.json() as MewketingResponse)
     .catch((error) => {
       console.error(`Error on creating ${receiver_name}`, error);
       return Promise.reject(error.message || error);
     });
   }
 
-  removeReceiver(receiver_name: string): Promise MewketingResponse{
+  removeReceiver(receiver_name: string): Promise <MewketingResponse> {
     return this.http.post(this.url + `/receiver/remove`,{
       sender_email: this.sender_email,
       sender_password: this.sender_password,
       name: receiver_name
-    } );
-    .toPromise();
-    .then(response => response.json() as MewketingResponse);
+    } )
+    .toPromise()
+    .then(response => response.json() as MewketingResponse)
     .catch((error) => {
       console.error(`Error on removing ${receiver_name}`, error);
       return Promise.reject(error.message || error);
     });
   }
 
-  updateReceiver(original_receiver_name: string, new_receiver_name: string, new_receiver_email:string): Promise MewketingResponse{
+  updateReceiver(original_receiver_name: string, new_receiver_name: string, new_receiver_email:string): Promise <MewketingResponse>{
     return this.http.post(this.url + `/receiver/add`,{
       sender_email: this.sender_email,
       sender_password: this.sender_password,
@@ -97,9 +97,9 @@ export class MewketingService {
       name : new_receiver_name,
       email : new_receiver_email
 
-    } );
-    .toPromise();
-    .then(response => response.json() as MewketingResponse);
+    } )
+    .toPromise()
+    .then(response => response.json() as MewketingResponse)
     .catch((error) => {
       console.error(`Error on updating ${original_receiver_name}`, error);
       return Promise.reject(error.message || error);
