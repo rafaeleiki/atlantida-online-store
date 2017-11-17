@@ -1,10 +1,38 @@
-export interface Check {
+// Param structures
+export interface GetPriceDateParam {
+  destino_cep: number;
+  destino_numero: number;
+  destino_estado: string;
+  destino_cidade: string;
+  destino_endereco: string;
+  volume: number;
+}
+
+export interface PostPackageParam {
+  destinatario: string;
+  destino_cep: number;
+  destino_numero: number;
+  destino_estado: string;
+  destino_cidade: string;
+  destino_endereco: string;
+  volume: number;
+}
+
+
+// Return structures
+export interface GetPriceDateRes {
   message: string;
   preco: number;
   tempo: number;
 }
 
-export interface Response {
+export interface PostPackageRes {
+  message: string;
+  id: number;
+  preco: number;
+}
+
+export interface CancelPackageRes {
   message: string;
   status: string;
 }
@@ -36,7 +64,7 @@ export interface Store {
   id_endereco: number;
 }
 
-export interface Delivery {
+export interface GetStatusPackageRes {
   id: number;
   id_transportadora: number;
   id_site: number;
@@ -50,16 +78,5 @@ export interface Delivery {
   destino: PlaceInfo;
   site: {
     id: Store;
-  }
-}
-
-export interface PackageStatus {
-  id: number;
-  status: number;
-  status_atual: {
-    id: number;
-    id_pacote: number;
-    descricao: string;
-    created: string;
   }
 }
