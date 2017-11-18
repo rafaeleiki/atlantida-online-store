@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 import { UserComponent } from './user.component';
 import { ShoppingHistoryComponent } from './shopping-history/shopping-history.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ClientService} from '../integrations/clients/client.service';
 
 const routes: Routes = [
   {
@@ -32,6 +33,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgbModule.forRoot(),
   ],
-  providers: [AuthGuard, UserService],
+  providers: [AuthGuard, UserService, ClientService],
 })
 export class UserModule { }

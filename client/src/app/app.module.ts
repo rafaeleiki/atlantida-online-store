@@ -18,10 +18,12 @@ import { SearchComponent } from './search/search.component';
 import {FormsModule} from "@angular/forms";
 import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
+import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
   { path: 'shopcart', component: ShopCartComponent },
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
     LoadingIconComponent,
     StarsComponent,
     SearchComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
