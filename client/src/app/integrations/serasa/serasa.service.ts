@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class SerasaService {
 
+  private url= 'mc437.viniciusfabri.com';
+
   constructor(private http: Http) { }
 
-  getScore(cpf: string){
-    return this.http.get(this.url + `/${cpf}`)
+  getScore(cpf: number){
+    return this.http.get(this.url + `/sc/api/score/mc437_key_2017/${cpf}`)
       .toPromise()
       .then(response => {
         let json = response.json();

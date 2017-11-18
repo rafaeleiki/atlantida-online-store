@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import { ClientService } from './integrations/clients/client.service';
 import { UserModule } from './user/user.module';
 import { ProductsService } from './integrations/products/products.service';
+import { SerasaService } from './integrations/serasa/serasa.service';
 import { ProductComponent } from './product/product.component';
 import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { StarsComponent } from './product/stars/stars.component';
