@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
+import {SerasaScore} from './serasa';
 
 @Injectable()
 export class SerasaService {
@@ -8,15 +9,10 @@ export class SerasaService {
 
   constructor(private http: Http) { }
 
-  getScore(cpf: number){
+  getScore(cpf: string): Promise<SerasaScore> {
     return this.http.get(this.url + `/sc/api/score/mc437_key_2017/${cpf}`)
       .toPromise()
-      .then(response => {
-        let json = response.json();
-        return {
-          score: +json.score
-        };
-      })
+      .then(response => ({ score: +response.json().score }))
       .catch((error) => {
         console.error(`Error on get score of CPF ${cpf}`, error);
         let promise;

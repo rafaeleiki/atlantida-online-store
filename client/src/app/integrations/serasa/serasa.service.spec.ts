@@ -1,6 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import {HttpModule} from '@angular/http';
 import { SerasaService } from './serasa.service';
+import {SerasaScore} from './serasa';
 
 describe('SerasaService', () => {
   beforeEach(() => {
@@ -14,10 +15,10 @@ describe('SerasaService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('herinque should be inadimplente',
+  it('should show Herinque as defaulting',
     inject([SerasaService],
       (service: SerasaService) => {
-    service.getScore(32453415808)
-      .then((score) => expect(score).toBe(0));
+    service.getScore('32453415808')
+      .then((response: SerasaScore) => expect(response.score).toBe(0));
   }));
 });

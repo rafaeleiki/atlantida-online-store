@@ -16,10 +16,10 @@ import { CepService } from './integrations/cep/cep.service';
 import { ProductComponent } from './product/product.component';
 import { StarsComponent } from './product/stars/stars.component';
 import { SearchComponent } from './search/search.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
-import {SharedModule} from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 
 
 const appRoutes: Routes = [
