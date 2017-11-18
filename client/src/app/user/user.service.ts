@@ -27,6 +27,12 @@ export class UserService {
       .then((auth) => this.getUserInfo(auth.payload.id));
   }
 
+  logout() {
+    this.user = null;
+    getStorage().removeItem(USER_KEY);
+    this.subject.next(this.user);
+  }
+
   getCurrentUser(): Promise<User> {
     return Promise.resolve(this.user);
   }
