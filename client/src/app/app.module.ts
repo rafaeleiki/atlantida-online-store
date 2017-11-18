@@ -11,15 +11,15 @@ import { HttpModule } from '@angular/http';
 import { ClientService } from './integrations/clients/client.service';
 import { UserModule } from './user/user.module';
 import { ProductsService } from './integrations/products/products.service';
+import { SerasaService } from './integrations/serasa/serasa.service';
 import { CepService } from './integrations/cep/cep.service';
 import { ProductComponent } from './product/product.component';
-import { LoadingIconComponent } from './shared/loading-icon/loading-icon.component';
 import { StarsComponent } from './product/stars/stars.component';
 import { SearchComponent } from './search/search.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
-import {SharedModule} from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 
 
 const appRoutes: Routes = [
@@ -59,7 +59,13 @@ const appRoutes: Routes = [
     FormsModule,
     SharedModule,
   ],
-  providers: [ClientService, ProductsService, CepService, ShopCartService],
+  providers: [
+    ClientService,
+    ProductsService,
+    CepService,
+    ShopCartService,
+    SerasaService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
