@@ -8,6 +8,10 @@ import {
   UserResponse
 } from './client.api';
 
+function getStorage() { return window.localStorage; }
+
+const TOKEN_KEY = 'token_key';
+
 export const AUTH_ERRORS = {
   INVALID_CPF: 'INVALID_CPF',
   NOT_FOUND: 'NOT_FOUND'
@@ -19,7 +23,9 @@ export class ClientService {
   private url = 'http://mc437.ddns.net:5001/';
   private authToken: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    this.authToken = getStorage().getItem(TOKEN_KEY);
+  }
 
   signUp(data: CreateClientRequest): Promise<CreateClientResponse> {
     return this.http.post(this.url + 'client', data)
@@ -40,7 +46,7 @@ export class ClientService {
         if (response.error_code) {
           result = Promise.reject(response.error_code);
         } else {
-          this.authToken = response.payload.token;
+          this.setToken(response);
         }
         return result;
       })
@@ -58,5 +64,10 @@ export class ClientService {
       headers: new Headers({ 'X-access-token': this.authToken })
     }).toPromise()
       .then(response => response.json() as UserResponse);
+  }
+
+  setToken(response: AuthenticationResponse) {
+    this.authToken = response.payload.token;
+    getStorage().setItem(TOKEN_KEY, this.authToken);
   }
 }

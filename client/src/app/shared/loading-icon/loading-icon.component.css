@@ -6,6 +6,12 @@
   display: block;
 }
 
+.loading-icon.mini {
+  padding: 0.2em;
+  font-size: 1em;
+  display: inline-block;
+}
+
 @keyframes rotate {
   0%   { transform: rotate(0);      }
   50%  { transform: rotate(180deg); }
