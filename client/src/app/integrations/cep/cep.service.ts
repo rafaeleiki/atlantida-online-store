@@ -1,10 +1,6 @@
 import { Http, Headers } from '@angular/http';
 // import {  } from '@angular/common/http';
-
-
 import { Injectable } from '@angular/core';
-import { Observable }   from 'rxjs/Observable';
-import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 import {Address} from './cep';
 
 @Injectable()
