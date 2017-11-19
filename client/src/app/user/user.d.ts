@@ -6,7 +6,7 @@ export interface User {
   email: string;
   phone: string;
   cpf: string;
-  picture: string;
+  picture?: string;
   cep: string;
   address: Address;
 }

@@ -19,11 +19,12 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from "@angular/forms";
 import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
-import { SharedModule } from './shared/shared.module';
-
+import { LoginComponent } from './login/login.component';
+import {SharedModule} from './shared/shared.module';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
   { path: 'shopcart', component: ShopCartComponent },
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     ProductComponent,
     StarsComponent,
     SearchComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
