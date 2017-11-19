@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
-  { path: 'products', redirectTo: '/search/*' },
+  { path: 'products', redirectTo: '/search/*', pathMatch: 'full' },
   { path: 'shopcart', component: ShopCartComponent },
   { path: 'products/:id', component: ProductComponent },
   { path: 'search/:searchQuery', component: SearchComponent },
