@@ -76,7 +76,5 @@ export interface GetStatusPackageRes {
   transportadora: ShippingInc;
   partida: PlaceInfo;
   destino: PlaceInfo;
-  site: {
-    id: Store;
-  }
+  site: Store;
 }
