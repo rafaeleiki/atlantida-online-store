@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShopCartComponent } from './shopcart.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ShopCartService} from './shopcart.service';
 
 describe('ShopCartComponent', () => {
   let component: ShopCartComponent;
@@ -8,7 +10,9 @@ describe('ShopCartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShopCartComponent ]
+      declarations: [ ShopCartComponent ],
+      imports: [ NgbModule.forRoot() ],
+      providers: [ ShopCartService ]
     })
     .compileComponents();
   }));
