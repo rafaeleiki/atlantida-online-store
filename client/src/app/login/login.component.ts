@@ -24,14 +24,15 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.login(this.cpf, this.password)
       .then(() => this.router.navigate(['/home']))
-      .catch((error) => {
-      this.message = error;
-        // switch (error) {
-        //   case AUTH_ERRORS.INVALID_CPF:
-        //     this.message = 'CPF inválido';
-        //     break;
-        //   default: this.message = 'Ocorreu um erro';
-        // }
+      .catch((error: string) => {
+        this.message = error;
+        if (error.indexOf(AUTH_ERRORS.INVALID_CPF) >= 0) {
+          this.message = 'CPF inválido';
+        } else if (error.indexOf(AUTH_ERRORS.NOT_FOUND) >= 0) {
+          this.message = 'Combinação inválida de usuário / senha';
+        } else {
+          this.message = 'Ocorreu um erro; tente novamente';
+        }
       });
   }
 
