@@ -7,6 +7,8 @@ export const CURRENT_USER: User = {
   phone: '(19)946521576',
   cpf: '12345678910',
   picture: 'assets/img/leila.jpeg',
+  cep: '85628140',
+  address: null
 };
 
 const P1: SoldProduct = {

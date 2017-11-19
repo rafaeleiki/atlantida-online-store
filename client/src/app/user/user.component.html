@@ -10,6 +10,7 @@
       <div class="nav flex-column nav-pills user-options">
         <a class="nav-link" routerLink="history" routerLinkActive="active">Minhas compras</a>
         <a class="nav-link" routerLink="profile" routerLinkActive="active">Editar perfil</a>
+        <button class="btn btn-warning" (click)="logout()">Sair</button>
       </div>
     </div>
 
@@ -21,5 +22,5 @@
 </div>
 
 <ng-template #loadingUser>
-  Carregando...
+  <app-loading-icon></app-loading-icon>
 </ng-template>

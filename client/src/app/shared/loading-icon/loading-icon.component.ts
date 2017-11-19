@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-loading-icon',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loading-icon.component.css']
 })
 export class LoadingIconComponent implements OnInit {
+
+  @Input() mini: boolean;
 
   constructor() { }
 

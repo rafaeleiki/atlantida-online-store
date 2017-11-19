@@ -1,10 +1,14 @@
+import {Address} from '../integrations/cep/cep';
+
 export interface User {
   name: string;
   username: string;
   email: string;
   phone: string;
   cpf: string;
-  picture: string;
+  picture?: string;
+  cep: string;
+  address: Address;
 }
 
 export interface SoldProduct {

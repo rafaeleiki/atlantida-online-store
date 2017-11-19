@@ -1,36 +1,36 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ProductsService} from '../integrations/products/products.service';
-import {Http, HttpModule} from '@angular/http';
-import {SharedModule} from '../shared/shared.module';
+import { LoginComponent } from './login.component';
+import {FormsModule} from '@angular/forms';
+import {UserService} from '../user/user.service';
+import {ClientService} from '../integrations/clients/client.service';
+import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('LoginComponent', () => {
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [ LoginComponent ],
       imports: [
+        FormsModule,
         HttpModule,
-        SharedModule,
-        NgbModule.forRoot(),
         RouterModule.forRoot([]),
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
-        ProductsService,
+        UserService,
+        ClientService,
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
