@@ -7,9 +7,9 @@ import { UserService } from './user.service';
 import { UserComponent } from './user.component';
 import { ShoppingHistoryComponent } from './shopping-history/shopping-history.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ClientService} from '../integrations/clients/client.service';
 import {FormsModule} from "@angular/forms";
 import {CepService} from '../integrations/cep/cep.service';
-import {LoadingIconComponent} from '../shared/loading-icon/loading-icon.component';
 import {SharedModule} from '../shared/shared.module';
 
 const routes: Routes = [
@@ -38,6 +38,11 @@ const routes: Routes = [
     FormsModule,
     SharedModule,
   ],
-  providers: [AuthGuard, UserService, CepService],
+  providers: [
+    AuthGuard,
+    UserService,
+    ClientService,
+    CepService
+  ],
 })
 export class UserModule { }

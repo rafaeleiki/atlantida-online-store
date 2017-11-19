@@ -2,8 +2,13 @@ import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import {NavBarComponent} from './nav-bar/nav-bar.component';
-import {RouterModule, RouterOutlet} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {ShopCartService} from './shopcart/shopcart.service';
+import {UserService} from './user/user.service';
+import {ClientService} from './integrations/clients/client.service';
+import {HttpModule} from '@angular/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,8 +17,17 @@ describe('AppComponent', () => {
         AppComponent,
         NavBarComponent,
       ],
-      imports: [RouterModule.forRoot([])],
-      providers: [{ provide: APP_BASE_HREF, useValue: '/' }]
+      imports: [
+        RouterModule.forRoot([]),
+        FormsModule,
+        HttpModule,
+      ],
+      providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
+        ShopCartService,
+        UserService,
+        ClientService,
+      ]
     }).compileComponents();
   }));
 

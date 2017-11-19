@@ -51,7 +51,19 @@
 
     <ul class="navbar-nav mr-3 links">
       <li class="nav-item special-link">
-        <a class="nav-link" routerLink="/user" routerLinkActive="active">Meu perfil</a>
+        <a *ngIf="user; else notLoggedIn"
+           class="nav-link"
+           routerLink="/user"
+           routerLinkActive="active">
+          Meu perfil
+        </a>
+        <ng-template #notLoggedIn>
+          <a class="nav-link"
+             routerLink="/login"
+             routerLinkActive="active">
+            Entrar
+          </a>
+        </ng-template>
       </li>
       <li class="nav-item">
         <a class="nav-link " role="button"  routerLink="/shopcart" href="#" ngbTooltip="Meu carrinho"  placement="bottom">

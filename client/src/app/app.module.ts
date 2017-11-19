@@ -20,10 +20,12 @@ import {FormsModule} from "@angular/forms";
 import { ProductPicsComponent } from './product-pics/product-pics.component';
 import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
-import { SharedModule } from './shared/shared.module';
+import { LoginComponent } from './login/login.component';
+import {SharedModule} from './shared/shared.module';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
   { path: 'products', redirectTo: '/search/*', pathMatch: 'full' },
@@ -50,6 +52,7 @@ const appRoutes: Routes = [
     StarsComponent,
     SearchComponent,
     ProductPicsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
