@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchComponent } from './search.component';
+import {SharedModule} from '../shared/shared.module';
+import {RouterModule} from '@angular/router';
+import {APP_BASE_HREF} from '@angular/common';
+import {ProductsService} from '../integrations/products/products.service';
+import {HttpModule} from '@angular/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -8,7 +14,16 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
+      declarations: [ SearchComponent ],
+      imports: [
+        SharedModule,
+        HttpModule,
+        RouterModule.forRoot([]),
+      ],
+      providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
+        ProductsService,
+      ]
     })
     .compileComponents();
   }));

@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
+import {FormsModule} from '@angular/forms';
+import {SharedModule} from '../../shared/shared.module';
+import {UserService} from '../user.service';
+import {ClientService} from '../../integrations/clients/client.service';
+import {HttpModule} from '@angular/http';
+import {CepService} from '../../integrations/cep/cep.service';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -8,7 +14,17 @@ describe('ProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
+      declarations: [ ProfileComponent ],
+      imports: [
+        FormsModule,
+        SharedModule,
+        HttpModule,
+      ],
+      providers: [
+        UserService,
+        ClientService,
+        CepService,
+      ]
     })
     .compileComponents();
   }));

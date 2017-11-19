@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShoppingHistoryComponent } from './shopping-history.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {UserService} from '../user.service';
+import {ClientService} from '../../integrations/clients/client.service';
+import {HttpModule} from '@angular/http';
 
 describe('ShoppingHistoryComponent', () => {
   let component: ShoppingHistoryComponent;
@@ -8,7 +12,15 @@ describe('ShoppingHistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShoppingHistoryComponent ]
+      declarations: [ ShoppingHistoryComponent ],
+      imports: [
+        HttpModule,
+        NgbModule.forRoot(),
+      ],
+      providers: [
+        UserService,
+        ClientService,
+      ]
     })
     .compileComponents();
   }));
