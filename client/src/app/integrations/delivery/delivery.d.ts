@@ -20,6 +20,19 @@ export interface PostPackageParam {
 
 
 // Return structures
+export interface GetAllPackagesRes {
+  id: number;
+  id_transportadora: number;
+  id_site: number;
+  id_partida: number;
+  id_destino: number;
+  status: number;
+  preco: number;
+  destinatario: string;
+  created: string;
+  modified: string
+}
+
 export interface GetPriceDateRes {
   message: string;
   preco: number;
