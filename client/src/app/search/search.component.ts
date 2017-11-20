@@ -34,8 +34,8 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap((params: ParamMap) => {
-        const query = params.get('searchQuery') || '*';
-        return this.productService.searchProducts(query);
+        this.query = params.get('searchQuery') || '*';
+        return this.productService.searchProducts(this.query);
       })
       .subscribe((products: Product[]) => {
         this.searchResults = products;
