@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from "@angular/http";
 import {
-  CancelPackageRes, GetPriceDateParam, GetPriceDateRes, GetStatusPackageRes, PostPackageParam,
+  CancelPackageRes, GetAllPackagesRes, GetPriceDateParam, GetPriceDateRes, GetStatusPackageRes, PostPackageParam,
   PostPackageRes
 } from "./delivery";
 
@@ -10,23 +10,31 @@ const GROUP_ID: number = 4;
 @Injectable()
 export class DeliveryService {
 
-  private url = "site-env.mxvnckfmbb.us-east-2.elasticbeanstalk.com/api";
+  private url = "http://site-env.mxvnckfmbb.us-east-2.elasticbeanstalk.com/api";
 
   constructor(private http: Http) { }
 
+  getAllPackages(): Promise<[GetAllPackagesRes]> {
+    return this.http.get(this.url + "/envio/")
+      .toPromise()
+      .then(response => (response.json() as [GetAllPackagesRes])
+        .filter(singlePackage => singlePackage.id_site === GROUP_ID))
+      .catch(error => console.log(error));
+  }
+
   getPriceDate(deliveryInfo: GetPriceDateParam): Promise<GetPriceDateRes> {
     deliveryInfo["id_site"] = GROUP_ID;
-    return this.http.get(this.url + "/consulta",{params : {deliveryInfo}})
-    .toPromise()
-    .then(response => response.json() as GetPriceDateRes)
-    .catch(error => console.log(error));
+    return this.http.get(this.url + "/consulta",{params : deliveryInfo})
+      .toPromise()
+      .then(response => response.json() as GetPriceDateRes)
+      .catch(error => console.log(error));
   }
 
   postPackage(packageInfo: PostPackageParam): Promise<PostPackageRes> {
-    var param = `id_site=${GROUP_ID}&destinatario=${packageInfo.destinatario}&volume=${packageInfo.volume}
-             &destino_cep=${packageInfo.destino_cep}&destino_numero=${packageInfo.destino_numero}
-             &destino_estado=${packageInfo.destino_estado}&destino_cidade=${packageInfo.destino_cidade}
-             &destino_endereco=${packageInfo.destino_endereco}`;
+    let param = `id_site=${GROUP_ID}&destinatario=${packageInfo.destinatario}&volume=${packageInfo.volume}`+
+             `&destino_cep=${packageInfo.destino_cep}&destino_numero=${packageInfo.destino_numero}` +
+             `&destino_estado=${packageInfo.destino_estado}&destino_cidade=${packageInfo.destino_cidade}` +
+             `&destino_endereco=${packageInfo.destino_endereco}`;
     return this.http.post(this.url + "/envio?" + param, {})
       .toPromise()
       .then(response => response.json() as PostPackageRes)
