@@ -3,6 +3,24 @@ export interface OrangoPagConsultTransactionRequest {
   cnpj_loja: number;
   format: string;
   api_key: string;
+}
+
+export interface OrangoPagConsultTransactionsRequest {
+  cnpj_loja: number;
+  format: string;
+  api_key: string;
+
+  // optional parameters
+  data_inicial: number;
+  data_final: number;
+  estado_transacao: string;
+  tipo_transacao: string;
+  valor_max: number;
+  valor_min: number;
+  numero_cartao: number;
+}
+
+export interface OrangoPagConsultTransactionReturn {
   ID: string;
   estado_transacao: string;
   tipo_pagamento: string;
@@ -11,13 +29,6 @@ export interface OrangoPagConsultTransactionRequest {
   numero_cartao: number;
   nome_sacado: string;
   cpf_sacado: number;
-  data_inicial: number;
-  data_final: number;
-  tipo_transacao: string;
-  valor_max: number;
-  valor_min: number;
-  transacoes: number;
-  data_transacao: number;
 }
 
 export interface OrangoPagBoletoTransactionRequest {
@@ -73,6 +84,9 @@ export interface TransactionRequest {
   store_cnpj: number;
   format: string;
   api_key: string;
+}
+
+export interface TransactionReturn {
   id: string;
   transaction_state: string;
   payment_type: string;
@@ -81,13 +95,21 @@ export interface TransactionRequest {
   card_number: number;
   withdraw_name: string;
   withdraw_cpf: number;
+}
+
+export interface TransactionsRequest {
+  store_cnpj: number;
+  format: string;
+  api_key: string;
+
+  // Optional parameters
   initial_date: number;
   final_date: number;
+  transaction_state: string;
   transaction_type: string;
   max_value: number;
   min_value: number;
-  transactions: number;
-  transaction_date: number;
+  card_number: number;
 }
 
 export interface BoletoTransactionRequest {
@@ -137,37 +159,3 @@ export interface TransactionReturn {
   data: string;
   extra: string;
 }
-
-
-
-
-
-
-
-
-
-export interface Payments {
-  id_trans: number;
-  cnpj: number;
-  format: string;
-  api_key: string;
-  id: string;
-  transaction_status: string;
-  payment_type: string;
-  date: string;
-  total_amount: number;
-  card_number: number;
-  withdraw_name: string;
-  withdraw_cpf: number;
-  inicial_date: number;
-  final_date: number;
-  transaction_type: string;
-  max_amount: number;
-  min_amount: number;
-  transactions: number;
-  transaction_date: number;
-  message: string;
-  data: string;
-  extra: string;
-}
-

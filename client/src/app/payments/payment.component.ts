@@ -1,5 +1,6 @@
 
-import {Component} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
+import {TransactionRequest, TransactionReturn} from "../integrations/payments/payments";
 
 @Component({
   selector: 'app-payment',
@@ -7,3 +8,8 @@ import {Component} from "@angular/core";
   styleUrls: ['./payment.component.css']
 })
 
+export class PaymentComponent implements OnInit {
+  private transactionRequest: TransactionRequest;
+  private transactionReturn: TransactionReturn;
+
+}
