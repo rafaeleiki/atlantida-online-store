@@ -51,7 +51,7 @@ export interface OrangoPagCreditTransactionRequest {
   cpf_sacado: number;
   numero_cartao: number;
   nome_cartao: string;
-  data_expiracao: number;
+  data_expiracao: string;
   codigo_verificaccao: number;
   tipo_cartao: string;
   n_parcelas: number;
@@ -68,7 +68,7 @@ export interface OrangoPagDebitTransactionRequest {
   cpf_sacado: number;
   numero_cartao: number;
   nome_cartao: string;
-  data_expiracao: number;
+  data_expiracao: string;
   codigo_verificaccao: number;
   tipo_cartao: string;
 }
@@ -132,7 +132,7 @@ export interface CreditTransactionRequest {
   withdraw_cpf: number;
   card_number: number;
   card_name: string;
-  expiration_date: number;
+  expiration_date: string;
   verification_code: number;
   card_type: string;
   n_parcel: number;
@@ -149,7 +149,7 @@ export interface DebitTransactionRequest {
   withdraw_cpf: number;
   card_number: number;
   card_name: string;
-  expiration_date: number;
+  expiration_date: string;
   verification_code: number;
   card_type: string;
 }

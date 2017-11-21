@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {
-  BoletoTransactionRequest,
-  ConsultTransactionListRequest,
-  ConsultTransactionRequest, ConsultTransactionReturn, CreateTransactionReturn, CreditTransactionRequest,
-  DebitTransactionRequest,
-  OrangoPagConsultTransactionReturn, OrangoPagCreateTransactionReturn, OrangoPagTransactionReturn, Payments,
-  TransactionRequest,
-  TransactionReturn
+  OrangoPagBoletoTransactionRequest,
+  OrangoPagConsultTransactionReturn,
+  OrangoPagCreateTransactionReturn,
+  OrangoPagConsultTransactionListRequest, CreateTransactionReturn,
 } from "./payments";
+import {OrangoPagConsultTransactionRequest} from "./payments";
+import {OrangoPagCreditTransactionRequest, OrangoPagDebitTransactionRequest, ConsultTransactionReturn} from "./payments";
 
 @Injectable()
 export class PaymentsService {
@@ -17,7 +16,7 @@ export class PaymentsService {
 
   constructor(private http: Http) { }
 
-  getTransaction(transaction: ConsultTransactionRequest): Promise<ConsultTransactionReturn> {
+  getTransaction(transaction: OrangoPagConsultTransactionRequest): Promise<ConsultTransactionReturn> {
     return this.http.get(this.url, {params: transaction})
       .toPromise()
       .then(response => {
@@ -39,7 +38,7 @@ export class PaymentsService {
       });
   }
 
-  getTransactions(transaction: ConsultTransactionListRequest): Promise<ConsultTransactionReturn[]> {
+  getTransactions(transaction: OrangoPagConsultTransactionListRequest): Promise<ConsultTransactionReturn[]> {
     return this.http.get(this.url, {params: transaction})
       .toPromise()
       .then(response => {
@@ -57,7 +56,7 @@ export class PaymentsService {
       })
   }
 
-  postBoleto(transaction: BoletoTransactionRequest): Promise<CreateTransactionReturn> {
+  postBoleto(transaction: OrangoPagBoletoTransactionRequest): Promise<CreateTransactionReturn> {
     return this.http.post(this.url, {params: transaction})
       .toPromise()
       .then(response => {
@@ -74,7 +73,7 @@ export class PaymentsService {
       });
   }
 
-  postCredit(transaction: CreditTransactionRequest): Promise<CreateTransactionReturn> {
+  postCredit(transaction: OrangoPagCreditTransactionRequest): Promise<CreateTransactionReturn> {
     return this.http.post(this.url, {params: transaction})
       .toPromise()
       .then(response => {
@@ -91,7 +90,7 @@ export class PaymentsService {
       });
   }
 
-  postDebit(transaction: DebitTransactionRequest): Promise<CreateTransactionReturn> {
+  postDebit(transaction: OrangoPagDebitTransactionRequest): Promise<CreateTransactionReturn> {
     return this.http.post(this.url, {params: transaction})
       .toPromise()
       .then(response => {
