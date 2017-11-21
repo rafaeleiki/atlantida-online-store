@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {TestBed, inject, async} from '@angular/core/testing';
 
 import { DeliveryService } from './delivery.service';
 import {HttpModule} from '@angular/http';
@@ -33,13 +33,13 @@ describe('DeliveryService', () => {
   };
 
   it('should be able to get the expected price and delivery date of a package',
-    inject([DeliveryService],
+    async(inject([DeliveryService],
       (service: DeliveryService) => {
     service.getPriceDate(gpdp)
       .then(res => expect(
         res.message == gpdr.message && res.preco === gpdr.preco && res.tempo === gpdr.tempo
       ).toBeTruthy());
-  }));
+  })));
 
   let ppp: PostPackageParam = {
     destinatario: "Nos",
@@ -58,13 +58,13 @@ describe('DeliveryService', () => {
   };
 
   it('should be able to post a package',
-    inject([DeliveryService],
+    async(inject([DeliveryService],
       (service: DeliveryService) => {
     service.postPackage(ppp)
       .then(res => expect(
         res.message === ppr.message && res.preco === ppr.preco
       ).toBeTruthy());
-  }));
+  })));
 
   let cpr: CancelPackageRes = {
     status: "Status foi alterado com sucesso",
@@ -72,27 +72,29 @@ describe('DeliveryService', () => {
   };
 
   it('should be able to cancel a package delivery',
-    inject([DeliveryService],
+    async(inject([DeliveryService],
       (service: DeliveryService) => {
     service.postPackage(ppp)
       .then(info => service.cancelPackage(info.id)
         .then(res => expect(
           res.status === cpr.status && res.message === cpr.message
         ).toBeTruthy()));
-  }));
+  })));
 
   it('should be able to get some delivery info',
-    inject([DeliveryService],
+    async(inject([DeliveryService],
       (service: DeliveryService) => {
     service.postPackage(ppp)
       .then(info => service.getStatusPackage(info.id)
         .then(response => expect(response.status).toEqual(1)));
-  }));
+  })));
 
   it('should be able to get all packages',
-    inject([DeliveryService],
+    async(inject([DeliveryService],
       (service: DeliveryService) => {
         service.getAllPackages()
-          .then(res => expect(res.length).toBeGreaterThan(0));
-      }));
+          .then(res => {
+            expect(res.length).toBeLessThan(0)
+          });
+      })));
 });
