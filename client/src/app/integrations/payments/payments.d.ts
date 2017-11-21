@@ -5,7 +5,7 @@ export interface OrangoPagConsultTransactionRequest {
   api_key: string;
 }
 
-export interface OrangoPagConsultTransactionsRequest {
+export interface OrangoPagConsultTransactionListRequest {
   cnpj_loja: number;
   format: string;
   api_key: string;
@@ -73,20 +73,20 @@ export interface OrangoPagDebitTransactionRequest {
   tipo_cartao: string;
 }
 
-export interface OrangoPagTransactionReturn {
+export interface OrangoPagCreateTransactionReturn {
   msg: string;
   dados: string;
   extra: string;
 }
 
-export interface TransactionRequest {
+export interface ConsultTransactionRequest {
   id_trans: number;
   store_cnpj: number;
   format: string;
   api_key: string;
 }
 
-export interface TransactionReturn {
+export interface ConsultTransactionReturn {
   id: string;
   transaction_state: string;
   payment_type: string;
@@ -97,7 +97,7 @@ export interface TransactionReturn {
   withdraw_cpf: number;
 }
 
-export interface TransactionsRequest {
+export interface ConsultTransactionListRequest {
   store_cnpj: number;
   format: string;
   api_key: string;
@@ -154,7 +154,7 @@ export interface DebitTransactionRequest {
   card_type: string;
 }
 
-export interface TransactionReturn {
+export interface CreateTransactionReturn {
   message: string;
   data: string;
   extra: string;

@@ -12,4 +12,8 @@ export class PaymentComponent implements OnInit {
   private transactionRequest: TransactionRequest;
   private transactionReturn: TransactionReturn;
 
+  ngOnInit() {
+
+  }
 }
+

@@ -21,6 +21,7 @@ import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
 import { LoginComponent } from './login/login.component';
 import {SharedModule} from './shared/shared.module';
+import {PaymentsService} from "./integrations/payments/payments.service";
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     SharedModule,
   ],
   providers: [
+    PaymentsService,
     ClientService,
     ProductsService,
     CepService,
