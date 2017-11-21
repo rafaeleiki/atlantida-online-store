@@ -1,0 +1,10 @@
+.product-pic {
+  width: auto;
+  height: 100%;
+  display: block;
+  margin: auto;
+}
+
+.product-pic-empty {
+  background-color: #666;
+}
