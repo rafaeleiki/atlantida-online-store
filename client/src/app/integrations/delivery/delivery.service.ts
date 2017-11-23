@@ -37,10 +37,10 @@ export class DeliveryService {
   }
 
   postPackage(packageInfo: PostPackageParam): Promise<PostPackageRes> {
-    let param = `id_site=${GROUP_ID}&destinatario=${packageInfo.destinatario}&volume=${packageInfo.volume}`+
-             `&destino_cep=${packageInfo.destino_cep}&destino_numero=${packageInfo.destino_numero}` +
-             `&destino_estado=${packageInfo.destino_estado}&destino_cidade=${packageInfo.destino_cidade}` +
-             `&destino_endereco=${packageInfo.destino_endereco}`;
+    let param = `id_site=${GROUP_ID}&` +
+      ['destinatario', 'volume', 'volume', 'destino_cep', 'destino_numero',
+        'destino_estado', 'destino_cidade', 'destino_endereco']
+      .map((key) => `${key}=${packageInfo[key]}`).join('&');
     return this.http.post(this.url + "/envio?" + param, {})
       .toPromise()
       .then(response => response.json() as PostPackageRes)
