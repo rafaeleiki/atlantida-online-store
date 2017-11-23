@@ -25,7 +25,6 @@ describe('DeliveryService', () => {
     volume: 10000
   };
 
-
   let gpdr: GetPriceDateRes = {
     message: "Preço calculado de R$9.90 e tempo estimado de 4 dias",
     preco: 9.9,
@@ -67,8 +66,8 @@ describe('DeliveryService', () => {
   })));
 
   let cpr: CancelPackageRes = {
-    status: "Status foi alterado com sucesso",
-    message: "A entrega do pacote foi cancelada"
+    status: "A entrega do pacote foi cancelada",
+    message: "Status foi alterado com sucesso"
   };
 
   it('should be able to cancel a package delivery',
@@ -76,9 +75,11 @@ describe('DeliveryService', () => {
       (service: DeliveryService) => {
     service.postPackage(ppp)
       .then(info => service.cancelPackage(info.id)
-        .then(res => expect(
+        .then(res => {
+          expect(
           res.status === cpr.status && res.message === cpr.message
-        ).toBeTruthy()));
+          ).toBeTruthy();
+        }));
   })));
 
   it('should be able to get some delivery info',
@@ -86,7 +87,9 @@ describe('DeliveryService', () => {
       (service: DeliveryService) => {
     service.postPackage(ppp)
       .then(info => service.getStatusPackage(info.id)
-        .then(response => expect(response.status).toEqual(1)));
+        .then(response => {
+          expect(response.status).toEqual(1)
+        }));
   })));
 
   it('should be able to get all packages',
@@ -94,7 +97,7 @@ describe('DeliveryService', () => {
       (service: DeliveryService) => {
         service.getAllPackages()
           .then(res => {
-            expect(res.length).toBeLessThan(0)
+            expect(res.length).toBeGreaterThan(0);
           });
       })));
 });
