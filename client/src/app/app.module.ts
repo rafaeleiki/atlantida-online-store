@@ -16,7 +16,8 @@ import { CepService } from './integrations/cep/cep.service';
 import { ProductComponent } from './product/product.component';
 import { StarsComponent } from './product/stars/stars.component';
 import { SearchComponent } from './search/search.component';
-import { FormsModule } from "@angular/forms";
+import {FormsModule} from "@angular/forms";
+import { ProductPicsComponent } from './product-pics/product-pics.component';
 import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
 import { LoginComponent } from './login/login.component';
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
+  { path: 'products', redirectTo: '/search/*', pathMatch: 'full' },
   { path: 'shopcart', component: ShopCartComponent },
   { path: 'products/:id', component: ProductComponent },
   { path: 'search/:searchQuery', component: SearchComponent },
@@ -49,6 +51,7 @@ const appRoutes: Routes = [
     ProductComponent,
     StarsComponent,
     SearchComponent,
+    ProductPicsComponent,
     LoginComponent,
   ],
   imports: [
