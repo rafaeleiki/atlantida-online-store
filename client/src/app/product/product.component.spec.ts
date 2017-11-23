@@ -10,6 +10,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {ProductsService} from '../integrations/products/products.service';
 import {HttpModule} from '@angular/http';
 import {ShopCartService} from '../shopcart/shopcart.service';
+import {ProductPicsComponent} from '../product-pics/product-pics.component';
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
@@ -17,7 +18,11 @@ describe('ProductComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductComponent, StarsComponent ],
+      declarations: [
+        ProductComponent,
+        StarsComponent,
+        ProductPicsComponent,
+      ],
       imports: [
         FormsModule,
         SharedModule,

@@ -1,0 +1,15 @@
+<ngb-carousel *ngIf="product?.img.length > 0; else noPic">
+  <ng-template ngbSlide *ngFor="let picture of product.img">
+    <div [ngStyle]="{ 'height': height + 'px' }">
+      <a *ngIf="link; else noLink" routerLink="/products/{{ product._id }}">
+        <img src="{{picture}}" class="product-pic" />
+      </a>
+      <ng-template #noLink>
+        <img src="{{picture}}" class="product-pic" />
+      </ng-template>
+    </div>
+  </ng-template>
+</ngb-carousel>
+<ng-template #noPic>
+  <img class="product-pic product-pic-empty" [ngStyle]="{ 'height': maxHeight + 'px' }">
+</ng-template>
