@@ -1,36 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ProductsService} from '../integrations/products/products.service';
-import {Http, HttpModule} from '@angular/http';
-import {SharedModule} from '../shared/shared.module';
+import { ProductPicsComponent } from './product-pics.component';
 import {RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('ProductPicsComponent', () => {
+  let component: ProductPicsComponent;
+  let fixture: ComponentFixture<ProductPicsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
+      declarations: [ ProductPicsComponent ],
       imports: [
-        HttpModule,
-        SharedModule,
-        NgbModule.forRoot(),
         RouterModule.forRoot([]),
+        NgbModule.forRoot(),
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
-        ProductsService,
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(ProductPicsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

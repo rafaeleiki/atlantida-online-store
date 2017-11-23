@@ -12,24 +12,29 @@ import { MewketingService } from './integrations/mewketing/mewketing.service';
 import { ClientService } from './integrations/clients/client.service';
 import { UserModule } from './user/user.module';
 import { ProductsService } from './integrations/products/products.service';
+import { SerasaService } from './integrations/serasa/serasa.service';
+import { CepService } from './integrations/cep/cep.service';
 import { ProductComponent } from './product/product.component';
-import { LoadingIconComponent } from './loading-icon/loading-icon.component';
 import { StarsComponent } from './product/stars/stars.component';
 import { SearchComponent } from './search/search.component';
 import {FormsModule} from "@angular/forms";
+import { ProductPicsComponent } from './product-pics/product-pics.component';
 import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
-
+import { LoginComponent } from './login/login.component';
+import {SharedModule} from './shared/shared.module';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: 'help', component: HelpComponent },
+  { path: 'products', redirectTo: '/search/*', pathMatch: 'full' },
   { path: 'shopcart', component: ShopCartComponent },
   { path: 'products/:id', component: ProductComponent },
   { path: 'search/:searchQuery', component: SearchComponent },
   { path: 'shopcart', component: ShopCartComponent },
-  { path:                                                                                                        '',
+  { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },
@@ -45,9 +50,10 @@ const appRoutes: Routes = [
     HelpComponent,
     ShopCartComponent,
     ProductComponent,
-    LoadingIconComponent,
     StarsComponent,
     SearchComponent,
+    ProductPicsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,8 +63,15 @@ const appRoutes: Routes = [
     UserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    SharedModule,
   ],
-  providers: [ClientService, ProductsService, ShopCartService],
+  providers: [
+    ClientService,
+    ProductsService,
+    CepService,
+    ShopCartService,
+    SerasaService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

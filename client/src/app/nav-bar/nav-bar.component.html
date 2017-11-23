@@ -18,17 +18,15 @@
           Produtos
         </button>
         <div ngbDropdownMenu>
-          <label class="dropdown-header" routerLink="#">Eletrônicos</label>
-          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Celulares</a>
-          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Computadores</a>
+          <a class="dropdown-item" routerLink="/search/celular">Celulares</a>
+          <a class="dropdown-item" routerLink="/search/computador">Computadores</a>
           <div class="dropdown-divider"></div>
 
-          <label class="dropdown-header" routerLink="#">Eletrodomésticos</label>
-          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Geladeiras</a>
-          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Fogões</a>
+          <a class="dropdown-item" routerLink="/search/geladeira">Geladeiras</a>
+          <a class="dropdown-item" routerLink="/search/fogão">Fogões</a>
           <div class="dropdown-divider"></div>
 
-          <a class="dropdown-item" routerLink="#" routerLinkActive="active">Ver todas as categorias</a>
+          <a class="dropdown-item" href="/products/">Ver todas as categorias</a>
         </div>
       </li>
       <li class="nav-item">
@@ -50,10 +48,22 @@
         </button>
       </span>
     </div>
-    
+
     <ul class="navbar-nav mr-3 links">
       <li class="nav-item special-link">
-        <a class="nav-link" routerLink="/user" routerLinkActive="active">Meu perfil</a>
+        <a *ngIf="user; else notLoggedIn"
+           class="nav-link"
+           routerLink="/user"
+           routerLinkActive="active">
+          Meu perfil
+        </a>
+        <ng-template #notLoggedIn>
+          <a class="nav-link"
+             routerLink="/login"
+             routerLinkActive="active">
+            Entrar
+          </a>
+        </ng-template>
       </li>
       <li class="nav-item">
         <a class="nav-link " role="button"  routerLink="/shopcart" href="#" ngbTooltip="Meu carrinho"  placement="bottom">
