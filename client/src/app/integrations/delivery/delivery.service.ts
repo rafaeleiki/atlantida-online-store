@@ -14,12 +14,15 @@ export class DeliveryService {
 
   constructor(private http: Http) { }
 
-  getAllPackages(): Promise<[GetAllPackagesRes]> {
-    return this.http.get(this.url + "/envio/")
+  getAllPackages(): Promise<GetAllPackagesRes[]> {
+    return this.http.get(this.url + "/envio")
       .toPromise()
-      .then(response => (response.json() as [GetAllPackagesRes])
+      .then(response => (response.json() as GetAllPackagesRes[])
         .filter(singlePackage => singlePackage.id_site === GROUP_ID))
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        return Promise.reject(error.message || error);
+      });
   }
 
   getPriceDate(deliveryInfo: GetPriceDateParam): Promise<GetPriceDateRes> {
@@ -27,7 +30,10 @@ export class DeliveryService {
     return this.http.get(this.url + "/consulta",{params : deliveryInfo})
       .toPromise()
       .then(response => response.json() as GetPriceDateRes)
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        return Promise.reject(error.message || error);
+      });
   }
 
   postPackage(packageInfo: PostPackageParam): Promise<PostPackageRes> {
@@ -38,20 +44,29 @@ export class DeliveryService {
     return this.http.post(this.url + "/envio?" + param, {})
       .toPromise()
       .then(response => response.json() as PostPackageRes)
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        return Promise.reject(error.message || error);
+      });
   }
 
   cancelPackage(package_id: number): Promise<CancelPackageRes> {
     return this.http.put(this.url + `/envio/${package_id}/cancela`, {})
       .toPromise()
       .then(response => response.json() as CancelPackageRes)
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        return Promise.reject(error.message || error);
+      });
   }
 
   getStatusPackage(package_id: number): Promise<GetStatusPackageRes> {
     return this.http.get(this.url + `/envio/${package_id}`)
       .toPromise()
       .then(response => response.json() as GetStatusPackageRes)
-      .catch(error => console.log(error));
+      .catch(error => {
+        console.log(error);
+        return Promise.reject(error.message || error);
+      });
   }
 }
