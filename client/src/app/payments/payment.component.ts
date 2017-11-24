@@ -117,6 +117,7 @@ export class PaymentComponent implements OnInit {
       volume: this.shopcart.reduce((vol, item) => item.volume + vol, 0),
     };
 
+    this.shopCartService.clearShopCart();
     this.deliveryService.postPackage(packageInfo)
       .then(deliveryResponse => {
         this.serverService.createPayment({

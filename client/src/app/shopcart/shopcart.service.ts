@@ -80,6 +80,10 @@ export class ShopCartService {
     return json ? JSON.parse(json) : {};
   }
 
+  clearShopCart() {
+    getWindow().localStorage.setItem(SHOPCART_ID, '{}');
+  }
+
 }
 
 function getWindow() {
