@@ -68,13 +68,3 @@
 .review-box-body {
   padding: 8px;
 }
-
-.product-pic {
-  height: 500px;
-  width: 100%;
-}
-
-.product-pic-empty {
-  display: inline-block;
-  background-color: #666;
-}
