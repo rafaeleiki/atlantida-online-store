@@ -73,6 +73,7 @@ export class UserService {
         cpf: user.payload.cpf,
         address: address,
         id: user.payload.id,
+        password: user.payload.password,
       };
       getStorage().setItem(USER_KEY, JSON.stringify(this.user));
       this.subject.next(this.user);

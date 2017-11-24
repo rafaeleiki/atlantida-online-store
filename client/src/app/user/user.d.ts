@@ -10,6 +10,7 @@ export interface User {
   picture?: string;
   address: UserAddress[];
   id: string;
+  password: string;
 }
 
 export interface SoldProduct {

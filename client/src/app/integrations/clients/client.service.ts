@@ -6,8 +6,9 @@ import {
   CreateClientRequest,
   CreateClientResponse,
   UserResponse,
-  UserAddress, UserAddressResponse
+  UserAddress, UserAddressResponse, UserEditInfoResponse
 } from './client.api';
+import {User} from "../../user/user";
 
 function getStorage() { return window.localStorage; }
 
@@ -121,5 +122,38 @@ export class ClientService {
   setToken(response: AuthenticationResponse) {
     this.authToken = response.payload.token;
     getStorage().setItem(TOKEN_KEY, this.authToken);
+  }
+
+  updateInfo(newUserInfo: User): Promise<UserEditInfoResponse> {
+    if (!this.authToken) {
+      throw Error('Need to authenticate before getting user info');
+    }
+
+    let body = {
+      payload: {
+        username: newUserInfo.username,
+        name: newUserInfo.name,
+        phone: newUserInfo.phone,
+        cpf: newUserInfo.cpf,
+        email: newUserInfo.email,
+        password: newUserInfo.password,
+      }
+    };
+
+    this.http.delete(this.url, this.getAccessHeader());
+
+    // return this.http.put(this.url + `client/${newUserInfo.id}`, body)
+    //   .toPromise()
+    //   .then(res => res.json() as UserEditInfoResponse)
+    //   .catch(error => {
+    //     console.log("Falha no edit de info" || error);
+    //   });
+
+    return this.http.post(this.url + `client`, body)
+      .toPromise()
+      .then(res => res.json() as UserEditInfoResponse)
+      .catch(error => {
+        console.log("Falha no edit de info" || error);
+      });
   }
 }

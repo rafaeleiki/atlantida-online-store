@@ -24,7 +24,6 @@ export class AddressComponent implements OnInit {
   removeAddress(id:string){
     this.clientService.removeAddress(id).then(() =>
         this.userService.updateAdressess(this.user));
-
   }
 
   addAddress(){

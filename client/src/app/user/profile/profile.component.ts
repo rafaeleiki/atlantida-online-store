@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {User} from '../user';
 import {CepService} from '../../integrations/cep/cep.service';
-import {Address} from '../../integrations/cep/cep';
+import {ClientService} from "../../integrations/clients/client.service";
 
 
 @Component({
@@ -15,10 +15,17 @@ export class ProfileComponent implements OnInit {
   private user: User;
   private loading: boolean;
 
-  constructor(private userService: UserService, private cepService: CepService) { }
+  constructor(
+    private userService: UserService,
+    private cepService: CepService,
+    private clientService: ClientService) { }
 
   ngOnInit() {
     this.userService.getCurrentUser()
       .then(user => {this.user = user;});
+  }
+
+  save() {
+    this.clientService.updateInfo(this.user);
   }
 }

@@ -2,51 +2,29 @@
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Nome Completo</label>
-    <input type="text" class="col-sm-10 form-control" value="{{user.name}}"/>
+    <input type="text" class="col-sm-10 form-control" name="name" [(ngModel)]="user.name"/>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Nickname</label>
-    <input type="text" class="col-sm-10 form-control" value="{{user.username}}"/>
+    <input type="text" class="col-sm-10 form-control" name="username" [(ngModel)]="user.username"/>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">CPF</label>
-    <input type="text" readonly class="form-control-plaintext" value="{{user.cpf}}">
+    <input type="text" readonly class="form-control-plaintext" name="cpf" [(ngModel)]="user.cpf">
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Email</label>
-    <input type="email" class="col-sm-10 form-control" value="{{user.email}}"/>
+    <input type="email" class="col-sm-10 form-control" name="email" [(ngModel)]="user.email"/>
   </div>
 
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Telefone</label>
-    <input type="tel" class="col-sm-10 form-control" value="{{user.phone}}"/>
-  </div>
-<!--
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">CEP</label>
-    <input type="text"
-           class="col-sm-10 form-control"
-           (blur)="getAddress()"
-           [(ngModel)]="user.cep"
-           name="editProfile">
-
+    <input type="tel" class="col-sm-10 form-control" name="phone" [(ngModel)]="user.phone"/>
   </div>
 
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">
-      Endereço
-      <app-loading-icon *ngIf="loading" [mini]="true"></app-loading-icon>
-    </label>
-    <input type="text"
-           name="address"
-           class="col-sm-10 form-control"
-           [(ngModel)]="user.address.endereco" />
-  </div>
--->
-
-  <button type="submit" class="btn btn-primary">Salvar</button>
+  <button type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
 
 </form>

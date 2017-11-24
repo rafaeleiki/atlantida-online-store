@@ -55,3 +55,9 @@ export interface UserAddress {
   id: string;
   error_code?:string;
 }
+
+export interface  UserEditInfoResponse {
+  payload: {
+    token: string;
+  }
+}
