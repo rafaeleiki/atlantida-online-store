@@ -109,11 +109,11 @@ export class PaymentComponent implements OnInit {
     const totalCost = this.getTotalCost();
     const packageInfo = {
       destinatario: this.user.name,
-      destino_cep: +this.user.address.cep,
-      destino_numero: +this.user.cep,
-      destino_estado: this.user.address.estado,
-      destino_cidade: this.user.address.cidade,
-      destino_endereco: this.user.address.endereco,
+      destino_cep: +this.user.address[0].CEP,
+      destino_numero: +this.user.address[0].number,
+      destino_estado: this.user.address[0].state,
+      destino_cidade: this.user.address[0].city,
+      destino_endereco: this.user.address[0].street,
       volume: this.shopcart.reduce((vol, item) => item.volume + vol, 0),
     };
 

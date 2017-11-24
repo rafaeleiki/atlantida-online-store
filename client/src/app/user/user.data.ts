@@ -1,15 +1,13 @@
 import {Buy, SoldProduct, User} from './user';
 
-export const CURRENT_USER: User = {
+/*export const CURRENT_USER: User = {
   name: 'Teste',
   username: 'teste',
   email: 'teste@teste.com',
-  phone: '(19)946521576',
+  phone: '946521576',
   cpf: '12345678910',
   picture: 'assets/img/leila.jpeg',
-  cep: '85628140',
-  address: null
-};
+};*/
 
 const P1: SoldProduct = {
   name: "Caneca grande",

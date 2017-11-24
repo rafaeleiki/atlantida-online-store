@@ -80,6 +80,7 @@ const appRoutes: Routes = [
     SerasaService,
     ServerService,
     DeliveryService,
+    MewketingService,
   ],
   bootstrap: [AppComponent]
 })

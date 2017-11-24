@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ShopCartItem, ShopCart } from './shopcart';
 import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
 import {Product} from '../integrations/products/products';
+import {ProductsService} from '../integrations/products/products.service';
 
 const SHOPCART_ID = "ShopCartItems";
 
@@ -9,7 +10,7 @@ const SHOPCART_ID = "ShopCartItems";
 export class ShopCartService {
   shopCartAmount : BehaviorSubject<number>;
 
-  constructor() {
+  constructor(private productsService : ProductsService) {
     const shopCart = this.getShopCart();
     this.shopCartAmount = new BehaviorSubject<number>(Object.keys(shopCart).length);
   }
@@ -40,6 +41,11 @@ export class ShopCartService {
     }
 
     this.saveShopCart(shopCart);
+  }
+
+  getStock(productId : string) : Promise<number> {
+    return this.productsService.getProduct(productId)
+      .then(res => res.stock);
   }
 
   changeAmount(item : ShopCartItem, amount : number) : void {

@@ -23,7 +23,7 @@ export interface AuthenticationResponse {
   payload?: {
     id: string;
     token: string;
-  }
+  };
   error_code?: string;
 }
 
@@ -37,4 +37,21 @@ export interface UserResponse {
     username: string;
     id: string;
   }
+}
+
+export interface UserAddressResponse {
+  payload?: {
+    addresses: UserAddress[];
+  };
+  error_code?: string;
+}
+
+export interface UserAddress {
+  CEP: string;
+  number: number;
+  street: string;
+  city: string;
+  state: string;
+  id: string;
+  error_code?:string;
 }
