@@ -1,0 +1,31 @@
+.address-box{
+  width: 23%;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  background-color: #efefef;
+  margin-bottom: 5px;
+  margin-left: 3px;
+  padding: 5px;
+}
+
+.sidebtn{
+  float: right;
+}
+
+h1{
+  font-size: 20px;
+  font-style: bold;
+}
+.row {
+  display: flex;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}

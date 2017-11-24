@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home'])
       })
       .catch((error: string) => {
+        if (error == 'ADDRESS_NOT_FOUND')
+          this.router.navigate(['/home'])
         this.message = error;
         if (error.indexOf(AUTH_ERRORS.INVALID_CPF) >= 0) {
           this.message = 'CPF inválido';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SHOPPING_HISTORY } from './user.data';
 import {Buy, User} from './user';
 import {ClientService} from '../integrations/clients/client.service';
-import {UserResponse} from '../integrations/clients/client.api';
+import {UserResponse, UserAddress} from '../integrations/clients/client.api';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 
@@ -43,25 +43,40 @@ export class UserService {
 
   getUserObservable(): Observable<User> {
     return this.subject.asObservable();
+
   }
 
-  private getUserInfo(clientId: string): Promise<User> {
+  getUserInfo(clientId: string): Promise<User> {
     return this.clientService.getUserInfo(clientId)
       .then((user: UserResponse) => this.setUser(user));
   }
 
-  private setUser(user: UserResponse): User {
-    this.user = {
-      cpf: user.payload.cpf,
-      name: user.payload.name,
-      username: user.payload.username,
-      email: user.payload.email,
-      phone: user.payload.phone,
-      address: null,
-      cep: ''
-    };
-    this.subject.next(this.user);
-    getStorage().setItem(USER_KEY, JSON.stringify(this.user));
-    return this.user;
+
+  updateAdressess(user: User): Promise<User> {
+    return this.clientService.getUserAddresses(user.id)
+      .then((address: UserAddress[])=> {
+        this.user.address = address;
+        getStorage().setItem(USER_KEY, JSON.stringify(this.user));
+
+        return this.user;
+      });
+  }
+
+  private setUser(user: UserResponse): Promise<User> {
+    return this.clientService.getUserAddresses(user.payload.id)
+    .then((address: UserAddress[])=> {
+      this.user = {
+        name: user.payload.name,
+        username: user.payload.username,
+        email: user.payload.email,
+        phone: user.payload.phone,
+        cpf: user.payload.cpf,
+        address: address,
+        id: user.payload.id,
+      };
+      getStorage().setItem(USER_KEY, JSON.stringify(this.user));
+      this.subject.next(this.user);
+      return this.user;
+    });
   }
 }

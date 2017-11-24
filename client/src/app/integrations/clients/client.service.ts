@@ -5,7 +5,8 @@ import {
   AuthenticationResponse,
   CreateClientRequest,
   CreateClientResponse,
-  UserResponse
+  UserResponse,
+  UserAddress, UserAddressResponse
 } from './client.api';
 
 function getStorage() { return window.localStorage; }
@@ -15,6 +16,10 @@ const TOKEN_KEY = 'token_key';
 export const AUTH_ERRORS = {
   INVALID_CPF: 'INVALID_CPF',
   NOT_FOUND: 'NOT_FOUND'
+};
+
+export const ADDRESS_ERRORS = {
+  ADDRESS_NOT_FOUND: 'ADDRESS_NOT_FOUND'
 };
 
 @Injectable()
@@ -35,6 +40,16 @@ export class ClientService {
         console.error('Error trying to sign up client', error);
         return Promise.reject(error.message || error);
       });
+  }
+
+  getAccessHeader() : Object {
+    if (!this.authToken) {
+      throw Error('Need to authenticate before getting user info');
+    }
+
+    return {
+      headers: new Headers({ 'X-Access-Token': this.authToken })
+    };
   }
 
   authenticate(data: AuthenticationRequest): Promise<AuthenticationResponse> {
@@ -60,10 +75,47 @@ export class ClientService {
     if (!this.authToken) {
       throw Error('Need to authenticate before getting user info');
     }
-    return this.http.get(this.url + `client/${clientId}`, {
-      headers: new Headers({ 'X-access-token': this.authToken })
-    }).toPromise()
+    return this.http.get(this.url + `client/${clientId}`, this.getAccessHeader())
+      .toPromise()
       .then(response => response.json() as UserResponse);
+  }
+
+  getUserAddresses(clientId: string): Promise<UserAddress[]> {
+    if (!this.authToken) {
+      throw Error('Need to authenticate before getting user info');
+    }
+    return this.http.get(this.url + `address/${clientId}`, this.getAccessHeader())
+      .toPromise()
+      .then((res) => {
+        let response: UserAddressResponse = res.json() as UserAddressResponse;
+        if (response.error_code) {
+          // throw new Error(response.error_code);
+          return [];
+        } else {
+          return response.payload.addresses;
+        }
+      })
+      .catch(error => {
+        console.error(`Error trying to retrieve address`, error);
+        return Promise.reject(error.message || error);
+      });
+  }
+
+  removeAddress(addrId: string): Promise<void> {
+    if (!this.authToken) {
+      throw Error('Need to authenticate before getting user info');
+    }
+    return this.http.delete(this.url + `address/${addrId}`, this.getAccessHeader())
+      .toPromise().then( () => {});
+  }
+
+  addAddress(clientId: string, cep: string, houseNumber: number): Promise<UserAddress> {
+    if (!this.authToken) {
+      throw Error('Need to authenticate before getting user info');
+    }
+    return this.http.post(this.url + `address/${clientId}`, {cep: cep, number: houseNumber}, this.getAccessHeader())
+      .toPromise()
+      .then(response => response.json() as UserAddress);
   }
 
   setToken(response: AuthenticationResponse) {
