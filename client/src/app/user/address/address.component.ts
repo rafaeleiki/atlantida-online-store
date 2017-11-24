@@ -11,23 +11,26 @@ import {User} from '../user.d';
 })
 export class AddressComponent implements OnInit {
 
+  private cep: string;
+  private num: number;
   private user: User;
   constructor(private userService: UserService, private clientService: ClientService) { }
 
   ngOnInit(){
-    this.userService.getCurrentUser()
-      .then(user => {
-        this.user = user;
+    this.userService.getUserObservable()
+      .subscribe(user => { this.userService.getUserInfo(user.id)
+        .then(user2 => { this.user = user2
+        });
       });
   }
 
-
   removeAddress(id:string){
-    this.clientService.removeAddress(id);
+    this.clientService.removeAddress(id)
   }
 
-  addAddress(CEP:string, housenumber: number){
-    this.clientService.addAddress(this.user.id, CEP, housenumber );
+  addAddress(){
+    this.clientService.addAddress(this.user.id, this.cep, this.num )
+      .then( address => { alert(address.CEP) });
   }
 
 }

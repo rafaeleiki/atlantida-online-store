@@ -43,9 +43,10 @@ export class UserService {
 
   getUserObservable(): Observable<User> {
     return this.subject.asObservable();
+
   }
 
-  private getUserInfo(clientId: string): Promise<User> {
+  getUserInfo(clientId: string): Promise<User> {
     return this.clientService.getUserInfo(clientId)
       .then((user: UserResponse) => this.setUser(user));
   }
