@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user/user.service';
 import {Router} from '@angular/router';
 import {AUTH_ERRORS} from '../integrations/clients/client.service';
+import {MewketingService} from "../integrations/mewketing/mewketing.service";
 
 @Component({
   selector: 'app-login',
@@ -16,14 +17,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router) { }
+    private router: Router,
+    private emailService: MewketingService) { }
 
   ngOnInit() {
   }
 
   login() {
     this.userService.login(this.cpf, this.password)
-      .then(() => this.router.navigate(['/home']))
+      .then((user) => {
+        this.emailService.createReceiver(user.username, user.email);
+        this.router.navigate(['/home'])
+      })
       .catch((error: string) => {
         this.message = error;
         if (error.indexOf(AUTH_ERRORS.INVALID_CPF) >= 0) {
