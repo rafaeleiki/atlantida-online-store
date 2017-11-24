@@ -23,6 +23,8 @@ import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
 import { LoginComponent } from './login/login.component';
 import {SharedModule} from './shared/shared.module';
+import {PaymentsService} from "./integrations/payments/payments.service";
+import {PaymentComponent} from './payments/payment.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'products/:id', component: ProductComponent },
   { path: 'search/:searchQuery', component: SearchComponent },
   { path: 'shopcart', component: ShopCartComponent },
+  { path: 'payment', component: PaymentComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -54,6 +57,7 @@ const appRoutes: Routes = [
     SearchComponent,
     ProductPicsComponent,
     LoginComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +70,7 @@ const appRoutes: Routes = [
     SharedModule,
   ],
   providers: [
+    PaymentsService,
     ClientService,
     ProductsService,
     CepService,

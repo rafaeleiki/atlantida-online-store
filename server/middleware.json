@@ -15,7 +15,7 @@
     "helmet#frameguard": {
       "params": [
         "deny"
-       ]
+      ]
     },
     "helmet#hsts": {
       "params": {
@@ -46,7 +46,7 @@
     }
   },
   "files:after": {
-    "./middleware/serveindex":{
+    "./middleware/serveindex": {
       "enabled": true
     }
   },
