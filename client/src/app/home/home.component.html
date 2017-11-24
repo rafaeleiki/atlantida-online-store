@@ -5,10 +5,9 @@
     <ng-template ngbSlide *ngFor="let item of productsCarousel; let i = index">
       <a routerLink="/products/{{item._id}}">
         <img src="{{item.img[0]}}">
-        <!--<div class="carousel-caption caption">-->
-          <!--<h3>Destaque {{i+1}}</h3>-->
-          <!--<p>{{item.name}}</p>-->
-        <!--</div>-->
+        <div class="carousel-caption caption">
+          <p><b>{{item.name}}</b></p>
+        </div>
       </a>
     </ng-template>
   </ngb-carousel>
