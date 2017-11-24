@@ -130,26 +130,15 @@ export class ClientService {
     }
 
     let body = {
-      payload: {
         username: newUserInfo.username,
         name: newUserInfo.name,
         phone: newUserInfo.phone,
         cpf: newUserInfo.cpf,
         email: newUserInfo.email,
         password: newUserInfo.password,
-      }
     };
 
-    this.http.delete(this.url, this.getAccessHeader());
-
-    // return this.http.put(this.url + `client/${newUserInfo.id}`, body)
-    //   .toPromise()
-    //   .then(res => res.json() as UserEditInfoResponse)
-    //   .catch(error => {
-    //     console.log("Falha no edit de info" || error);
-    //   });
-
-    return this.http.post(this.url + `client`, body)
+    return this.http.put(this.url + `client/${newUserInfo.id}`, body, this.getAccessHeader())
       .toPromise()
       .then(res => res.json() as UserEditInfoResponse)
       .catch(error => {
