@@ -103,13 +103,13 @@ export interface ConsultTransactionListRequest {
   api_key: string;
 
   // Optional parameters
-  initial_date: string;
-  final_date: string;
-  transaction_state: string;
-  transaction_type: string;
-  max_value: string;
-  min_value: string;
-  card_number: string;
+  initial_date?: string;
+  final_date?: string;
+  transaction_state?: string;
+  transaction_type?: string;
+  max_value?: string;
+  min_value?: string;
+  card_number?: string;
 }
 
 export interface BoletoTransactionRequest {
