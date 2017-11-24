@@ -11,5 +11,3 @@ ds.autoupdate(lbTables, function(er) {
   console.log('Loopback tables [' - lbTables - '] created in ', ds.adapter.name);
   ds.disconnect();
 });
-
-// ds.autoupdate('Payment', function(err, result) {});
