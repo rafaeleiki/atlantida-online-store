@@ -1,5 +1,12 @@
 .highlight-products {
+  height: 300px;
+}
+
+.banner{
   height: 200px;
+  width: 70%;
+  display: block;
+  margin: auto;
 }
 
 .caption {
@@ -9,7 +16,7 @@
 
 .highlight-products img {
   display: block;
-  max-height: 200px;
+  max-height: 300px;
   width: auto;
   margin: auto;
 }

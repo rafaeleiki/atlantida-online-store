@@ -1,6 +1,7 @@
 <app-loading-icon *ngIf="!productsGrid; else products"></app-loading-icon>
 
 <ng-template #products>
+  <img src='assets/img/banner.png' class="banner">
   <ngb-carousel class="highlight-products">
     <ng-template ngbSlide *ngFor="let item of productsCarousel; let i = index">
       <a routerLink="/products/{{item._id}}">
