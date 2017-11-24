@@ -17,11 +17,19 @@ export class ShopCartComponent implements OnInit {
   private shopCartList: ShopCartItem[];
 
   @ViewChild('decreaseTooltip') public decreaseTooltip: NgbTooltip;
+  @ViewChild('increaseTooltip') public increaseTooltip: NgbTooltip;
 
   constructor(private scs : ShopCartService) {}
 
   increase(item : ShopCartItem) {
-    this.scs.increase(item);
+    this.scs.getStock(item.productId).then((stock) => {
+      if (item.amount < stock)
+        this.scs.increase(item);
+      else {
+        this.increaseTooltip.open();
+        setTimeout(() => this.decreaseTooltip.close(), 3000);
+      }
+    });
   }
 
   decrease(item : ShopCartItem) {

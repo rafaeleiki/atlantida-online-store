@@ -34,5 +34,9 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Payment": {
+    "dataSource": "db",
+    "public": true
   }
 }

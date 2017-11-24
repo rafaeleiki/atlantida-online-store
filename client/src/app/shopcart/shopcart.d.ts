@@ -4,6 +4,7 @@ export interface ShopCartItem {
     amount: number;
     price: number;
     expires: Date;
+    volume: number;
 }
 
 export interface ShopCart {

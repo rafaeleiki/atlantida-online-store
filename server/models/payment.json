@@ -1,0 +1,43 @@
+{
+  "name": "Payment",
+  "plural": "payments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "payment_id": {
+      "type": "number",
+      "required": true
+    },
+    "delivery_id": {
+      "type": "number",
+      "required": true
+    },
+    "cpf": {
+      "type": "string",
+      "required": true
+    },
+    "products": {
+      "type": "string",
+      "required": true
+    },
+    "total_cost": {
+      "type": "number",
+      "required": true
+    },
+    "shipping_cost": {
+      "type": "number",
+      "required": true
+    },
+    "sale_date": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

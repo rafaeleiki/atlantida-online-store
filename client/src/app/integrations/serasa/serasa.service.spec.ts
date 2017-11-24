@@ -18,7 +18,7 @@ describe('SerasaService', () => {
   it('should show Herinque as defaulting',
     inject([SerasaService],
       (service: SerasaService) => {
-    service.getScore('32453415808')
-      .then((response: SerasaScore) => expect(response.score).toBe(0));
+      service.getScore('32453415808')
+        .then((response: SerasaScore) => expect(response.score).toBe(0));
   }));
 });
