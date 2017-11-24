@@ -62,7 +62,7 @@ export class UserService {
         cpf: user.payload.cpf,
         address: address,
         id: user.payload.id,
-        };
+      };
       this.subject.next(this.user);
       getStorage().setItem(USER_KEY, JSON.stringify(this.user));
       return this.user;

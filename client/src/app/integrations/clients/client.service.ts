@@ -6,7 +6,7 @@ import {
   CreateClientRequest,
   CreateClientResponse,
   UserResponse,
-  UserAddress
+  UserAddress, UserAddressResponse
 } from './client.api';
 
 function getStorage() { return window.localStorage; }
@@ -74,7 +74,10 @@ export class ClientService {
     return this.http.get(this.url + `address/${clientId}`, {
       headers: new Headers({ 'X-access-token': this.authToken })
     }).toPromise()
-      .then(response => response.json() as UserAddress[]);
+      .then(response => {
+        let addressRes = response.json() as UserAddressResponse;
+        return addressRes.payload.addresses;
+      });
   }
 
   removeAddress(addrId: string): void {

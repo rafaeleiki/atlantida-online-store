@@ -39,13 +39,17 @@ export interface UserResponse {
   }
 }
 
-export interface UserAddress {
+export interface UserAddressResponse {
   payload: {
-    CEP: string;
-    number: number;
-    street: string;
-    city: string;
-    state: string;
-    id: string;
+    addresses: UserAddress[];
   }
+}
+
+export interface UserAddress {
+  CEP: string;
+  number: number;
+  street: string;
+  city: string;
+  state: string;
+  id: string;
 }
