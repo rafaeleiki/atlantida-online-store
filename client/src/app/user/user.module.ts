@@ -6,6 +6,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { UserService } from './user.service';
 import { UserComponent } from './user.component';
 import { ShoppingHistoryComponent } from './shopping-history/shopping-history.component';
+import { AddressComponent } from './address/address.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {ClientService} from '../integrations/clients/client.service';
 import {FormsModule} from "@angular/forms";
@@ -20,6 +21,7 @@ const routes: Routes = [
     children: [
       { path: 'history', component: ShoppingHistoryComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'address', component: AddressComponent },
       { path: '', redirectTo: 'history', pathMatch: 'full' }
     ]
   },
@@ -30,6 +32,7 @@ const routes: Routes = [
     ProfileComponent,
     UserComponent,
     ShoppingHistoryComponent,
+    AddressComponent,
   ],
   imports: [
     CommonModule,

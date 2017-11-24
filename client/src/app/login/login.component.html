@@ -15,10 +15,16 @@
   </div>
 
   <button (click)="login()"
-          type="button"
+          type="submit"
           class="btn btn-primary"
           [disabled]="!password || !cpf">
     Entrar
+  </button>
+
+  <button onclick="window.open('http://mc437.ddns.net:3000/#/signup','_blank')"
+          type="button"
+          class="btn btn-primary">
+    Criar conta
   </button>
 
 </form>
