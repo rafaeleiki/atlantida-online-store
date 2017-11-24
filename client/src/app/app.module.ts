@@ -71,6 +71,7 @@ const appRoutes: Routes = [
     CepService,
     ShopCartService,
     SerasaService,
+    MewketingService,
   ],
   bootstrap: [AppComponent]
 })
