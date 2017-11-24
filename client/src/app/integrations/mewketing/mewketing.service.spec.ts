@@ -16,19 +16,19 @@ describe('MewketingService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should send email',
-    inject([MewketingService],
-      (service: MewketingService) => {
-    service.sendEmail('2017-11-17T21:25:35.516Z', 'Oi leilaaaadasuyudsaudfasyudfaudyufasd','Email de teste', ['guilherme'],
-      {
-        vars: ["email", "nome"],
-        values: [{email:"zwanziger@live.com", nome:"leils"}]
-      })
-      .then((res) => {
-      console.log(res);
-      expect(res.status == "Email sent" || res.status == "Email schedule").toBeTruthy();
-      });
-  }));
+  // it('should send email',
+  //   inject([MewketingService],
+  //     (service: MewketingService) => {
+  //   service.sendEmail('2017-11-17T21:25:35.516Z', 'Oi leilaaaadasuyudsaudfasyudfaudyufasd','Email de teste', ['guilherme'],
+  //     {
+  //       vars: ["email", "nome"],
+  //       values: [{email:"zwanziger@live.com", nome:"leils"}]
+  //     })
+  //     .then((res) => {
+  //     console.log(res);
+  //     expect(res.status == "Email sent" || res.status == "Email schedule").toBeTruthy();
+  //     });
+  // }));
 
   // it('should create a receiver',
   //   inject([MewketingService],
