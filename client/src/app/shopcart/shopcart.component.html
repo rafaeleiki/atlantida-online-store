@@ -32,11 +32,9 @@
     </div>
     <h2 *ngIf="shopCartList.length == 0">Carrinho vazio :(</h2>
 </div>
-<!-- Frete -->
-<div class="">
-  <p>{{cookies}}</p>
-</div>
-<!-- Finalizar compra -->
-<div class="">
 
+<div class="text-center my-5">
+  <a class="btn btn-primary" routerLink="/payment">
+    Finalizar compra
+  </a>
 </div>
