@@ -1,0 +1,185 @@
+<form *ngIf="score == 0" class="container p-5">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">CPF</label>
+    <input type="text"
+           name="cpf"
+           placeholder="12345678900"
+           [(ngModel)]="boleto.cpf_sacado"
+           class="col-sm-10 form-control">
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Nome</label>
+    <input type="text"
+           name="nome"
+           placeholder="Insira seu nome"
+           [(ngModel)]="boleto.nome_sacado"
+           class="col-sm-10 form-control">
+  </div>
+  <button (click)="createTransaction()"
+          type="button"
+          class="btn btn-primary"
+          [disabled]="!boleto.nome_sacado && !boleto.cpf_sacado">
+    Confirmar boleto
+  </button>
+</form>
+
+<form *ngIf="score == 1" class="container p-5">
+  <ngb-tabset>
+    <ngb-tab title="Boleto">
+      <ng-template ngbTabContent>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">CPF</label>
+          <input type="text"
+                 name="cpf"
+                 placeholder="12345678900"
+                 [(ngModel)]="boleto.cpf_sacado"
+                 class="col-sm-10 form-control">
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nome</label>
+          <input type="text"
+                 name="nome"
+                 placeholder="Insira seu nome"
+                 [(ngModel)]="boleto.nome_sacado"
+                 class="col-sm-10 form-control">
+        </div>
+        <button (click)="createTransaction()"
+                type="button"
+                class="btn btn-primary"
+                [disabled]="!boleto.cpf_sacado || !boleto.nome_sacado">
+          Confirmar boleto
+        </button>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Cartão de credito">
+      <ng-template ngbTabContent>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Numero do cartão de crédito</label>
+          <input type="text"
+                 name="numero_cartao"
+                 placeholder="1234 1234 1234 1234"
+                 [(ngModel)]="credit.numero_cartao"
+                 class="col-sm-10 form-control">
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nome no cartão</label>
+          <input type="text"
+                 name="Nome no cartão"
+                 placeholder="Nome"
+                 [(ngModel)]="credit.nome_cartao"
+                 class="col-sm-10 form-control">
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Código de segurança</label>
+          <input type="text"
+                 name="codigo de verificacao"
+                 placeholder="código atrás do cartão"
+                 [(ngModel)]="credit.codigo_verificaccao"
+                 class="col-sm-10 form-control">
+        </div>
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <label class="col-sm-2 col-form-label">Data de expiração</label>
+              <input class="form-control"
+                     placeholder="yyyy-mm-dd"
+                     name="dp"
+                     [(ngModel)]="credit.data_expiracao"
+                     ngbDatepicker #d="ngbDatepicker">
+              <button class="input-group-addon" (click)="d.toggle()" type="button">
+                <img src="img/calendar-icon.svg"
+                     style="width: 1.2rem;
+                     height: 1rem;
+                     cursor: pointer;"/>
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary"
+                      id="dropdownBasic1"
+                      ngbDropdownToggle>Numero de parcelas</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item">1</button>
+                <button class="dropdown-item">2</button>
+                <button class="dropdown-item">3</button>
+                <button class="dropdown-item">4</button>
+                <button class="dropdown-item">5</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="">Preço da parcela: R${{parcel_value}}</p>
+        <button (click)="sendCreditTransaction()"
+                type="button"
+                class="btn btn-primary"
+                [disabled]="!credit.data_expiracao ||
+                            !credit.codigo_verificaccao ||
+                            !credit.nome_cartao ||
+                            !credit.numero_cartao">
+          Confirmar cartão de crédito
+        </button>
+      </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Cartão de débito">
+      <ng-template ngbTabContent>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Numero do cartão de crédito</label>
+          <input type="text"
+                 name="numero_cartao"
+                 placeholder="1234 1234 1234 1234"
+                 [(ngModel)]="debit.numero_cartao"
+                 class="col-sm-10 form-control">
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nome no cartão</label>
+          <input type="text"
+                 name="Nome no cartão"
+                 placeholder="Nome"
+                 [(ngModel)]="debit.nome_cartao"
+                 class="col-sm-10 form-control">
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Código de segurança</label>
+          <input type="text"
+                 name="codigo de verificacao"
+                 placeholder="código de 3 dígitos"
+                 [(ngModel)]="debit.codigo_verificaccao"
+                 class="col-sm-10 form-control">
+        </div>
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <label class="col-sm-2 col-form-label">Data de expiração</label>
+              <input class="form-control"
+                     placeholder="yyyy-mm-dd"
+                     name="dp"
+                     [(ngModel)]="debit.data_expiracao"
+                     ngbDatepicker #d="ngbDatepicker">
+              <button class="input-group-addon" (click)="d.toggle()" type="button">
+                <img src="img/calendar-icon.svg"
+                     style="width: 1.2rem;
+                     height: 1rem;
+                     cursor: pointer;"/>
+              </button>
+            </div>
+          </div>
+        </form>
+        <button (click)="sendDebitTransaction()"
+                type="button"
+                class="btn btn-primary"
+                [disabled]="!debit.data_expiracao ||
+                            !debit.codigo_verificaccao ||
+                            !debit.nome_cartao ||
+                            !debit.numero_cartao">
+          Confirmar cartão de débito
+        </button>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</form>
+

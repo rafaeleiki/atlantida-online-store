@@ -1,6 +1,10 @@
 
 import {Component, OnInit} from '@angular/core';
-import {TransactionRequest, TransactionReturn} from "../integrations/payments/payments";
+import {
+  OrangoPagBoletoTransactionRequest, OrangoPagCreditTransactionRequest,
+  OrangoPagDebitTransactionRequest
+} from "../integrations/payments/payments";
+import {PaymentsService} from "../integrations/payments/payments.service";
 
 @Component({
   selector: 'app-payment',
@@ -9,11 +13,21 @@ import {TransactionRequest, TransactionReturn} from "../integrations/payments/pa
 })
 
 export class PaymentComponent implements OnInit {
-  private transactionRequest: TransactionRequest;
-  private transactionReturn: TransactionReturn;
+  private boleto: OrangoPagBoletoTransactionRequest;
+  private credit: OrangoPagCreditTransactionRequest;
+  private debit: OrangoPagDebitTransactionRequest;
+
+  constructor(private payment: PaymentsService) { }
 
   ngOnInit() {
+  }
 
+  sendCreditTransaction() {
+    
   }
 }
 
+
+export class NgbdDatepickerPopup {
+  model;
+}
