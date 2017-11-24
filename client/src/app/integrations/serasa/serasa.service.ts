@@ -5,7 +5,7 @@ import {SerasaScore} from './serasa';
 @Injectable()
 export class SerasaService {
 
-  private url= 'mc437.viniciusfabri.com';
+  private url = 'http://mc437.viniciusfabri.com';
 
   constructor(private http: Http) { }
 
@@ -14,13 +14,13 @@ export class SerasaService {
       .toPromise()
       .then(response => ({ score: +response.json().score }))
       .catch((error) => {
-        let promise;
-        if (error.status === 404) {
-          promise = Promise.resolve({ score: 1 });
-        } else {
-          console.error(`Error on get score of CPF ${cpf}`, error);
-          promise = Promise.reject(error.message || error);
-        }
+        let promise = Promise.resolve({ score: 1 });
+        // if (error.status === 404) {
+        //   promise = Promise.resolve({ score: 1 });
+        // } else {
+        //   console.error(`Error on get score of CPF ${cpf}`, error);
+        //   promise = Promise.reject(error.message || error);
+        // }
         return promise;
       });
   }

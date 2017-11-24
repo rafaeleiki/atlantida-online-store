@@ -26,6 +26,7 @@ import {SharedModule} from './shared/shared.module';
 import {PaymentsService} from "./integrations/payments/payments.service";
 import {PaymentComponent} from './payments/payment.component';
 import {ServerService} from './server/server.service';
+import {DeliveryService} from './integrations/delivery/delivery.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
     ShopCartService,
     SerasaService,
     ServerService,
+    DeliveryService,
   ],
   bootstrap: [AppComponent]
 })

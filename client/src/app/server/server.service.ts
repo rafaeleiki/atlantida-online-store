@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
-import {PaymentModel} from './server.api';
+import {Payment, PaymentModel} from './server.api';
 
 @Injectable()
 export class ServerService {
@@ -9,18 +9,27 @@ export class ServerService {
 
   constructor(private http: Http) { }
 
-  createPayment(payment: PaymentModel): Promise<void> {
-    return this.http.post(this.url, payment)
+  createPayment(payment: Payment): Promise<void> {
+    const params: PaymentModel = {
+      ...payment,
+      products: JSON.stringify(payment.products),
+    };
+
+    return this.http.post(this.url, params)
       .toPromise()
       .then(response => {});
   }
 
-  getPayments(cpf: string): Promise<PaymentModel[]> {
+  getPayments(cpf: string): Promise<Payment[]> {
     return this.http.get(this.url)
       .toPromise()
       .then((res) => {
         const payments = res.json() as PaymentModel[];
-        return payments.filter((payment) => payment.cpf === cpf);
+        return payments.filter((payment) => payment.cpf === cpf)
+          .map(payment => ({
+            ...payment,
+            products: JSON.parse(payment.products),
+          }));
       });
   }
 

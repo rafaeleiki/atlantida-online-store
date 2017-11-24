@@ -40,10 +40,10 @@ describe('PaymentsService', () => {
     tipo_trans: credit,
     nome_sacado: 'Renan Carvalho',
     cpf_sacado: '07994544436',
-    numero_cartao: '1234123412341234',
+    numero_cartao: '123123123123',
     nome_cartao: 'Renan A Carvalho',
     data_expiracao: '2019-07-28',
-    codigo_verificaccao: '837',
+    codigo_verificacao: '837',
     tipo_cartao: 'Credito',
     n_parcelas: '2',
     valor_parcela: '179.99'
@@ -79,8 +79,11 @@ describe('PaymentsService', () => {
       inject([PaymentsService],
         (service: PaymentsService) => {
         service.postBoleto(btr)
-          .then(response => expect(
-            response.message === 'Transação via boleto criada com sucesso').toBeTruthy());
+          .then(response => {
+            debugger;
+            expect(
+              response.message === 'Transação via boleto criada com sucesso').toBeTruthy()
+          });
         })));
   it('should create a Credit Card transaction',
     async(

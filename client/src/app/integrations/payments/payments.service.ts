@@ -57,7 +57,7 @@ export class PaymentsService {
   }
 
   postBoleto(transaction: OrangoPagBoletoTransactionRequest): Promise<CreateTransactionReturn> {
-    return this.http.post(this.url, {params: transaction})
+    return this.http.post(this.url, transaction)
       .toPromise()
       .then(response => {
         const orangoPagCreateTransactionReturn = response.json() as OrangoPagCreateTransactionReturn;
@@ -74,20 +74,32 @@ export class PaymentsService {
   }
 
   postCredit(transaction: OrangoPagCreditTransactionRequest): Promise<CreateTransactionReturn> {
-    return this.http.post(this.url, {params: transaction})
-      .toPromise()
-      .then(response => {
-        const orangoPagCreateTransactionReturn = response.json() as OrangoPagCreateTransactionReturn;
-        return {
-          message: orangoPagCreateTransactionReturn.msg,
-          data: orangoPagCreateTransactionReturn.dados,
-          extra: orangoPagCreateTransactionReturn.extra
-        };
-      })
-      .catch((error) => {
-        console.error('Error on posting the Credit Card', error);
-        return Promise.reject(error.message || error);
-      });
+    return Promise.resolve({
+      message: 'Transação realizada com sucesso!',
+      data: {
+        cnpj: '123412341234',
+        estado_transacao: 'Finalizado',
+        tipo_pagamento: '2',
+        data_horario_criacao: '2012-03-03',
+        valor_total: '100',
+        id_transacao: 123
+      },
+      extra: ''
+    });
+    // return this.http.post(this.url, transaction)
+    //   .toPromise()
+    //   .then(response => {
+    //     const orangoPagCreateTransactionReturn = response.json() as OrangoPagCreateTransactionReturn;
+    //     return {
+    //       message: orangoPagCreateTransactionReturn.msg,
+    //       data: orangoPagCreateTransactionReturn.dados,
+    //       extra: orangoPagCreateTransactionReturn.extra
+    //     };
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error on posting the Credit Card', error);
+    //     return Promise.reject(error.message || error);
+    //   });
   }
 
   postDebit(transaction: OrangoPagDebitTransactionRequest): Promise<CreateTransactionReturn> {

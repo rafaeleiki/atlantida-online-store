@@ -52,7 +52,7 @@ export interface OrangoPagCreditTransactionRequest {
   numero_cartao: string;
   nome_cartao: string;
   data_expiracao: string;
-  codigo_verificaccao: string;
+  codigo_verificacao: string;
   tipo_cartao: string;
   n_parcelas: string;
   valor_parcela: string;
@@ -75,7 +75,7 @@ export interface OrangoPagDebitTransactionRequest {
 
 export interface OrangoPagCreateTransactionReturn {
   msg: string;
-  dados: string;
+  dados: TransactionData;
   extra: string;
 }
 
@@ -156,6 +156,15 @@ export interface DebitTransactionRequest {
 
 export interface CreateTransactionReturn {
   message: string;
-  data: string;
-  extra: string;
+  data: TransactionData;
+  extra: any;
+}
+
+export interface TransactionData {
+  cnpj: string;
+  estado_transacao: string;
+  tipo_pagamento: string;
+  data_horario_criacao: string;
+  valor_total: string;
+  id_transacao: number;
 }

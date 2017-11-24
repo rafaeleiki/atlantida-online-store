@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import {ProductsService} from '../integrations/products/products.service';
-import {Product} from '../integrations/products/products';
 import { ShopCartItem, ShopCart } from './shopcart';
-import { Observable }   from 'rxjs/Observable';
 import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
+import {Product} from '../integrations/products/products';
 
 const SHOPCART_ID = "ShopCartItems";
 
@@ -16,7 +14,7 @@ export class ShopCartService {
     this.shopCartAmount = new BehaviorSubject<number>(Object.keys(shopCart).length);
   }
 
-  addToCart(product, amount) : void {
+  addToCart(product: Product, amount: number) : void {
     // Tries to load shopCart items from localStorage
     const shopCart = this.getShopCart();
 
@@ -35,6 +33,7 @@ export class ShopCartService {
         amount: amount,
         price: product.price,
         expires: expiryDate,
+        volume: product.dimensions.reduce((vol, d) => vol * d, 1),
       };
 
       this.shopCartAmount.next(Object.keys(shopCart).length);
