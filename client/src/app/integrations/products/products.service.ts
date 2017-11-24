@@ -87,6 +87,12 @@ export class ProductsService {
       .then(products => products.filter(product => product.highlighted));
   }
 
+  updateStock(productId: string, amount: number): Promise<void> {
+    return this.http.put(this.url + `/${productId}/increase/stock/${-amount}`, {})
+      .toPromise()
+      .then(() => {});
+  }
+
   private queryMatches(query: string, product: Product): boolean {
     return product.group === GROUP_ID &&
            product.name.toLowerCase().indexOf(query) >= 0;

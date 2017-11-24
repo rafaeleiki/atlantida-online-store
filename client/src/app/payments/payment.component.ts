@@ -15,6 +15,8 @@ import {ShopCartService} from '../shopcart/shopcart.service';
 import {Product} from '../integrations/products/products';
 import {ShopCartItem} from '../shopcart/shopcart';
 import {DeliveryService} from '../integrations/delivery/delivery.service';
+import {MewketingService} from '../integrations/mewketing/mewketing.service';
+import {ProductsService} from '../integrations/products/products.service';
 
 const apiKey = '5e2d5ed388d629742072abd528460bf2';
 const cnpj = '57414735000189';
@@ -46,6 +48,8 @@ export class PaymentComponent implements OnInit {
     private serverService: ServerService,
     private shopCartService: ShopCartService,
     private deliveryService: DeliveryService,
+    private mailService: MewketingService,
+    private productsService: ProductsService
   ) { }
 
   ngOnInit() {
@@ -117,7 +121,27 @@ export class PaymentComponent implements OnInit {
       volume: this.shopcart.reduce((vol, item) => item.volume + vol, 0),
     };
 
-    this.shopCartService.clearShopCart();
+    this.mailService.sendEmail(
+      new Date().toISOString(),
+      'Compra efetuada em Atlantida',
+      'compra',
+      [this.user.username],
+      {
+        vars: ['email', 'products', 'price'],
+        values: [{
+          email: this.user.email,
+          products: this.shopcart.map((item) => item.name).join(', '),
+          price: totalCost.toString()
+        }]
+      }
+    ).then(() => {
+      let promises = [];
+      this.shopcart.forEach((item) => {
+        promises.push(this.productsService.updateStock(item.productId, item.amount));
+      });
+      Promise.all(promises).then(() => this.shopCartService.clearShopCart());
+    });
+
     this.deliveryService.postPackage(packageInfo)
       .then(deliveryResponse => {
         this.serverService.createPayment({
