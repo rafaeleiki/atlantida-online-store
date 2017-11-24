@@ -5,7 +5,8 @@ import {
   AuthenticationResponse,
   CreateClientRequest,
   CreateClientResponse,
-  UserResponse
+  UserResponse,
+  UserAddress
 } from './client.api';
 
 function getStorage() { return window.localStorage; }
@@ -64,6 +65,35 @@ export class ClientService {
       headers: new Headers({ 'X-access-token': this.authToken })
     }).toPromise()
       .then(response => response.json() as UserResponse);
+  }
+
+  getUserAddresses(clientId: string): Promise<UserAddress[]> {
+    if (!this.authToken) {
+      throw Error('Need to authenticate before getting user info');
+    }
+    return this.http.get(this.url + `address/${clientId}`, {
+      headers: new Headers({ 'X-access-token': this.authToken })
+    }).toPromise()
+      .then(response => response.json() as UserAddress[]);
+  }
+
+  removeAddress(addrId: string): void {
+    if (!this.authToken) {
+      throw Error('Need to authenticate before getting user info');
+    }
+    this.http.delete(this.url + `address/${addrId}`, {
+      headers: new Headers({ 'X-access-token': this.authToken })
+    })
+  }
+
+  addAddress(clientId: string, cep: string, houseNumber: number): Promise<UserAddress> {
+    if (!this.authToken) {
+      throw Error('Need to authenticate before getting user info');
+    }
+    return this.http.post(this.url + `address/${clientId}`, {
+      headers: new Headers({ 'X-access-token': this.authToken, 'CEP': cep, 'number': houseNumber })
+    }).toPromise()
+      .then(response => response.json() as UserAddress);
   }
 
   setToken(response: AuthenticationResponse) {

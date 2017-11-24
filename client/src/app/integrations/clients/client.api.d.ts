@@ -38,3 +38,14 @@ export interface UserResponse {
     id: string;
   }
 }
+
+export interface UserAddress {
+  payload: {
+    CEP: string;
+    number: number;
+    street: string;
+    city: string;
+    state: string;
+    id: string;
+  }
+}

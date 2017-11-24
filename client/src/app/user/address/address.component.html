@@ -1,0 +1,23 @@
+<div class="row" *ngIf="user">
+  <div class="address-box" *ngFor= "let address of user.address" >
+    <h1>Endereço <button type="button" class="btn btn-circle sidebtn">
+      <i class="material-icons">remove_circle_outline</i></button></h1>
+    <br>
+    <p><b> CEP:</b> {{address.CEP}}</p>
+    <p><b> Rua:</b> {{address.street}}</p>
+    <p><b> Número:</b> {{address.number}}</p>
+    <p><b> Cidade:</b> {{address.city}}</p>
+    <p><b> Estado:</b> {{address.state}}</p>
+  </div>
+
+    <div class="address-box">
+      <h1>Novo Endereço <button type="button" class="btn btn-circle sidebtn">
+        <i class="material-icons">add_circle_outline</i></button></h1>
+      <br>
+      <p><b> CEP:</b> <input type="text"></p>
+      <p><b> Rua:</b>  <input type="text"></p>
+      <p><b> Número:</b>  <input type="text"></p>
+      <p><b> Cidade:</b>  <input type="text"></p>
+      <p><b> Estado:</b>  <input type="text"></p>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { ClientService } from './client.service';
 import {HttpModule} from '@angular/http';
-import {AuthenticationRequest, AuthenticationResponse, CreateClientResponse} from './client.api';
+import {AuthenticationRequest, AuthenticationResponse, CreateClientResponse, UserAddress} from './client.api';
 
 describe('ClientService', () => {
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('ClientService', () => {
   //     name: "Menino Atlantida",
   //     password: "testeatlantida",
   //     phone: "19987654321",
-  //     cpf: "12015469400",
+    //     cpf: "12015469400",
   //     email: "testezinho@teste.com"
   //   }).then((res: CreateClientResponse) => {
   //     expect(res).toBeTruthy();
@@ -36,4 +36,5 @@ describe('ClientService', () => {
       expect(response.error_code).toBeFalsy();
     });
   }));
+
 });
