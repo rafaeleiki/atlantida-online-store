@@ -7,6 +7,7 @@ import {ClientService} from '../integrations/clients/client.service';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
+import {MewketingService} from "../integrations/mewketing/mewketing.service";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -24,6 +25,7 @@ describe('LoginComponent', () => {
         { provide: APP_BASE_HREF, useValue: '/' },
         UserService,
         ClientService,
+        MewketingService,
       ]
     })
     .compileComponents();

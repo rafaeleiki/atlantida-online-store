@@ -19,7 +19,8 @@
                         <button type="button" (click)="decrease(item)" class="btn btn-danger btn-circle"
                                   ngbTooltip="Limite atingido" triggers="manual" #decreaseTooltip="ngbTooltip"><i class="material-icons">remove_circle_outline</i></button>
                         <span>{{item.amount | number }}</span>
-                        <button type="button" (click)="increase(item)" class="btn btn-primary btn-circle"><i class="material-icons">add_circle_outline</i></button>
+                        <button type="button" (click)="increase(item)" class="btn btn-primary btn-circle"
+                                  ngbTooltip="Limite atingido" triggers="manual" #increaseTooltip="ngbTooltip"><i class="material-icons">add_circle_outline</i></button>
                     </td>
                     <td>{{item.name}}</td>
                     <td>{{item.price | currency:'BRL':'R$'}}</td>
@@ -31,11 +32,9 @@
     </div>
     <h2 *ngIf="shopCartList.length == 0">Carrinho vazio :(</h2>
 </div>
-<!-- Frete -->
-<div class="">
-  <p>{{cookies}}</p>
-</div>
-<!-- Finalizar compra -->
-<div class="">
 
+<div class="text-center my-5">
+  <a class="btn btn-primary" routerLink="/payment">
+    Finalizar compra
+  </a>
 </div>

@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HelpComponent } from './help/help.component';
 import { HttpModule } from '@angular/http';
+import { MewketingService } from './integrations/mewketing/mewketing.service';
 import { ClientService } from './integrations/clients/client.service';
 import { UserModule } from './user/user.module';
 import { ProductsService } from './integrations/products/products.service';
@@ -22,6 +23,10 @@ import { ShopCartComponent } from './shopcart/shopcart.component';
 import { ShopCartService } from './shopcart/shopcart.service';
 import { LoginComponent } from './login/login.component';
 import {SharedModule} from './shared/shared.module';
+import {PaymentsService} from "./integrations/payments/payments.service";
+import {PaymentComponent} from './payments/payment.component';
+import {ServerService} from './server/server.service';
+import {DeliveryService} from './integrations/delivery/delivery.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -33,6 +38,7 @@ const appRoutes: Routes = [
   { path: 'products/:id', component: ProductComponent },
   { path: 'search/:searchQuery', component: SearchComponent },
   { path: 'shopcart', component: ShopCartComponent },
+  { path: 'payment', component: PaymentComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'
@@ -53,6 +59,7 @@ const appRoutes: Routes = [
     SearchComponent,
     ProductPicsComponent,
     LoginComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,11 +72,15 @@ const appRoutes: Routes = [
     SharedModule,
   ],
   providers: [
+    PaymentsService,
     ClientService,
     ProductsService,
     CepService,
     ShopCartService,
     SerasaService,
+    ServerService,
+    DeliveryService,
+    MewketingService,
   ],
   bootstrap: [AppComponent]
 })

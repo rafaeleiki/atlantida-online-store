@@ -1,4 +1,5 @@
-import {Address} from '../integrations/cep/cep';
+
+import {UserAddress} from '../integrations/clients/client.api';
 
 export interface User {
   name: string;
@@ -7,8 +8,8 @@ export interface User {
   phone: string;
   cpf: string;
   picture?: string;
-  cep: string;
-  address: Address;
+  address: UserAddress[];
+  id: string;
 }
 
 export interface SoldProduct {

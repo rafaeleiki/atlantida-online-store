@@ -10,7 +10,8 @@ import {Product} from "../integrations/products/products";
 })
 export class HomeComponent implements OnInit {
 
-  private products: Product[];
+  private productsGrid: Product[];
+  private productsCarousel: Product[];
 
   constructor(
     private route: ActivatedRoute,
@@ -19,7 +20,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.productsService.getHighlightedProducts()
       .then(products => {
-        this.products = products;
+        this.productsGrid = products;
+        let s = Math.floor(Math.random() * (products.length - 3));
+        this.productsCarousel = products.slice(s, s + 3);
       });
   }
 

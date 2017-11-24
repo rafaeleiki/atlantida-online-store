@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getCurrentUser()
-      .then(user => this.user = user);
+      .then(user => this.user = user );
   }
 
   logout() {
