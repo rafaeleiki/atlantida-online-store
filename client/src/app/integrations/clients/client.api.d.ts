@@ -23,7 +23,7 @@ export interface AuthenticationResponse {
   payload?: {
     id: string;
     token: string;
-  }
+  };
   error_code?: string;
 }
 
@@ -40,9 +40,10 @@ export interface UserResponse {
 }
 
 export interface UserAddressResponse {
-  payload: {
+  payload?: {
     addresses: UserAddress[];
-  }
+  };
+  error_code?: string;
 }
 
 export interface UserAddress {
@@ -52,4 +53,5 @@ export interface UserAddress {
   city: string;
   state: string;
   id: string;
+  error_code?:string;
 }
