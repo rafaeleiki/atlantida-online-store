@@ -17,20 +17,23 @@ export class AddressComponent implements OnInit {
   constructor(private userService: UserService, private clientService: ClientService) { }
 
   ngOnInit(){
-    this.userService.getUserObservable()
-      .subscribe(user => { this.userService.getUserInfo(user.id)
-        .then(user2 => { this.user = user2
-        });
-      });
+    this.userService.getCurrentUser()
+      .then(user => {this.user = user;});
   }
 
   removeAddress(id:string){
-    this.clientService.removeAddress(id)
+    this.clientService.removeAddress(id).then(() =>
+        this.userService.updateAdressess(this.user));
+
   }
 
   addAddress(){
     this.clientService.addAddress(this.user.id, this.cep, this.num )
-      .then( address => { alert(address.CEP) });
+      .then( address => {
+        if (address.error_code)
+          alert("CEP inexistente");
+        this.userService.updateAdressess(this.user);
+      });
   }
 
 }

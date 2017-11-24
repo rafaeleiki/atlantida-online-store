@@ -52,6 +52,16 @@ export class UserService {
   }
 
 
+  updateAdressess(user: User): Promise<User> {
+    return this.clientService.getUserAddresses(user.id)
+      .then((address: UserAddress[])=> {
+        this.user.address = address;
+        getStorage().setItem(USER_KEY, JSON.stringify(this.user));
+
+        return this.user;
+      });
+  }
+
   private setUser(user: UserResponse): Promise<User> {
     return this.clientService.getUserAddresses(user.payload.id)
     .then((address: UserAddress[])=> {
@@ -64,10 +74,9 @@ export class UserService {
         address: address,
         id: user.payload.id,
       };
-      this.subject.next(this.user);
       getStorage().setItem(USER_KEY, JSON.stringify(this.user));
+      this.subject.next(this.user);
       return this.user;
     });
-
   }
 }
