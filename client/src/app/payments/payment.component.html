@@ -15,7 +15,7 @@
            [(ngModel)]="boleto.nome_sacado"
            class="col-sm-10 form-control">
   </div>
-  <button (click)="createTransaction()"
+  <button (click)="createBoletoTransaction()"
           type="button"
           class="btn btn-primary"
           [disabled]="!boleto.nome_sacado && !boleto.cpf_sacado">
@@ -43,7 +43,7 @@
                  [(ngModel)]="boleto.nome_sacado"
                  class="col-sm-10 form-control">
         </div>
-        <button (click)="createTransaction()"
+        <button (click)="createBoletoTransaction()"
                 type="button"
                 class="btn btn-primary"
                 [disabled]="!boleto.cpf_sacado || !boleto.nome_sacado">
@@ -113,7 +113,7 @@
           </div>
         </div>
         <p class="">Preço da parcela: R${{parcel_value}}</p>
-        <button (click)="sendCreditTransaction()"
+        <button (click)="createCreditTransaction()"
                 type="button"
                 class="btn btn-primary"
                 [disabled]="!credit.data_expiracao ||
@@ -169,7 +169,7 @@
             </div>
           </div>
         </form>
-        <button (click)="sendDebitTransaction()"
+        <button (click)="createDebitTransaction()"
                 type="button"
                 class="btn btn-primary"
                 [disabled]="!debit.data_expiracao ||

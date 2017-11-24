@@ -14,11 +14,11 @@ export class SerasaService {
       .toPromise()
       .then(response => ({ score: +response.json().score }))
       .catch((error) => {
-        console.error(`Error on get score of CPF ${cpf}`, error);
         let promise;
-        if (error.status) {
-          promise = Promise.resolve(null);
+        if (error.status === 404) {
+          promise = Promise.resolve({ score: 1 });
         } else {
+          console.error(`Error on get score of CPF ${cpf}`, error);
           promise = Promise.reject(error.message || error);
         }
         return promise;
