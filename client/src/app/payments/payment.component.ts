@@ -17,10 +17,12 @@ import {User} from '../user/user';
 })
 
 export class PaymentComponent implements OnInit {
+
   private boleto: OrangoPagBoletoTransactionRequest;
   private credit: OrangoPagCreditTransactionRequest;
   private debit: OrangoPagDebitTransactionRequest;
   private score: number;
+  private message: string;
 
   constructor(
     private paymentService: PaymentsService,
@@ -32,21 +34,24 @@ export class PaymentComponent implements OnInit {
     this.boleto = {} as OrangoPagBoletoTransactionRequest;
     this.credit = {} as OrangoPagCreditTransactionRequest;
     this.debit = {} as OrangoPagDebitTransactionRequest;
-    
+
     this.userService.getCurrentUser()
       .then((user: User) => this.serasaService.getScore(user.cpf)
         .then((response: SerasaScore) => this.score = response.score));
   }
 
   createCreditTransaction() {
-
+    this.paymentService.postCredit(this.credit)
+      .then(res => this.message = res.message);
   }
 
   createBoletoTransaction() {
-
+    this.paymentService.postBoleto(this.boleto)
+      .then(res => this.message = res.message);
   }
 
   createDebitTransaction() {
-
+    this.paymentService.postDebit(this.debit)
+      .then(res => this.message = res.message);
   }
 }
