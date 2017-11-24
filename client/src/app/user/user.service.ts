@@ -41,28 +41,29 @@ export class UserService {
   }
 
   getShoppingHistory(): Promise<Buy[]> {
-    return this.serverService.getPayments(this.user.cpf)
-      .then(payments => payments.map(payment => {
-        return {
-          id: payment.payment_id,
-          statusLabel: 'Entregue',
-          statusPercentage: 100,
-          date: payment.sale_date,
-          expectedDelivery: payment.sale_date,
-          deliveryPlace: 'Instituto de Computação',
-          deliveryCost: payment.shipping_cost,
-          productsCost: payment.total_cost - payment.shipping_cost,
-          totalCost: payment.total_cost,
-          paymentMethod: 'Crédito',
-          products: payment.products.map((product): SoldProduct => {
-            return {
-              ...product,
-              totalCost: product.price * product.amount,
-              picture: '',
-            };
-          })
-        };
-      }));
+    return Promise.resolve(SHOPPING_HISTORY);
+    // return this.serverService.getPayments(this.user.cpf)
+    //   .then(payments => payments.map(payment => {
+    //     return {
+    //       id: payment.payment_id,
+    //       statusLabel: 'Entregue',
+    //       statusPercentage: 100,
+    //       date: payment.sale_date,
+    //       expectedDelivery: payment.sale_date,
+    //       deliveryPlace: 'Instituto de Computação',
+    //       deliveryCost: payment.shipping_cost,
+    //       productsCost: payment.total_cost - payment.shipping_cost,
+    //       totalCost: payment.total_cost,
+    //       paymentMethod: 'Crédito',
+    //       products: payment.products.map((product): SoldProduct => {
+    //         return {
+    //           ...product,
+    //           totalCost: product.price * product.amount,
+    //           picture: '',
+    //         };
+    //       })
+    //     };
+    //   }));
   }
 
   getUserObservable(): Observable<User> {

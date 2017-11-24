@@ -10,7 +10,7 @@ import {Buy, SoldProduct, User} from './user';
 };*/
 
 const P1: SoldProduct = {
-  name: "Caneca grande",
+  name: "Caneca Neymar Top",
   amount: 2,
   price: 20.00,
   totalCost: 40.00,
@@ -18,10 +18,10 @@ const P1: SoldProduct = {
 };
 
 const P2: SoldProduct = {
-  name: "Caneca",
+  name: "Animal Crossing New Leaf",
   amount: 1,
-  price: 10.00,
-  totalCost: 10.00,
+  price: 149.90,
+  totalCost: 149.90,
   picture: null
 };
 
@@ -71,14 +71,14 @@ export const  SHOPPING_HISTORY: Buy[] = [
   {
     id: 3,
     statusLabel: "Pago",
-    statusPercentage: 50,
-    date: new Date("03/11/2011"),
-    expectedDelivery: new Date("03/11/2017"),
-    deliveryPlace: "Lá na outra casa",
-    deliveryCost: 5.00,
-    productsCost: 30.00,
-    totalCost: 35.00,
-    paymentMethod: "Boleto",
+    statusPercentage: 25,
+    date: new Date("24/11/2017"),
+    expectedDelivery: new Date("29/11/2017"),
+    deliveryPlace: "Rua dos Catapuvis, 56",
+    deliveryCost: 10.00,
+    productsCost: 189.90,
+    totalCost: 199.90,
+    paymentMethod: "Crédito",
     products: [P1, P2]
   }
 ];
